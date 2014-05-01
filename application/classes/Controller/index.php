@@ -12,7 +12,10 @@ class Controller_index extends Controller_Base
        
        $last_news = $news->getNews();
        
-       $content = View::factory('v_index', array('news'=>$last_news));
+       $t = new Model_Tours();
+       $tours = $t->getTours();
+       
+       $content = View::factory('v_index', array('news'=>$last_news,'tours'=>$tours));
        
        $this->template->title = $this->title;
        $this->template->content = $content;

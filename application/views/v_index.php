@@ -25,27 +25,16 @@
                                 <article class="grid_4 alpha">
                                         <div class="padding-grid-1">
                                                 <h3>Tour <strong>Dates</strong></h3>
+                                                <?php foreach($tours as $tour):?>
                                                 <div class="wrapper img-indent-bot2">
-                                                        <time class="time time-stule-2" datetime="2011-11-09"> <strong class="text-3">09</strong><strong class="text-4">nov</strong></time>
+                                                    <time class="time time-stule-2" datetime="<?php echo date('Y-d-m',$tour['date'])?>"> <strong class="text-3"><?php echo date('d',$tour['date']);?></strong><strong class="text-4"><?php echo date('M',$tour['date']);?></strong></time>
                                                         <div class="extra-wrap">
-                                                                <h4 class="indent-top"><a href="#">New York</a></h4>
-                                                                Lorem ipsum dolor consctetur 
+                                                                <h4 class="indent-top"><a href="#"><?php echo $tour['city'];?></a></h4>
+                                                                <?php echo $tour['fest']?> 
+                                                                <?php echo $tour['club']?>
                                                         </div>
                                                 </div>
-                                                <div class="wrapper img-indent-bot2">
-                                                        <time class="time time-stule-2" datetime="2011-11-05"> <strong class="text-3">05</strong><strong class="text-4">nov</strong></time>
-                                                        <div class="extra-wrap">
-                                                                <h4 class="indent-top"><a href="#">Los Angeles</a></h4>
-                                                                Adipisicing elitdo esmod tempor
-                                                        </div>
-                                                </div>
-                                                <div class="wrapper">
-                                                        <time class="time time-stule-2" datetime="2011-11-01"> <strong class="text-3">01</strong><strong class="text-4">nov</strong></time>
-                                                        <div class="extra-wrap">
-                                                                <h4 class="indent-top"><a href="#">San Diego</a></h4>
-                                                                Lorem ipsum dolor consctetur 
-                                                        </div>
-                                                </div>
+                                                <?php endforeach;?>
                                         </div>
                                 </article>
                                 <article class="grid_4 alpha">
