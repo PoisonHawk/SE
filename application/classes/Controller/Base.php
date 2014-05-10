@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-Class Controller_Base  extends Controller_Template
+class Controller_Base extends Controller_Template
 {
     public $template = 'v_layout';
     
@@ -8,6 +8,12 @@ Class Controller_Base  extends Controller_Template
         parent::before();
         
         $site_name = 'Sympuls-e'; 
+        
+        $menu = Kohana::$config->load('settings.site.menu');
+        $current =  $this->request->controller();
+        
+        $this->template->current = $current;
+        $this->template->menu =$menu;
         
         $this->template->site_name = $site_name;
         

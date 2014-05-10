@@ -60,18 +60,7 @@
         
     </head>
     
-<!--    <body>
-        <header>
-            <h1><?php echo $site_name; ?></h1>
-            <nav>
-                <ul>
-                    <li><a href="/index">Новости</a></li>
-                    <li><a href="index/band">Группа</a></li>
-                    <li><a href="#">Альбомы</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </ul>
-            </nav>
-        </header>-->
+
 	<body id="page1">
 		<div class="extra">
 <!--==============================header=================================-->
@@ -85,14 +74,23 @@
 							<div class="menu-bg">
 								<div class="container_12">
 									<div class="grid_12">
+                                                                            <?php if(isset($menu)):?>
 										<ul class="menu">
-											<li class="item"><a class="active" href="/index">About</a></li>
+                                                                                    <?php foreach($menu as $link => $name):?>
+                                                                                    <?php if($link == $current):?>
+                                                                                        <li class="item"><a class="active" href="/<?php echo $link?>"><?php echo $name?></a></li>
+                                                                                    <?php else:?>
+                                                                                        <li><a href="/<?php echo $link?>"><?php echo $name?></a></li>
+                                                                                    <?php endif; ?>
+                                                                                    <?php endforeach;?>
+<!--											<li class="item"><a class="active" href="/index">About</a></li>
 											<li><a href="audio.html">Audio</a></li>
 											<li><a href="video.html">Video</a></li>
 											<li><a href="gallery.html">Gallery</a></li>
 											<li class="item-1"><a href="tour-dates.html">Tour Dates</a></li>
-											<li class="last"><a href="contacts.html">Contacts</a></li>
+											<li class="last"><a href="contacts.html">Contacts</a></li>-->
 										</ul>
+                                                                            <?php endif;?>
 										<div class="clear"></div>
 									</div>
 									<div class="clear"></div>
@@ -103,13 +101,15 @@
 					<div class="slider-wrapper">
 						<div class="slider">
 							<ul class="items">
-								<li><img src="images/slider-img1.jpg" alt="" /></li>
-								<li>
+                                                            <li><img src="/images/sympuls-e_1.jpg" style="width:960px;height:368px"></li>
+                                                            <li><img src="/images/sympuls-e_2.jpg" style="width:960px;height:368px"></li>
+								<!--<li><img src="images/slider-img1.jpg" alt="" /></li>-->
+<!--								<li>
 									<img src="images/slider-img2.jpg" alt="" />
 								</li>
 								<li>
 									<img src="images/slider-img3.jpg" alt="" />
-								</li>
+								</li>-->
 							</ul> 
 						</div>
 					</div>
@@ -131,7 +131,7 @@
 										<ul class="list-services">
 											<li><a class="tooltips n-1" title="Twitter" href="#"></a></li>
 											<li><a class="tooltips n-2" title="Facebook" href="#"></a></li>
-											<li class="last"><a class="tooltips n-3" title="Youtube" href="#"></a></li>
+											<li class="last"><a class="tooltips n-3" title="Youtube" href="http://www.youtube.com/user/DmitrySympuls"></a></li>
 										</ul>
 									</div>
 									<div class="aligncenter">

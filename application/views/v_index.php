@@ -6,7 +6,7 @@
                     <div class="content-padding-1">
                         <div class="container_12">
                             <div class="wrapper">
-                                <article class="grid_4">
+                                <article class="grid_4 news">
                                     <div class="padding-grid-1">
                                         <h3 class="letter">Latest <strong>News</strong></h3>
                                         <?php foreach ($news as $new): ?>
@@ -37,14 +37,14 @@
                                                 <?php endforeach;?>
                                         </div>
                                 </article>
-                                <article class="grid_4 alpha">
+<!--                                <article class="grid_4 alpha">
                                         <div class="padding-grid-2">
                                                 <h3 class="letter">In Stores <strong>Now!</strong></h3>
                                                 <div class="wrapper">
                                                         <figure class="style-img fleft"><a href="#"><img src="images/page1-img1.jpg"  alt=""></a></figure>
                                                 </div>
                                         </div>
-                                </article>
+                                </article>-->
                             </div>
                         </div>
                      </div>
@@ -52,7 +52,7 @@
                     <div class="content-padding-2">
                             <div class="container_12">
                                     <div class="wrapper">
-                                            <article class="grid_4">
+<!--                                            <article class="grid_4">
                                                     <div class="padding-grid-1">
                                                             <h3>Upcoming <strong>Events</strong></h3>
                                                             <div class="wrapper img-indent-bot1">
@@ -72,13 +72,14 @@
                                                                     </div>
                                                             </div>
                                                     </div>
-                                            </article>
-                                            <article class="grid_4 alpha">
+                                            </article>-->
+                                            <article class="grid_4 alpha video">
                                                     <div class="padding-grid-2">
                                                             <h3 class="letter">Latest <strong>Video</strong></h3>
 
                                                             <div class="wrapper">
-                                                                    <figure class="style-img-2 fleft"><a class="lightbox-image" href="video/video_AS3.swf?width=495&amp;height=275&amp;fileVideo=intro06.flv" data-gal="prettyVideo[prettyVideo]"><img src="images/page1-img2.jpg"  alt=""></a></figure>
+                                                                    <!--<figure class="style-img-2 fleft"><a class="lightbox-image" href="video/video_AS3.swf?width=495&amp;height=275&amp;fileVideo=intro06.flv" data-gal="prettyVideo[prettyVideo]"><img src="images/page1-img2.jpg"  alt=""></a></figure>-->
+                                                            <iframe type="text/html" width="607" height="360" src="http://www.youtube.com/embed/FrGdBjFbzVU" frameborder="0"></iframe>
                                                             </div>
                                                     </div>
                                             </article>
@@ -86,7 +87,8 @@
                                                     <div class="padding-grid-2">
                                                             <h3 class="letter prev-indent-bot1">Shortly <strong>About</strong></h3>
                                                             <h6>Sed ut perspiciatis unde omnis</h6>
-                                                            Iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas aspernatur.
+                                                            Sympuls-e рязанская melodic death metal группа. Фирменным стилем являются скоростные техничные и в то же время мелодичные риффы вкупе с женским экстримальным вокалом.
+                                                            Ориентируясь на такие группы как Arch Enemy, Children Of Bodom, Wintersun, Norther, Soilwork, Inflames группа не зацикливается на одном жанре, превнося в свое творчество новые веяния.
                                                     </div>
                                             </article>
                                     </div>
