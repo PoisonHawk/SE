@@ -28,9 +28,7 @@
 		<script type="text/javascript" src="/js/tms-0.3.js"></script>
 		<script type="text/javascript" src="/js/tms_presets.js"></script>
 		<script type="text/javascript">
-                <?php foreach($scripts as $script): ?>
-                    <?php echo html::js($script);?>
-                <?php endforeach; ?>    
+                 
 			$(window).load(function(){
 				$('.slider')._TMS({
 					duration:800,
@@ -44,7 +42,10 @@
 				});
 				$("a[data-gal^='prettyVideo']").prettyPhoto({animation_speed:'normal',theme:'facebook',slideshow:false, autoplay_slideshow: false});
 			}); 
-		</script>		
+		</script>	
+                <?php foreach($scripts as $script): ?>
+                    <?php echo html::js($script);?>
+                <?php endforeach; ?>   
 		<!--[if lt IE 7]>
 			<div style=' clear: both; text-align:center; position: relative;'>
 				<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">

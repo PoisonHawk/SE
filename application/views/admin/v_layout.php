@@ -23,6 +23,7 @@
                         <ul class="nav nav-pills container">
                             <li><a href="/admin/news">Новости</a><li>
                             <li><a href="/admin/tours">Туры</a><li>
+                            <li><a href="/admin/audio">Аудио</a><li>
                         </ul>    
                     </div>    
                 </header>

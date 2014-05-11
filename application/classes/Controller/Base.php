@@ -3,6 +3,7 @@
 class Controller_Base extends Controller_Template
 {
     public $template = 'v_layout';
+    public $title='';
     
     public function before() {
         parent::before();
@@ -11,6 +12,8 @@ class Controller_Base extends Controller_Template
         
         $menu = Kohana::$config->load('settings.site.menu');
         $current =  $this->request->controller();
+        
+        $this->template->title=$this->title;
         
         $this->template->current = $current;
         $this->template->menu =$menu;
