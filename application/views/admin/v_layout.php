@@ -15,6 +15,7 @@
         <?php endforeach;?>
     </head>
     <body>
+        <span><a href="/">Сайт</span>
         <div class="row-fluid">
             <div class="span12">
                 <header class="">
