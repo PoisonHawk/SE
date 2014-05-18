@@ -8,6 +8,13 @@ class Controller_Admin_Base extends Controller_Template
       public function before() {
         parent::before();
         
+        if(!Auth::instance()->logged_in('admin')){
+            $this->redirect('/login');
+        }
+        
+        $username = Auth::instance()->get_user();
+        $this->template->username = $username;
+        
          $this->template->title = $this->title;
          
          $this->template->styles = array();

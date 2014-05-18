@@ -15,7 +15,13 @@
         <?php endforeach;?>
     </head>
     <body>
-        <span><a href="/">Сайт</span>
+        <div id="admin_panel">
+            <span><a href="/">Сайт</a></span>
+            <div>
+                <span><?php echo $username;?></span>
+                <span><a href="/login/logout">Выйти</a></span>
+            </div>
+        </div>    
         <div class="row-fluid">
             <div class="span12">
                 <header class="">
