@@ -5,16 +5,17 @@ class Model_Audio extends ORM{
     protected $_table_name = 'audio';
     
     protected  $_table_columns = array(
-        'id'            => 'id',
-        'name'          =>  'name',
-        'album_id'      =>  'album_id',
+        'id'        =>  'id',
+        'name'      =>  'name',
+        'album_id'  =>  'album_id',
+        'num'       =>  'num'
     );
     
     
     public function getAudio($id){
         
         try{
-            $sql = "SELECT name FROM audio WHERE album_id =:id";
+            $sql = "SELECT name, num FROM audio WHERE album_id =:id";
 
             return db::query(Database::SELECT, $sql)
                     ->param(':id',$id)
@@ -26,5 +27,10 @@ class Model_Audio extends ORM{
             throw new Exception($e->getMessage());
         }
     }
+    
+    public function saveAudio(){
+        
+    }
+    
     
 }

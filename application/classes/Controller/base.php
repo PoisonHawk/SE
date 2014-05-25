@@ -16,7 +16,7 @@ class Controller_Base extends Controller_Template
         $this->template->title=$this->title;
         
         $this->template->current = $current;
-        $this->template->menu =$menu;
+        $this->template->menu = $menu;
         
         $this->template->site_name = $site_name;
         

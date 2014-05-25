@@ -16,8 +16,8 @@
     </head>
     <body>
         <div id="admin_panel">
-            <span><a href="/">Сайт</a></span>
-            <div>
+            <span class='left'><a href="/">Сайт</a></span>
+            <div class='right'>
                 <span><?php echo $username;?></span>
                 <span><a href="/login/logout">Выйти</a></span>
             </div>

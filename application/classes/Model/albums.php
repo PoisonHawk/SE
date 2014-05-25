@@ -1,6 +1,15 @@
 <?php defined('SYSPATH') or die('No direct scripts access.');
 
-class Model_Albums extends Model{
+class Model_Albums extends ORM{
+    
+    protected $_table_name = 'albums';
+    
+    protected  $_table_columns = array(
+        'id'            => 'id',
+        'name'          =>  'name',
+        'year'      =>  'year',
+        'image'     =>  'image',
+    );
     
     public function getAlbums(){
         
