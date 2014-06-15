@@ -16,6 +16,7 @@
         </div>
 </header>
 <!--==============================content================================-->
+<div id="content">
         <section id="content">
             <div class="main">
                 <div class="bg-2">

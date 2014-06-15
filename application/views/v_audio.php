@@ -1,3 +1,7 @@
+    </div>
+</header>
+<div id="content">
+    
 <section id="content"><div class="ic">More Website Templates @ TemplateMonster.com. November 21, 2011!</div>
     <div class="main">
         <div class="content-padding-2">

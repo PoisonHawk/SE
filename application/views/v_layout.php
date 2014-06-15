@@ -109,7 +109,7 @@
 						</div>
 					</nav>
 					
-        <div id="content">
+<!--        <div id="content">-->
             <?php echo $content;?>
         </div>
         <!--==============================footer=================================-->
