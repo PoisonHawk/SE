@@ -58,8 +58,8 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
         
         if($this->request->method() === Request::POST and isset($_POST['save'])){
             
-            $title = arr::get($_POST,'title_album');
-            $year = arr::get($_POST,'year');            
+            $title = trim(arr::get($_POST,'title_album'));
+            $year = trim(arr::get($_POST,'year'));            
             
             if(isset($id)){
                 $album = new Model_Albums($id);                
@@ -67,7 +67,8 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             else{
                 $album = new Model_Albums();                
             }            
-          
+            
+            //сохраняем информацию об альбоме
             $album->name    = $title;
             $album->year    = $year;
             $album->image   = $this->image;
@@ -80,7 +81,7 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             $count_add = arr::get($_POST,'count');
             
             for($i=1;$i<=$count_add;$i++){
-                $name = arr::get($_POST,'title_track_'.$i);
+                $name = trim(arr::get($_POST,'title_track_'.$i));
                 
                 $audio = new Model_Audio(array('num'=>$i, 'album_id' => $album_id));
                 if(!$audio->loaded()){
