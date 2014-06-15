@@ -1,4 +1,20 @@
-
+                <div class="slider-wrapper">
+                        <div class="slider">
+                                <ul class="items">
+                                    <li><img src="/images/sympuls-e_1.jpg" style="width:960px;height:368px"></li>
+                                    <li><img src="/images/sympuls-e_2.jpg" style="width:960px;height:368px"></li>
+                                        <!--<li><img src="images/slider-img1.jpg" alt="" /></li>-->
+<!--								<li>
+                                                <img src="images/slider-img2.jpg" alt="" />
+                                        </li>
+                                        <li>
+                                                <img src="images/slider-img3.jpg" alt="" />
+                                        </li>-->
+                                </ul> 
+                        </div>
+                </div>
+        </div>
+</header>
 <!--==============================content================================-->
         <section id="content">
             <div class="main">
