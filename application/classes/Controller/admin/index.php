@@ -6,6 +6,7 @@ class Controller_Admin_Index extends Controller_Admin_Base{
     
     public function action_index(){
         
+        $this->redirect('/admin/news');
         
         $content = new View('admin/v_index');
         $this->template->title = $this->title;
