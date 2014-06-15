@@ -44,7 +44,7 @@
 			}); 
 		</script>	
                 <?php foreach($scripts as $script): ?>
-                    <?php echo html::js($script);?>
+                    <?php echo html::script($script);?>
                 <?php endforeach; ?>   
 		<!--[if lt IE 7]>
 			<div style=' clear: both; text-align:center; position: relative;'>

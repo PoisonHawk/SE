@@ -5,6 +5,7 @@ return array(
         'menu' => array(
            'index'=>'home',
             'audio'=>'audio',
+            'gallery' => 'gallery',
         ),
     ),
 );
