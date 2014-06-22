@@ -20,7 +20,7 @@
 					numThumbs:				6,
 					preloadAhead:			6,
 					enableTopPager:			false,
-					enableBottomPager:		false,
+					enableBottomPager:		true,
 					imageContainerSel:		'#slideshow',
 					controlsContainerSel:	'#controls',
 					captionContainerSel:	'#caption',
@@ -58,53 +58,50 @@
 </div>
 <header>
 <section id="content"><div class="ic">More Website Templates @ TemplateMonster.com. November 21, 2011!</div>
-        <div class="main">
-                <div class="content-padding-2">
-                        <div class="container_12">
-                                <div class="wrapper">
-                                        <div class="grid_12">
-                                                <div class="padding-grid-1">
-                                                        <h3 class="letter">Our <strong>Gallery</strong></h3>
-                                                        <div id="js">
-                                                                <div class="js-padding">
-                                                                        <div id="gallery" class="content">
-                                                                                <div class="wrapper">
-                                                                                        <div class="slideshow-container">
-                                                                                                <div id="slideshow" class="slideshow"></div>
-                                                                                        </div>
-                                                                                </div>
-                                                                        </div>
-                                                                </div>
-                                                                <div id="thumbs" class="navigation">
-                                                                        <ul class="thumbs noscript">
-                                                                                <li>
-                                                                                        <a class="thumb" href="images/page4-img1.jpg" title=""> <img src="images/thumb-1.jpg" alt="" /> </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                        <a class="thumb" href="images/page4-img2.jpg" title=""> <img src="images/thumb-2.jpg" alt="" /> </a>
-                                                                                </li>
-                                                                                <li class="last">
-                                                                                        <a class="thumb" href="images/page4-img3.jpg" title=""> <img src="images/thumb-3.jpg" alt="" /> </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                        <a class="thumb" href="images/page4-img2.jpg" title=""> <img src="images/thumb-2.jpg" alt="" /> </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                        <a class="thumb" href="images/page4-img3.jpg" title=""> <img src="images/thumb-3.jpg" alt="" /> </a>
-                                                                                </li>
-                                                                                <li class="last">
-                                                                                        <a class="thumb" href="images/page4-img1.jpg" title=""> <img src="images/thumb-1.jpg" alt="" /> </a>
-                                                                                </li>
-                                                                        </ul>
-                                                                        <div class="clear"></div>
-                                                                </div>
-                                                        </div>
-                                                </div>
+    <div class="main">
+        <div class="content-padding-2">
+            <div class="container_12">
+                <div class="wrapper">
+                    <div class="grid_12">
+                        <div class="padding-grid-1">
+                            <h3 class="letter">Our <strong>Gallery</strong></h3>
+                            <div id="js">
+                                <div class="js-padding">
+                                    <div id="gallery" class="content">
+                                        <div class="wrapper">
+                                            <div class="slideshow-container">
+                                                <div id="slideshow" class="slideshow"></div>
+                                            </div>
                                         </div>
+                                    </div>
                                 </div>
+                                <div id="thumbs" class="navigation">
+                                    <ul class="thumbs noscript">
+                                     <?php foreach($filelist as $key => $value):?>  
+                                        <li>
+                                            <a class="thumb" href="/photos/origin/<?php echo $value?>" title=""> 
+                                                <img src="/photos/thumbs/<?php echo $value?>" alt="" /> 
+                                            </a>
+                                        </li>
+                                     <?php endforeach;?>       
+
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
                 </div>
+            </div>
         </div>
+        <?php if(Auth::instance()->logged_in('admin')):?>
+        <form method="POST" enctype="multipart/form-data" multiple>
+            <input type="file" name="image"/>
+            <input type="submit" name="submit" value="Upload"/>
+        </form>
+        <?php endif;?>
+    </div>
+    
         <div class="block"></div>
 </section>
 

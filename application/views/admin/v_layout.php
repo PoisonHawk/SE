@@ -31,6 +31,7 @@
                             <li><a href="/admin/news">Новости</a><li>
                             <li><a href="/admin/tours">Туры</a><li>
                             <li><a href="/admin/audio">Аудио</a><li>
+                            <li><a href="/admin/gallery">Галлерея</li>    
                         </ul>    
                     </div>    
                 </header>
