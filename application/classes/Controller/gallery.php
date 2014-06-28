@@ -3,6 +3,7 @@
 class Controller_Gallery extends Controller_Base{
     
     public $scripts =  array('js/jquery.galleriffic.js','js/jquery.opacityrollover.js');
+    public $styles = array('css/black.css');
     protected $_path_origin = 'C:/WebServers/home/SE/www/photos/origin/';
     protected $_path_thumbs = 'C:/WebServers/home/SE/www/photos/thumbs/';
     
@@ -13,11 +14,16 @@ class Controller_Gallery extends Controller_Base{
             $this->template->scripts = $this->scripts;
         }
         
+        if(!empty($this->styles)){
+            $this->template->styles = $this->styles;
+        }
+        
         $view = new View('v_gallery');
         if($this->request->method() === Request::POST){
            
             if(isset($_FILES['image'])){
                 
+                       
                 $filename = $this->_save_file($_FILES['image']);
             }
             
@@ -59,13 +65,14 @@ class Controller_Gallery extends Controller_Base{
             
             
             $image = Image::factory($file);
-            //to origin
             
+            //to origin                     
             $image  ->resize('902','360')                    
                     ->save($this->_path_origin.$filename);
             
             //to thumbs                        
-            $image  ->resize('250', '250')
+            $image  ->crop('350', '350')
+                    ->resize('150','150')
                     ->save($this->_path_thumbs.$filename);
             
              unlink($image);
