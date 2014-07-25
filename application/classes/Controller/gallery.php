@@ -4,8 +4,8 @@ class Controller_Gallery extends Controller_Base{
     
     public $scripts =  array('js/jquery.galleriffic.js','js/jquery.opacityrollover.js');
     public $styles = array('css/black.css');
-    protected $_path_origin = 'C:/WebServers/home/SE/www/photos/origin/';
-    protected $_path_thumbs = 'C:/WebServers/home/SE/www/photos/thumbs/';
+    protected $_path_origin = 'C:/WServers/home/sympulse/www/photos/origin/';
+    protected $_path_thumbs = 'C:/WServers/home/sympulse/www/photos/thumbs/';
     
     public function action_index(){
         
