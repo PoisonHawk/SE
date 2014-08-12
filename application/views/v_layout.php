@@ -28,7 +28,9 @@
 		<script type="text/javascript" src="/js/tms-0.3.js"></script>
 		<script type="text/javascript" src="/js/tms_presets.js"></script>
 		<script type="text/javascript">
-                 
+                <?php foreach($scripts as $script): ?>
+                    <?php echo html::js($script);?>
+                <?php endforeach; ?>    
 			$(window).load(function(){
 				$('.slider')._TMS({
 					duration:800,
@@ -42,7 +44,7 @@
 				});
 				$("a[data-gal^='prettyVideo']").prettyPhoto({animation_speed:'normal',theme:'facebook',slideshow:false, autoplay_slideshow: false});
 			}); 
-		</script>	
+		</script>		
                 <?php foreach($scripts as $script): ?>
                     <?php echo html::script($script);?>
                 <?php endforeach; ?>   
@@ -61,7 +63,18 @@
         
     </head>
     
-
+<!--    <body>
+        <header>
+            <h1><?php echo $site_name; ?></h1>
+            <nav>
+                <ul>
+                    <li><a href="/index">Новости</a></li>
+                    <li><a href="index/band">Группа</a></li>
+                    <li><a href="#">Альбомы</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>-->
 	<body id="page1">
             <?php if(Auth::instance()->logged_in('admin')):?>
             <div id="admin_panel">
@@ -88,7 +101,7 @@
 										<ul class="menu">
                                                                                     <?php foreach($menu as $link => $name):?>
                                                                                     <?php if($link == $current):?>
-                                                                                        <li class="item"><a class="active" href="/<?php echo $link?>"><?php echo $name?></a></li>
+											<li class="item"><a class="active" href="/index">About</a></li>
                                                                                     <?php else:?>
                                                                                         <li><a href="/<?php echo $link?>"><?php echo $name?></a></li>
                                                                                     <?php endif; ?>
@@ -98,7 +111,7 @@
 											<li><a href="video.html">Video</a></li>
 											<li><a href="gallery.html">Gallery</a></li>
 											<li class="item-1"><a href="tour-dates.html">Tour Dates</a></li>
-											<li class="last"><a href="contacts.html">Contacts</a></li>-->
+											<li class="last"><a href="contacts.html">Contacts</a></li>
 										</ul>
                                                                             <?php endif;?>
 										<div class="clear"></div>
@@ -108,8 +121,22 @@
 							</div>
 						</div>
 					</nav>
-					
-<!--        <div id="content">-->
+					<div class="slider-wrapper">
+						<div class="slider">
+							<ul class="items">
+								<li><img src="images/slider-img1.jpg" alt="" /></li>
+								<li>
+									<img src="images/slider-img2.jpg" alt="" />
+								</li>
+								<li>
+									<img src="images/slider-img3.jpg" alt="" />
+								</li>
+							</ul> 
+						</div>
+					</div>
+				</div>
+			</header>
+        <div id="content">
             <?php echo $content;?>
         </div>
         <!--==============================footer=================================-->
@@ -123,9 +150,9 @@
 									<div class="wrapper">
 										<span class="footer-link"><span>Superior.com &copy; 2011</span> <a rel="nofollow" target="_blank" class="link" href="">Website Template</a> by TemplateMonster.com</span>
 										<ul class="list-services">
-											<li><a class="tooltips n-1" title="Twitter" href="#"></a></li>
-											<li><a class="tooltips n-2" title="Facebook" href="#"></a></li>
-											<li class="last"><a class="tooltips n-3" title="Youtube" href="http://www.youtube.com/user/DmitrySympuls"></a></li>
+											<li><a class="tooltips n-1 vk" title="Twitter" href="#"></a></li>
+											<li><a class="tooltips n-2 fb" title="Facebook" href="#"></a></li>
+											<li class="last"><a class="tooltips n-3 yt" title="Youtube" href="#"></a></li>
 										</ul>
 									</div>
 									<div class="aligncenter">
