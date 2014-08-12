@@ -129,9 +129,9 @@
 									<div class="wrapper">
 										<span class="footer-link"><span>Superior.com &copy; 2011</span> <a rel="nofollow" target="_blank" class="link" href="">Website Template</a> by TemplateMonster.com</span>
 										<ul class="list-services">
-											<li><a class="tooltips n-1" title="Twitter" href="#"></a></li>
-											<li><a class="tooltips n-2" title="Facebook" href="#"></a></li>
-											<li class="last"><a class="tooltips n-3" title="Youtube" href="#"></a></li>
+											<li><a class="tooltips n-1 vk" title="Twitter" href="#"></a></li>
+											<li><a class="tooltips n-2 fb" title="Facebook" href="#"></a></li>
+											<li class="last"><a class="tooltips n-3 yt" title="Youtube" href="#"></a></li>
 										</ul>
 									</div>
 									<div class="aligncenter">
