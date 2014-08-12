@@ -647,11 +647,15 @@ footer {
 			display:inline-block;
 			width:51px;
 			height:51px;
-			background:url(../images/list-services.png) no-repeat left top;
+/*			background:url(../images/list-services.png) no-repeat left top;*/
 		}
-		.list-services li a.n-1 {background-position:0 0px}
+/*		.list-services li a.n-1 {background-position:0 0px}
 		.list-services li a.n-2 {background-position:-55px 0}
-		.list-services li a.n-3 {background-position:-110px 0}
+		.list-services li a.n-3 {background-position:-110px 0}*/
+
+                .list-services li a.vk {background:url(/images/B.png) no-repeat left top;}
+		.list-services li a.fb {background:url(/images/f.png) no-repeat left top;}
+		.list-services li a.yt {background:url(/images/You.png) no-repeat left top;}
 		.list-services li.last {padding-right:0px}
 .block {height:104px}
 .extra {
