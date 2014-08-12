@@ -47,8 +47,3 @@
         <br/>
     <a class="btn btn-success" href="/admin/tours/processtour">Добавить концерт</a>
 </div> 
-<?php if(isset($errors)):?>
-    <?php foreach($errors as $e):?>
-        <p><?php echo $e; ?></p>
-    <?php endforeach; ?>
-<?php endif ;?>

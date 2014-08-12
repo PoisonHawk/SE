@@ -15,6 +15,13 @@
         <?php endforeach;?>
     </head>
     <body>
+        <div id="admin_panel">
+            <span class='left'><a href="/">Сайт</a></span>
+            <div class='right'>
+                <span><?php echo $username;?></span>
+                <span><a href="/login/logout">Выйти</a></span>
+            </div>
+        </div>    
         <div class="row-fluid">
             <div class="span12">
                 <header class="">
@@ -23,6 +30,8 @@
                         <ul class="nav nav-pills container">
                             <li><a href="/admin/news">Новости</a><li>
                             <li><a href="/admin/tours">Туры</a><li>
+                            <li><a href="/admin/audio">Аудио</a><li>
+                            <li><a href="/admin/gallery">Галлерея</li>    
                         </ul>    
                     </div>    
                 </header>

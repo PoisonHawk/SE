@@ -45,6 +45,9 @@
 				$("a[data-gal^='prettyVideo']").prettyPhoto({animation_speed:'normal',theme:'facebook',slideshow:false, autoplay_slideshow: false});
 			}); 
 		</script>		
+                <?php foreach($scripts as $script): ?>
+                    <?php echo html::script($script);?>
+                <?php endforeach; ?>   
 		<!--[if lt IE 7]>
 			<div style=' clear: both; text-align:center; position: relative;'>
 				<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -73,6 +76,15 @@
             </nav>
         </header>-->
 	<body id="page1">
+            <?php if(Auth::instance()->logged_in('admin')):?>
+            <div id="admin_panel">
+                <span><a href="/admin/<?php echo utf8::strtolower($current);?>">Админка</a></span>
+                <div>
+                    <span><?php echo Auth::instance()->get_user();?></span>
+                    <span><a href="/login/logout">Выйти</a></span>
+                </div>
+            </div>
+            <?php endif;?>
 		<div class="extra">
 <!--==============================header=================================-->
 			<header>
@@ -85,14 +97,23 @@
 							<div class="menu-bg">
 								<div class="container_12">
 									<div class="grid_12">
+                                                                            <?php if(isset($menu)):?>
 										<ul class="menu">
+                                                                                    <?php foreach($menu as $link => $name):?>
+                                                                                    <?php if($link == $current):?>
 											<li class="item"><a class="active" href="/index">About</a></li>
+                                                                                    <?php else:?>
+                                                                                        <li><a href="/<?php echo $link?>"><?php echo $name?></a></li>
+                                                                                    <?php endif; ?>
+                                                                                    <?php endforeach;?>
+<!--											<li class="item"><a class="active" href="/index">About</a></li>
 											<li><a href="audio.html">Audio</a></li>
 											<li><a href="video.html">Video</a></li>
 											<li><a href="gallery.html">Gallery</a></li>
 											<li class="item-1"><a href="tour-dates.html">Tour Dates</a></li>
 											<li class="last"><a href="contacts.html">Contacts</a></li>
 										</ul>
+                                                                            <?php endif;?>
 										<div class="clear"></div>
 									</div>
 									<div class="clear"></div>
