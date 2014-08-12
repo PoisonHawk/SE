@@ -93,15 +93,18 @@ header {
 }
 
 h1 {
-	padding:39px 0 0 357px; 
+/*	padding:39px 0 0 357px; */
+        padding:39px 0 0 160px; 
 	position:relative;
 }
 h1 a {
 	display:block; 
-	width:246px; 
-	height:62px; 
+/*	width:246px; */
+        width:592px;
+	/*height:62px;*/ 
+        height:130px; 
 	text-indent:-5000px; 
-	background:url(../images/logo.png) 0 0 no-repeat;
+	background:url(../images/logo_se.png) 0 0 no-repeat;
 }
 .menu-bg-tail {background:url(../images/menu-bg-tail.gif) repeat-x center top; width:100%}
 .menu-bg {background:url(../images/menu-bg.jpg) no-repeat center top; width:100%}
@@ -289,13 +292,20 @@ h6 {
 
 dl span {float:left; width:80px}
 .inline {display:inline-block}
+.news{
+    width:600px !important;
+}
+
+.video{
+    width: 600px !important;
+}
 /* -- gallery  begin --*/
 #js {
 	position:relative;
 	width:910px;
 	overflow:hidden;
 	padding:0 0 0 1px;
-	height:720px;
+	height:640px;
 	}
 .js-padding {padding:0}
  div.content {
@@ -307,6 +317,7 @@ dl span {float:left; width:80px}
 	overflow: hidden;
 	border:1px solid #333333;
 	padding:3px;
+        text-align:center;
 }
  div.content img {
 	position: relative;
@@ -395,8 +406,8 @@ div.nav-controls a {
  div.slideshow a.advance-link img {
 	padding:0;
 	margin:0;
-	display:block;
-	position:absolute;
+	display:inline-block;
+	/*position:absolute;*/
 	left:0;
 	top:0;
 }
@@ -465,20 +476,24 @@ div.nav-controls a {
 	overflow: hidden;
 	padding: 0 0 4px 0;
 	margin:0 auto;
+        position:relative;
 }
  ul.thumbs {
 	margin:0 auto;
-	padding:0px;
+	padding:0px 30px;
 }
  ul.thumbs li {
 	float:left;
-	margin: 0 50px 40px 0;
+	margin: 0 25px 40px 0;
 	overflow: hidden;
 	padding:3px;
 	vertical-align:top;
 	border:1px solid #333333;
 }
- ul.thumbs li.last {margin-right:0px}
+ /*ul.thumbs li.last {margin-right:0px}*/
+ 
+ 
+ ul.thumbs li:nth-child(5n){margin-right:0px}
  ul.thumbs li img {
 	border: none;
 }
@@ -497,7 +512,7 @@ div.nav-controls a {
 	display:none;
 }
  div.navigation div.bottom {
-	 display:none;
+	 display:block;
 }
  div.pagination a, div.pagination span.current, div.pagination span.ellipsis {
 	padding:0 4px;
