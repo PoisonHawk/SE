@@ -7,33 +7,32 @@ class Controller_Contacts extends Controller_Base{
         
         if(!empty($_POST)){
             
-//            echo "<pre/>";
-//            print_r($_POST);
-            
             $name = arr::get($_POST,'name');
             $mail = arr::get($_POST,'name1');
             $text_message =  arr::get($_POST,'message');
-            
-            
-            $config = Kohana::$config->load('email');
-            
+                        
+            $config = Kohana::$config->load('email');            
            
             Email::connect($config);
           
-
-            $to = 'poisonhawk@yandex.ru';
-            $subject = 'sympuls-e';
-            $from = $mail;
-            $message = $text_message;
-
-            Email::send($to, $from, $subject, $message, $html = false);
+            $to = Kohana::$config->load('settings.email');
             
+//            echo "<pre/>";
+//            print_r($to);
+//            die();
+            $subject = 'sympuls-e';
+            $from = (string)$mail;
+            
+            $message = "Имя: $name \r\n";
+            $message .= "Email: <$mail> \r\n";
+            $message .= $text_message;
+                        
+            Email::send($to, "savochkin2010@yandex.ru", $subject, $message, $html = false);         
+          
         }
-        
-        
+                
         $view = new View('v_contacts');
-        $this->template->content = $view;
-        
+        $this->template->content = $view;        
     }
 }
 

@@ -26,9 +26,9 @@ return array(
 	 * @param   array   smtp: hostname, (username), (password), (port), (encryption)
 	 */
 	'options' => array('hostname' => 'smtp.yandex.ru',
-                            'username' => 'poisonhawk@yandex.ru',
-                            'password' => 'PH_$_e4!poLicE$0YEp',
-                            'port'     => '143',
+                            'username' => 'savochkin2010@yandex.ru',
+                            'password' => 'YA_$_e4!poLicE$0YEp',
+                            'port'     => '25',
                             'encryption' => ''
          )
 );
