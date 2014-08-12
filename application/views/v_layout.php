@@ -28,9 +28,7 @@
 		<script type="text/javascript" src="/js/tms-0.3.js"></script>
 		<script type="text/javascript" src="/js/tms_presets.js"></script>
 		<script type="text/javascript">
-                <?php foreach($scripts as $script): ?>
-                    <?php echo html::js($script);?>
-                <?php endforeach; ?>    
+                  
 			$(window).load(function(){
 				$('.slider')._TMS({
 					duration:800,
