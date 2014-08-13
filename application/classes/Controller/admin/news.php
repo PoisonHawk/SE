@@ -2,6 +2,17 @@
 
 class Controller_Admin_News extends Controller_Admin_Base{
     
+    public function before() {
+        parent::before();
+        
+        $scripts = array(
+            '/js/tinymce/tinymce.min.js',
+        );
+        
+        $this->template->scripts = $scripts;
+    }
+    
+    
     public function action_index(){
         
         $last_news = array();

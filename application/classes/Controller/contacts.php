@@ -2,6 +2,8 @@
 
 class Controller_Contacts extends Controller_Base{
     
+    public $title = 'Контакты';
+    
     public function action_index(){
         
         

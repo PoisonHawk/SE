@@ -2,6 +2,8 @@
 
 class Controller_Gallery extends Controller_Base{
     
+    public $title = 'Галерея';
+    
     public $scripts =  array('js/jquery.galleriffic.js','js/jquery.opacityrollover.js');
     public $styles = array('css/black.css');
     protected $_path_origin = 'C:/WebServers/home/SE/www/photos/origin/';

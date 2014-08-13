@@ -11,7 +11,10 @@ class Model_News extends Model
         if(isset($id))
         {
             $sql .= " WHERE id=:id";
-        }        
+        }
+        else{
+            $sql .= " ORDER BY date DESC";
+        }
         $res = db::query(Database::SELECT, $sql);
         
         if(isset($id))

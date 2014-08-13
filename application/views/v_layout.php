@@ -1,9 +1,10 @@
 <!Doctype html>
 <html>
     <head>
-        <title><?php echo $title;?></title>
+        <title>Sympulse-e | <?php echo $title;?></title>
         
         <meta charset="utf-8">
+                <link rel="icon" type="image/vnd.microsoft.icon" href="/se2.ico">
 		<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="/css/grid.css" type="text/css" media="screen">

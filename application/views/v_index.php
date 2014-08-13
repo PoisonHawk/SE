@@ -30,6 +30,9 @@
                                             <div class="wrapper img-indent-bot1">
                                                 <time class="time time-stule-1" datetime="<?php echo date('Y-d-m',$new['date'])?>"> <strong class="text-1"><?php echo date('d',$new['date']);?></strong><strong class="text-2"><?php echo date('M',$new['date']);?></strong></time>
                                                     <div class="extra-wrap">
+                                                            <h6>
+                                                                <?php echo $new['title'];?>
+                                                            </h6>
                                                             <div class="indent-top">
                                                                     <?php echo $new['description'];?>
                                                             </div>

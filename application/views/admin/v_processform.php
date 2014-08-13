@@ -1,3 +1,12 @@
+<script>
+    tinyMCE.init({
+        mode: 'textareas',
+        theme: 'modern',
+        languages: 'ru',
+        plugins: 'link,image,media',
+        height:'300px',
+    })
+</script>    
 <?php if(isset($errors)):?>
     <?php foreach($errors as $e):?>
         <p><?php echo $e; ?></p>
@@ -17,6 +26,7 @@
         </div>    
     </div>
     <div class='control-group'>
+        <label class="control-label" for="header">Текст</label>
         <textarea id="description" name="desc" rows="5"><?php echo isset($desc)?$desc:''?></textarea>
     </div>
     <div class='control-group'>

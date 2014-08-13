@@ -11,7 +11,7 @@
             <?php echo html::style($style);?>
         <?php endforeach;?>
         <?php foreach($scripts as $script):?>
-            <?php echo html::style($script);?>
+            <?php echo html::script($script);?>
         <?php endforeach;?>
     </head>
     <body>
@@ -28,10 +28,10 @@
                     
                     <div class="navbar navbar-inverse ">
                         <ul class="nav nav-pills container">
-                            <li><a href="/admin/news">Новости</a><li>
-                            <li><a href="/admin/tours">Туры</a><li>
-                            <li><a href="/admin/audio">Аудио</a><li>
-                            <li><a href="/admin/gallery">Галлерея</li>    
+                            <li><a href="/admin/news">Новости</a></li>
+                            <li><a href="/admin/tours">Туры</a></li>
+                            <li><a href="/admin/audio">Аудио</a></li>
+                            <li><a href="/admin/gallery">Галлерея</a></li>    
                         </ul>    
                     </div>    
                 </header>
