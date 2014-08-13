@@ -88,7 +88,7 @@
                 <div class="wrapper">
                     <div class="grid_12">
                         <div class="padding-grid-1">
-                            <h3 class="letter">Our <strong>Gallery</strong></h3>
+                            <h3 class="letter">Наша <strong>Галерея</strong></h3>
                             <div id="js">
                                 <div class="js-padding">
                                     <div id="gallery" class="content">

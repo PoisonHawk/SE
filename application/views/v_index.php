@@ -25,7 +25,7 @@
                             <div class="wrapper">
                                 <article class="grid_4 news">
                                     <div class="padding-grid-1">
-                                        <h3 class="letter">Latest <strong>News</strong></h3>
+                                        <h3 class="letter">Последние <strong>Новости</strong></h3>
                                         <?php foreach ($news as $new): ?>
                                             <div class="wrapper img-indent-bot1">
                                                 <time class="time time-stule-1" datetime="<?php echo date('Y-d-m',$new['date'])?>"> <strong class="text-1"><?php echo date('d',$new['date']);?></strong><strong class="text-2"><?php echo date('M',$new['date']);?></strong></time>
@@ -41,7 +41,7 @@
                                 </article>
                                 <article class="grid_4 alpha">
                                         <div class="padding-grid-1">
-                                                <h3>Tour <strong>Dates</strong></h3>
+                                                <h3>Предстоящие <strong>Выступления</strong></h3>
                                                 <?php foreach($tours as $tour):?>
                                                 <div class="wrapper img-indent-bot2">
                                                     <time class="time time-stule-2" datetime="<?php echo date('Y-d-m',$tour['date'])?>"> <strong class="text-3"><?php echo date('d',$tour['date']);?></strong><strong class="text-4"><?php echo date('M',$tour['date']);?></strong></time>
@@ -92,7 +92,7 @@
                                             </article>-->
                                             <article class="grid_4 alpha video">
                                                     <div class="padding-grid-2">
-                                                            <h3 class="letter">Latest <strong>Video</strong></h3>
+                                                            <h3 class="letter">Последнее <strong>Видео</strong></h3>
 
                                                             <div class="wrapper">
                                                                     <!--<figure class="style-img-2 fleft"><a class="lightbox-image" href="video/video_AS3.swf?width=495&amp;height=275&amp;fileVideo=intro06.flv" data-gal="prettyVideo[prettyVideo]"><img src="images/page1-img2.jpg"  alt=""></a></figure>-->
@@ -102,7 +102,7 @@
                                             </article>
                                             <article class="grid_4 alpha">
                                                     <div class="padding-grid-2">
-                                                            <h3 class="letter prev-indent-bot1">Shortly <strong>About</strong></h3>
+                                                            <h3 class="letter prev-indent-bot1">Кратко <strong>О Нас</strong></h3>
                                                             <h6>Sed ut perspiciatis unde omnis</h6>
                                                             Sympuls-e рязанская melodic death metal группа. Фирменным стилем являются скоростные техничные и в то же время мелодичные риффы вкупе с женским экстримальным вокалом.
                                                             Ориентируясь на такие группы как Arch Enemy, Children Of Bodom, Wintersun, Norther, Soilwork, Inflames группа не зацикливается на одном жанре, превнося в свое творчество новые веяния.

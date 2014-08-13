@@ -9,7 +9,7 @@
                 <div class="wrapper">
                     <div class="grid_12">
                         <div class="padding-grid-1">
-                                <h3 class="letter">Our <strong>Discography</strong></h3>
+                                <h3 class="letter">Наша <strong>Дискография</strong></h3>
                         </div>
                         <?php if(isset($albums)):?>                      
                         <?php foreach($albums as $album):?>
