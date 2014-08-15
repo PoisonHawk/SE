@@ -23,7 +23,7 @@ class Controller_Login extends Controller_Template{
             }
             else{
                
-                $this->template->errors = 'Неверное имя или пароь';
+                $this->template->errors = 'Неверное имя или пароль';
             }
             
         }
