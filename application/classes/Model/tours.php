@@ -38,7 +38,7 @@ class Model_Tours extends Model
         
         try {          
             
-            $d = explode('/',$date);
+            $d = explode('-',$date);
             
             if(isset($id)){
                

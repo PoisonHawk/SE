@@ -1,7 +1,7 @@
   <script>
 $(document).ready(function(){
     
-    $('#date').datepicker();
+    $('#date').datepicker({dateFormat:'dd-mm-yy'});
     
 })
 
@@ -16,7 +16,7 @@ $(document).ready(function(){
     <div class='control-group'>
         <label class="control-label" for="date">Дата</label>
         <div class="controls">
-            <input type="text" name="date" id="date" class="input-large" value="<?php echo isset($date)? date('m/d/Y',$date): ''?>"/>
+            <input type="text" name="date" id="date" class="input-large" value="<?php echo isset($date)? date('d-m-Y',$date): ''?>"/>
         </div>    
     </div>
     <div class='control-group'>

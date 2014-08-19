@@ -67,7 +67,7 @@
             <?php if(Auth::instance()->logged_in('admin')):?>
             <div id="admin_panel">
                 <span><a href="/admin/<?php echo utf8::strtolower($current);?>">Админка</a></span>
-                <div>
+                <div style="float:right">
                     <span><?php echo Auth::instance()->get_user();?></span>
                     <span><a href="/login/logout">Выйти</a></span>
                 </div>

@@ -38,10 +38,10 @@ class Controller_Admin_Tours extends Controller_Admin_Base{
         
         if(isset($_POST['send'])){         
             
-             $date = arr::get($_POST,'date');
-        $city = arr::get($_POST,'city');
-        $fest = arr::get($_POST,'fest');
-        $club = arr::get($_POST,'club');
+            $date = arr::get($_POST,'date');
+            $city = arr::get($_POST,'city');
+            $fest = arr::get($_POST,'fest');
+            $club = arr::get($_POST,'club');
             
             $post =  new Validation($_POST);
             
