@@ -15,14 +15,39 @@ class Controller_Admin_News extends Controller_Admin_Base{
     
     public function action_index(){
         
-        $last_news = array();
+        //$last_news = array();        
+        //$news = new Model_News();
+        //$last_news = $news->getNews();
         
-        $news = new Model_News();
-       
-        $last_news = $news->getNews(); 
+        $per_page = 10;
+        $page = $page = max(1, $this->request->param('page'));
+        
+        $offset = $per_page*($page-1);        
+        $count = ORM::factory('news')->count_all();
+        $page_data = array(
+            'total_items'       => $count,
+            'items_per_page'    => $per_page,
+            'curent_page'       => array(
+                'source'        => 'route',
+                'key'           => 'page', 
+            ),
+            'auto_hide'         => true,
+            'view'              => 'pagination/basic',
+        );
+        
+         
+        
+        $res = ORM::factory('news')
+                ->order_by('date','DESC')
+                ->limit($per_page)
+                ->offset($offset)                
+                ->find_all();
+        
+        $pagination = Pagination::factory($page_data);
         
         $content = View::factory('admin/v_news');
-        $content->news = $last_news;
+        $content->news = $res;
+        $content->pagination = $pagination;
         $this->template->content = $content;
         
     }

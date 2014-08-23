@@ -134,6 +134,7 @@ Kohana::modules(array(
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
          'email'      => MODPATH.'email',  
+         'pagination' => MODPATH.'pagination',  
 	));
 
 /**
@@ -146,12 +147,24 @@ Cookie::$salt = 'skythe_blow';
  * defaults for the URI.
  */
 
+Route::set('allnews', 'admin(/<controller>(/<page>))', array('page' => '[0-9]+'))
+        ->defaults(array(
+            'directory'  => 'admin',
+            'controller' => 'news',            
+            'page'      => '',
+        ));
+
 Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
             ->defaults(array(
             'directory'  => 'admin',
             'controller' => 'index',
-            'action'     => 'index',
+            'action'     => 'index',     
+              
             ));
+
+
+
+
 
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(

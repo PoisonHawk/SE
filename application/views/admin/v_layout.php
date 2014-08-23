@@ -3,6 +3,7 @@
     <head>
         <title><?php echo $title;?></title>
         <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css">
         <script src="/js/jquery-2.1.0.min.js"></script>        
         <!--<script src="/js/jquery-1.10.2.js"></script>-->       
@@ -38,8 +39,8 @@
                 <div id="content">
                     <?php echo $content;?>
                 </div>
-                <footer id="footer">
-                     <div id="container">
+                <footer id="footer" class="navbar-fixed-bottom">
+                     <div id="container" class="container">
                         <span>&copy; sympuls-e</span>
                      </div>   
                 </footer>
@@ -47,6 +48,7 @@
         </div>    
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
         <script src="/js/jquery-ui-1.10.4.custom.js"></script>
     </body>
 </html>

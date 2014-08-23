@@ -1,5 +1,7 @@
-
-<div id="news">
+<script>
+    
+</script>    
+<div id="news" class="container">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -13,19 +15,19 @@
                 <?php foreach($news as $new):?>
                 <tr>
                     <td> 
-                        <?php echo $new['id'];?> 
+                        <?php echo $new->id;?> 
                     </td>
                     <td>
-                        <?php echo date("d.m.Y",$new['date']);?>   
+                        <?php echo date("d.m.Y",$new->date);?>   
                     </td>
                     <td>
-                        <a href=""><?php echo $new['title'];?></a>    
+                        <a href=""><?php echo $new->title;?></a>    
                     </td>
                     <td>
-                        <a class="btn btn-warning" href="/admin/news/processnew/<?php echo $new['id'];?>"><i class="icon-edit"></i>Edit</a>
+                        <a class="btn btn-warning" href="/admin/news/processnew/<?php echo $new->id;?>"><i class="icon-edit"></i>Edit</a>
                     </td>
                     <td>
-                        <a class="btn btn-danger" href="/admin/news/delete/<?php echo $new['id'];?>">Delete</a>
+                        <a class="btn btn-danger" href="/admin/news/delete/<?php echo $new->id;?>">Delete</a>
                     </td>
                 </tr>    
                 <?php endforeach;?>
@@ -36,7 +38,12 @@
     </table>    
         <br/>
         <br/>
+    <?php echo $pagination; ?>
+        <br>
+        <br>
+        
     <a class="btn btn-success" href="/admin/news/processnew">Добавить новость</a>
+    
 </div>    
 
 
