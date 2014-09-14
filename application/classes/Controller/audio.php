@@ -3,6 +3,8 @@
 class Controller_Audio extends Controller_Base{
     
     public $title = 'Аудио';
+    public $scripts = array('js/simpleplayer/jquery.simpleplayer.js');
+    
     
     public function action_index(){
         
@@ -21,16 +23,21 @@ class Controller_Audio extends Controller_Base{
              
             $audio = new Model_Audio();
             $tracks = $audio->getAudio($disk['id']);
+            
+            $count = 1;
             foreach($tracks as $track){
                 
-                $album_list[$disk['id']]['tracks'][] = $track['name'];
-                
+                $album_list[$disk['id']]['tracks'][$count] = array();
+                $album_list[$disk['id']]['tracks'][$count]['name'] = $track['name'];
+                $album_list[$disk['id']]['tracks'][$count]['file'] = $track['file'];
+                $count++;
             }
             
         }
         
         
-        
+//        echo "<pre/>";
+//        print_r($album_list);
         
         $view = new View('v_audio');
         $view->albums = $album_list;

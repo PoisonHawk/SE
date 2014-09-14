@@ -8,14 +8,15 @@ class Model_Audio extends ORM{
         'id'        =>  'id',
         'name'      =>  'name',
         'album_id'  =>  'album_id',
-        'num'       =>  'num'
+        'num'       =>  'num',
+        'file'      =>  'file'
     );
     
     
     public function getAudio($id){
         
         try{
-            $sql = "SELECT name, num FROM audio WHERE album_id =:id";
+            $sql = "SELECT name, num, file FROM audio WHERE album_id =:id";
 
             return db::query(Database::SELECT, $sql)
                     ->param(':id',$id)

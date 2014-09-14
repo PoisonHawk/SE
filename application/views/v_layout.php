@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="/css/grid.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="/css/prettyPhoto.css" type="text/css" media="screen">  
-                
+                <link rel="stylesheet" href="/css/simpleplayer.css" type="text/css" media="screen"> 
                 <?php foreach($styles as $style): ?>
                     <?php echo html::style($style);?>
                 <?php endforeach; ?>
@@ -28,6 +28,10 @@
 		<script src="/js/jquery.easing.1.3.js" type="text/javascript"></script>
 		<script type="text/javascript" src="/js/tms-0.3.js"></script>
 		<script type="text/javascript" src="/js/tms_presets.js"></script>
+                <script type="text/javascript" src="/js/simpleplayer/jquery.simpleplayer.min.js"></script>
+                <?php foreach($scripts as $script): ?>
+                    <?php echo html::script($script);?>
+                <?php endforeach; ?> 
 		<script type="text/javascript">
                   
 			$(window).load(function(){
@@ -44,9 +48,7 @@
 				$("a[data-gal^='prettyVideo']").prettyPhoto({animation_speed:'normal',theme:'facebook',slideshow:false, autoplay_slideshow: false});
 			}); 
 		</script>	
-                <?php foreach($scripts as $script): ?>
-                    <?php echo html::script($script);?>
-                <?php endforeach; ?>   
+                  
 		<!--[if lt IE 7]>
 			<div style=' clear: both; text-align:center; position: relative;'>
 				<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">

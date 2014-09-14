@@ -1,7 +1,18 @@
     </div>
 </header>
 <div id="content">
-    
+<script type="text/javascript">
+    $(document).ready(function() {
+        var settings = {
+            progressbarWidth: '200px',
+            progressbarHeight: '5px',
+            progressbarColor: '#22ccff',
+            progressbarBGColor: '#eeeeee',
+            defaultVolume: 0.8
+        };
+        $(".player").player(settings);
+    });
+</script>    
 <section id="content"><div class="ic"></div>
     <div class="main">
         <div class="content-padding-2">
@@ -17,7 +28,7 @@
                             <article class="grid_4 alpha">
                                     <div class="padding-grid-2">
                                             <div class="wrapper">
-                                                    <figure class="style-img-2 fleft"><a href="#"><img width="252" src="/images/albums/01.jpg"  alt=""></a></figure>
+                                                <figure class="style-img-2 fleft"><a href="#"><img width="252" src="/uploads/<?php echo $album['image']?>"  alt=""></a></figure>
                                             </div>
                                     </div>
                             </article>
@@ -29,21 +40,18 @@
                                                     <ul class="list-1 fleft">
                                                          <?php $count = 1;?>
                                                         <?php foreach($album['tracks'] as $track):?>                                                          
-                                                        <li><a href="#"><?php echo $count<10? '0'.$count: $count?>. <?php echo $track; ?></a></li>
+                                                        <li><a href="#"><?php echo $count<10? '0'.$count: $count?>. <?php echo $track['name']; ?></a></li>
                                                         <?php $count += 1;?>
-                                                        <?php endforeach;?>    
-<!--                                                            <li><a href="#">02. In reprehenderit in voluptate</a></li>
-                                                            <li><a href="#">03. Velit esse cillum dolore</a></li>
-                                                            <li><a href="#">04. Eu fugiat nulla pariatur</a></li>
-                                                            <li><a href="#">05. Excepteur sint occaecat</a></li>
-                                                            <li><a href="#">06. Cupidatat non</a></li>
-                                                            <li><a href="#">07. Proident sunt in</a></li>
-                                                            <li><a href="#">08. Culpa qui officia deserunt mollit</a></li>
-                                                            <li><a href="#">09. Anim id est laborum</a></li>
-                                                            <li><a href="#">10. At vero eos et accusamus</a></li>
-                                                            <li><a href="#">11. Et iusto odio dignissimos</a></li>-->
+                                                        <?php endforeach;?>  
                                                     </ul>
-                                                    <ul class="list-2 fright">
+                                                    <ul class="list-1 fright">
+                                                        <?php $count = 1;?>
+                                                        <?php foreach($album['tracks'] as $track):?>                                                          
+                                                        <li><audio class="" src='/audios/<?php echo $track['file']?>' controls></audio></li>
+                                                        <?php $count += 1;?>
+                                                        <?php endforeach;?> 
+                                                    </ul>    
+<!--                                                    <ul class="list-2 fright">
                                                             <li><span><a class="left-list" href="#"></a></span><a class="right-list" href="#"></a></li>
                                                             <li><span><a class="left-list" href="#"></a></span><a class="right-list" href="#"></a></li>
                                                             <li><span><a class="left-list" href="#"></a></span><a class="right-list" href="#"></a></li>
@@ -55,7 +63,7 @@
                                                             <li><span><a class="left-list" href="#"></a></span><a class="right-list" href="#"></a></li>
                                                             <li><span><a class="left-list" href="#"></a></span><a class="right-list" href="#"></a></li>
                                                             <li><span><a class="left-list" href="#"></a></span><a class="right-list" href="#"></a></li>
-                                                    </ul>
+                                                    </ul>-->
                                             </div>
                                     </div>
                             </article>
@@ -69,5 +77,7 @@
             </div>
     </div>
     <div class="block"></div>
+    
 </section>
+
 

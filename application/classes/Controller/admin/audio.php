@@ -27,7 +27,7 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             $view->title_album = $album->name;
             $view->year = $album->year;
             
-            $query = DB::select('name')
+            $query = DB::select('name', 'file')
                     ->from('audio')
                     ->where('album_id','=',$id);
             
@@ -38,27 +38,11 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             $view->title_album = $album->name;
             $view->year = $album->year;
         }
-        
-//        if($this->request->method() === Request::POST and isset($_POST['upload'])){
-//       
-//            if (isset($_FILES['image_album']))
-//            {
-//                $filename = $this->_save_image($_FILES['image_album']);
-//                $this->image = $filename;
-//                $view->filename = $filename;
-//            }
-//            
-//            if ( ! $filename)
-//            {
-//                $error_message = 'There was a problem while uploading the image.
-//                    Make sure it is uploaded and must be JPG/PNG/GIF file.';
-//                $view->errors = $error_message;
-//            }
-//        }
+
         
         if($this->request->method() === Request::POST and isset($_POST['save'])){
             
-            //Загрузка изображения
+            //Загрузка изображения альбома
             if (isset($_FILES['image_album']))
             {
                 $filename = $this->_save_image($_FILES['image_album']);
@@ -72,10 +56,7 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
                     Make sure it is uploaded and must be JPG/PNG/GIF file.';
                 $view->errors = $error_message;
             }
-            
-            
-            
-            
+                       
             $title = trim(arr::get($_POST,'title_album'));
             $year = trim(arr::get($_POST,'year'));            
             
@@ -108,6 +89,18 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
                 $audio->name    = $name;
                 $audio->num     = $i;
                 $audio->album_id= $album_id;
+                
+                //загрузка файлов аудио
+                if(isset($_FILES["file_track_$i"])){
+//                    echo "<pre/>";
+//                    print_r($_FILES);
+//                    die();
+
+                    //загрузка файлов
+                    $file = $this->_save_audio($_FILES["file_track_$i"],$name);
+                    $audio->file = $file;
+                }
+                                
                 $audio->save();
             }   
             
@@ -156,6 +149,50 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
         }
  
         return FALSE;
+    }
+    
+    protected function _save_audio($audio, $name=NULL){
+        if (
+            ! Upload::valid($audio) OR
+            ! Upload::not_empty($audio))
+            //! Upload::type($audio, array('mp3')))
+        {
+            return FALSE;
+        }
+        
+        $directory = DOCROOT.'audios/';
+        
+        $pos = strpos($audio['name'],'.');
+        $ext = substr($audio['name'],$pos+1);
+        
+        $name = $name.'.'.$ext;
+        
+        if (Upload::save($audio, $name, $directory))
+        {
+            //$filename = strtolower(Text::random('alnum', 20)).'.jpg';
+            $filename = $name;
+            
+            
+            // Delete the temporary file
+            //unlink($file);
+ 
+            return $filename;
+        }
+        
+        return False;
+        
+//        $filename = Upload::save($audio, $name, $directory);
+//        
+//        if($filename){
+//            return $filename;
+//        }
+//        else{
+//            return FALSE;
+//        }    
+    }
+    
+    public function action_audioremove(){
+        
     }
     
 }

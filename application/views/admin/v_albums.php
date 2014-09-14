@@ -13,7 +13,10 @@ audio = {
         
         str ='<span class="track"><label>'+this.count+'. ';
         str += '<input type="text" name="title_track_'+this.count+'"/>';
-        str +='</label></br></span>';
+        str +='</label>'; 
+        str +='<input id="" type="file" name="file_track_'+this.count+'"/></span></br>';
+        
+        
         $('.tracks').append(str);
         $('input[name=count]').val(this.count);       
         
@@ -60,7 +63,7 @@ audio = {
 <?php if(isset($errors)):?>
     <p><?php echo $errors;?></p>
 <?php endif;?>
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" multiple>
     <div class="">
         <img id='image_preview' src="<?php echo isset($filename)?"/uploads/".$filename: 'http://placehold.it/300x200'; ?>" width="300" class="img-rounded"/>
     </div>    
@@ -83,6 +86,11 @@ audio = {
                     <label>
                         <?php echo $i?>. <input type="text" name="title_track_<?php echo $i; ?>" value="<?php echo $a['name']?>"/>
                     </label>
+                    <?php if(!empty($a['file'])):?>
+                    <span><?php echo $a['file'];?><a href="/audio/audioremove/<?php echo $a['file']?>"> x</a></span>
+                    <?php else:?>    
+                        <input type='file' name='file_track_<?php echo $i; ?>'/>
+                    <?php endif;?>    
                     </br>
                 </span>
                 <?php $i++;?>
