@@ -36,7 +36,7 @@
                         </ul>    
                     </div>    
                 </header>
-                <div id="content">
+                <div id="content" class='container'>
                     <?php echo $content;?>
                 </div>
                 <footer id="footer" class="navbar-fixed-bottom">

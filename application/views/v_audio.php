@@ -2,7 +2,7 @@
 </header>
 <div id="content">
     
-<section id="content"><div class="ic">More Website Templates @ TemplateMonster.com. November 21, 2011!</div>
+<section id="content"><div class="ic"></div>
     <div class="main">
         <div class="content-padding-2">
             <div class="container_12">
@@ -12,7 +12,7 @@
                                 <h3 class="letter">Наша <strong>Дискография</strong></h3>
                         </div>
                         <?php if(isset($albums)):?>                      
-                        <?php foreach($albums as $album):?>
+                        <?php foreach($albums as $album):?>                        
                         <div class="wrapper p3">
                             <article class="grid_4 alpha">
                                     <div class="padding-grid-2">
@@ -28,8 +28,8 @@
                                             <div class="wrapper">
                                                     <ul class="list-1 fleft">
                                                          <?php $count = 1;?>
-                                                        <?php foreach($album['tracks'] as $track):?>                                                      
-                                                        <li><a href="#"><?php echo $count<10? '0'.$count: $count?>. <?php echo $track['name']; ?></a></li>
+                                                        <?php foreach($album['tracks'] as $track):?>                                                          
+                                                        <li><a href="#"><?php echo $count<10? '0'.$count: $count?>. <?php echo $track; ?></a></li>
                                                         <?php $count += 1;?>
                                                         <?php endforeach;?>    
 <!--                                                            <li><a href="#">02. In reprehenderit in voluptate</a></li>

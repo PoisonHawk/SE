@@ -35,6 +35,25 @@ audio = {
    
    $(document).ready(function(){
         audio.count  = <?php echo isset($count) ? $count : '0'; ?>;
+        
+        
+        $('#image').change(function() {
+            var input = $(this)[0];
+            if ( input.files && input.files[0] ) {
+                if ( input.files[0].type.match('image.*') ) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#image_preview').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                } else console.log('is not image mime type');
+            } else console.log('not isset files data or files API not supordet');
+        });
+        $('#form').bind('reset', function() {
+            $('#image_preview').attr('src', 'https://lh6.googleusercontent.com/-L17_eJqIsDI/UzbeiYk96RI/AAAAAAAASP4/SbOqhSuEyU4/s100-no/image-is-not-uploaded.jpg');
+        });
+        
+        
    })
     
 </script>
@@ -42,13 +61,11 @@ audio = {
     <p><?php echo $errors;?></p>
 <?php endif;?>
 <form method="POST" enctype="multipart/form-data">
-    
-    <img src="/uploads/<?php echo isset($filename)?$filename: ''; ?>" width="200" class="img-rounded"/>
-    <input type="file" name="image_album">
-    <input type="submit" value="Загрузить" name="upload">
- </form>
- 
- <form method="POST">
+    <div class="">
+        <img id='image_preview' src="<?php echo isset($filename)?"/uploads/".$filename: 'http://placehold.it/300x200'; ?>" width="300" class="img-rounded"/>
+    </div>    
+    <input id='image' type="file" name="image_album">
+
     <label>Название альбома</br>
         <input type="text" name="title_album" value="<?php echo isset($title_album) ? $title_album : ''?>">
     </label>

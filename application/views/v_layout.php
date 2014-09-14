@@ -15,10 +15,10 @@
                 <?php endforeach; ?>
                 
 		<script src="/js/jquery-1.6.3.min.js" type="text/javascript"></script>
-		<script src="/js/cufon-yui.js" type="text/javascript"></script>
-		<script src="/js/cufon-replace.js" type="text/javascript"></script>
-		<script src="/js/Vegur_700.font.js" type="text/javascript"></script>
-		<script src="/js/Vegur_400.font.js" type="text/javascript"></script> 
+		<!--<script src="/js/cufon-yui.js" type="text/javascript"></script>-->
+		<!--<script src="/js/cufon-replace.js" type="text/javascript"></script>-->
+		<!--<script src="/js/Vegur_700.font.js" type="text/javascript"></script>-->
+		<!--<script src="/js/Vegur_400.font.js" type="text/javascript"></script>--> 
 		<script src="/js/FF-cash.js" type="text/javascript"></script> 
 		<script src="/js/script.js" type="text/javascript"></script>
 		<script type="text/javascript" src="/js/easyTooltip.js"></script>
@@ -139,7 +139,7 @@
 				</div>
 			</div>
 		</footer>
-		<script type="text/javascript"> Cufon.now(); </script>
+		<!--<script type="text/javascript"> Cufon.now(); </script>-->
     </body>
 </html>
 
