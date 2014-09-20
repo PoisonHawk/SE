@@ -27,7 +27,7 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             $view->title_album = $album->name;
             $view->year = $album->year;
             
-            $query = DB::select('name', 'file')
+            $query = DB::select('id', 'name', 'file')
                     ->from('audio')
                     ->where('album_id','=',$id);
             
@@ -41,10 +41,7 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
 
         
         if($this->request->method() === Request::POST and isset($_POST['save'])){
-            
-            echo '<pre/>';
-            print_r($_FILES);
-            
+                      
             //Загрузка изображения альбома, если выбран
             if (isset($_FILES['image_album']))
             {
@@ -102,10 +99,6 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
                 
                 //загрузка файлов аудио
                 if(isset($_FILES["file_track_$i"])){
-//                    echo "<pre/>";
-//                    print_r($_FILES);
-//                    die();
-
                     //загрузка файлов
                     $file = $this->_save_audio($_FILES["file_track_$i"],$name);
                     $audio->file = $file;
@@ -190,19 +183,33 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
         }
         
         return False;
-        
-//        $filename = Upload::save($audio, $name, $directory);
-//        
-//        if($filename){
-//            return $filename;
-//        }
-//        else{
-//            return FALSE;
-//        }    
+  
     }
     
     public function action_audioremove(){
         
+        $this->auto_render = false;
+        
+        $id = $this->request->param('id');
+        
+        $audio = new Model_Audio($id);
+        
+        $filename = $audio->file;
+        
+        $file = DOCROOT.'/audios/'.$filename;
+        
+        $ans = array('status' => 'error');
+        
+        if(file_exists($file)){        
+                        
+            if(unlink($file)){            
+                $audio->file = '';
+                $audio->save();
+                $ans = array('status'=> 'ok');
+            }
+        }
+        
+        $this->response->body(json_encode($ans));
     }
     
 }

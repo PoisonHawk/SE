@@ -154,7 +154,7 @@ Route::set('allnews', 'admin(/<controller>(/<page>))', array('page' => '[0-9]+')
             'page'      => '',
         ));
 
-Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
+Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))', array('id'=>'[A-Za-z0-9/.]+'))
             ->defaults(array(
             'directory'  => 'admin',
             'controller' => 'index',

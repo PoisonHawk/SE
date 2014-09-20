@@ -11,7 +11,7 @@ audio = {
         this.count=this.count+1;
         var str ='';
         
-        str ='<span class="track"><label>'+this.count+'. ';
+        str ='<span class="track track_'+this.count+'"><label>'+this.count+'. ';
         str += '<input type="text" name="title_track_'+this.count+'"/>';
         str +='</label>'; 
         str +='<input id="" type="file" name="file_track_'+this.count+'"/></span></br>';
@@ -33,8 +33,22 @@ audio = {
         }    
        
         $('input[name=count]').val(this.count);
-    }
-    }
+    },
+    
+    file_remove: function(id, num){
+        $.ajax({
+            url:'/admin/audio/audioremove/'+id,
+            dataType:"json",
+            success: function(data){
+                              
+                if(data.status == 'ok'){
+                    $('.track_'+num+' span').remove();
+                    $('.track_'+num).append('<input id="" type="file" name="file_track_'+num+'"/>');
+                }    
+            }
+        })
+    },
+}
    
    $(document).ready(function(){
         audio.count  = <?php echo isset($count) ? $count : '0'; ?>;
@@ -82,12 +96,12 @@ audio = {
         <?php if(isset($audio)):?>
             <?php $i = 1; ?>
             <?php foreach($audio as $a):?>
-                <span class="track">
+                <span class="track track_<?php echo $i; ?>">
                     <label>
                         <?php echo $i?>. <input type="text" name="title_track_<?php echo $i; ?>" value="<?php echo $a['name']?>"/>
                     </label>
                     <?php if(!empty($a['file'])):?>
-                    <span><?php echo $a['file'];?><a href="/audio/audioremove/<?php echo $a['file']?>"> x</a></span>
+                    <span><?php echo $a['file'];?><span onclick="audio.file_remove(<?php echo $a['id'];?>, <?php echo $i;?>)"> x</span></span>
                     <?php else:?>    
                         <input type='file' name='file_track_<?php echo $i; ?>'/>
                     <?php endif;?>    
