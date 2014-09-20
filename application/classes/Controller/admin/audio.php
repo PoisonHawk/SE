@@ -41,30 +41,7 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
 
         
         if($this->request->method() === Request::POST and isset($_POST['save'])){
-                      
-            //Загрузка изображения альбома, если выбран
-            if (isset($_FILES['image_album']))
-            {
-                $filename = $this->_save_image($_FILES['image_album']);
-                $this->image = $filename;
-                $view->filename = $filename;
-                $image = true;
-                
-                if (!$filename)
-                {
-                    $error_message = 'There was a problem while uploading the image.
-                        Make sure it is uploaded and must be JPG/PNG/GIF file.';
-                    $view->errors = $error_message;
-                    $image = false;
-                }
-                
-            }
-            
-            
-                       
-            $title = trim(arr::get($_POST,'title_album'));
-            $year = trim(arr::get($_POST,'year'));            
-            
+             
             if(isset($id)){
                 $album = new Model_Albums($id);                
             }
@@ -72,12 +49,35 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
                 $album = new Model_Albums();                
             }            
             
+            $title = trim(arr::get($_POST,'title_album'));
+            $year = trim(arr::get($_POST,'year')); 
+            $album_image = arr::get($_FILES, 'image_album', false);
+            
+//            echo '<pre/>';
+//            print_r($album_image);
+//            die();
+            
+            //Загрузка изображения альбома, если выбран
+            if (isset($_FILES['image_album']))
+            {
+                $filename = $this->_save_image($_FILES['image_album']);
+               
+                $album->image   = $filename;
+                $view->filename = $filename;
+              
+                if (!$filename)
+                {
+                    $error_message = 'There was a problem while uploading the image.
+                        Make sure it is uploaded and must be JPG/PNG/GIF file.';
+                    $view->errors = $error_message;
+                   
+                }                
+            }
+            
             //сохраняем информацию об альбоме
             $album->name    = $title;
             $album->year    = $year;
-            if($image){
-                $album->image   = $filename;
-            }    
+             
             $album->save();
                                
             $album_id=$album->pk();            
@@ -212,5 +212,27 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
         $this->response->body(json_encode($ans));
     }
     
+    public function action_delete(){
+                
+        
+        $id = $this->request->param('id');
+        
+        Database::instance()->begin();
+        
+        try{
+            $query = DB::delete('albums')->where('id', '=', $id)->execute();
+
+            $query = DB::delete('audio')->where('album_id', '=', $id)->execute();
+        }
+        catch(Exception $e)
+        {
+            throw new Exception($e->getMessage());
+            Database::instance()->rollback();
+        }
+        
+        Database::instance()->commit();
+        
+        $this->redirect('/admin/audio/');
+    }
 }
 
