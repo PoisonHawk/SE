@@ -4,6 +4,8 @@ class Controller_Base extends Controller_Template
 {
     public $template = 'v_layout';
     public $title='';
+    public $scripts = array();
+    public $styles = array();
     
     public function before() {
         parent::before();
@@ -20,8 +22,8 @@ class Controller_Base extends Controller_Template
         
         $this->template->site_name = $site_name;
         
-        $this->template->styles = array();
-        $this->template->scripts = array();
+        $this->template->styles = $this->styles;
+        $this->template->scripts = $this->scripts;
     }
     
 }

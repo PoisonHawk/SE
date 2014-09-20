@@ -3,7 +3,8 @@
 class Controller_Audio extends Controller_Base{
     
     public $title = 'Аудио';
-    public $scripts = array('js/simpleplayer/jquery.simpleplayer.js');
+    public $scripts = array('js/jQuery.jPlayer.2.7.0/jquery.jplayer.min.js',
+                            'js/soundmanager/script/soundmanager2.js');
     
     
     public function action_index(){
