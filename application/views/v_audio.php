@@ -1,18 +1,7 @@
     </div>
 </header>
 <div id="content">
-<script type="text/javascript">
-    $(document).ready(function() {
-        var settings = {
-            progressbarWidth: '200px',
-            progressbarHeight: '5px',
-            progressbarColor: '#22ccff',
-            progressbarBGColor: '#eeeeee',
-            defaultVolume: 0.8
-        };
-        $(".player").player(settings);
-    });
-</script>    
+  
 <section id="content"><div class="ic"></div>
     <div class="main">
         <div class="content-padding-2">
@@ -44,10 +33,15 @@
                                                         <?php $count += 1;?>
                                                         <?php endforeach;?>  
                                                     </ul>
-                                                    <ul class="list-1 fright">
+                                                    <ul class="list-2 fright">
                                                         <?php $count = 1;?>
                                                         <?php foreach($album['tracks'] as $track):?>                                                          
-                                                        <li><audio class="" src='/audios/<?php echo $track['file']?>' controls></audio></li>
+                                                        <!--<li><audio class="" src='/audios/<?php echo $track['file']?>' controls></audio></li>-->
+                                                        <audio id="audio_<?php echo $count?>">
+                                                            <source src="/audios/<?php echo $track['file']?>">
+                                                           
+                                                        </audio>
+                                                        <li><span><a class="left-list" href="#" onclik=""></a></span><button class="right-list" href="" onclick='$("#audio_<?php echo $count?>").play()'></button></li>
                                                         <?php $count += 1;?>
                                                         <?php endforeach;?> 
                                                     </ul>    

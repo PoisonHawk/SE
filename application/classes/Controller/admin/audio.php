@@ -42,20 +42,28 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
         
         if($this->request->method() === Request::POST and isset($_POST['save'])){
             
-            //Загрузка изображения альбома
+            echo '<pre/>';
+            print_r($_FILES);
+            
+            //Загрузка изображения альбома, если выбран
             if (isset($_FILES['image_album']))
             {
                 $filename = $this->_save_image($_FILES['image_album']);
                 $this->image = $filename;
                 $view->filename = $filename;
+                $image = true;
+                
+                if (!$filename)
+                {
+                    $error_message = 'There was a problem while uploading the image.
+                        Make sure it is uploaded and must be JPG/PNG/GIF file.';
+                    $view->errors = $error_message;
+                    $image = false;
+                }
+                
             }
             
-            if ( ! $filename)
-            {
-                $error_message = 'There was a problem while uploading the image.
-                    Make sure it is uploaded and must be JPG/PNG/GIF file.';
-                $view->errors = $error_message;
-            }
+            
                        
             $title = trim(arr::get($_POST,'title_album'));
             $year = trim(arr::get($_POST,'year'));            
@@ -70,7 +78,9 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             //сохраняем информацию об альбоме
             $album->name    = $title;
             $album->year    = $year;
-            $album->image   = $this->image;
+            if($image){
+                $album->image   = $filename;
+            }    
             $album->save();
                                
             $album_id=$album->pk();            
