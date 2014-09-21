@@ -27,13 +27,7 @@
                         <a class="btn btn-danger" href="/admin/audio/delete/<?php echo $album['id'];?>">Delete</a>
                     </td>
                 </tr> 
-                
-<!--            <a href='/admin/Audio/albums/<?php echo $album['id']?>'>
-                <p>
-                    <img src="/uploads/<?php echo $album['image']?>" width="100" class="img-rounded">
-                    <?php echo $album['name'];?>
-                </p>
-            </a>-->
+
          <?php endforeach;?>    
     <?php else:?>
          </tbody>
