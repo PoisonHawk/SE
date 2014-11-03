@@ -34,6 +34,7 @@ class Controller_Admin_Tours extends Controller_Admin_Base{
             $view->city = $t[0]['city'];
             $view->fest = $t[0]['fest'];
             $view->club = $t[0]['club'];
+            $view->image = $t[0]['image'];
         }
         
         if(isset($_POST['send'])){         
@@ -42,6 +43,27 @@ class Controller_Admin_Tours extends Controller_Admin_Base{
             $city = arr::get($_POST,'city');
             $fest = arr::get($_POST,'fest');
             $club = arr::get($_POST,'club');
+            $file = arr::get($_FILES, 'image');
+            
+            if (Upload::not_empty($file)) {
+                
+                $directory = DOCROOT.'uploads/';
+                
+                if ($f = Upload::save($file, null, $directory)) {
+                   
+                    $image = Image::factory($f);
+                    
+                    $filename = strtolower(Text::random('alnum', 20).'.jpg');
+                       
+                    $image  ->resize('500')                    
+                            ->save($directory.$filename);
+                    
+                    $image = $filename;
+                };
+               
+            } else {
+                $image = arr::get($_POST, 'image');
+            }            
             
             $post =  new Validation($_POST);
             
@@ -54,10 +76,10 @@ class Controller_Admin_Tours extends Controller_Admin_Base{
                 
                  
                  if(isset($id)){
-                    $tour->processTour($date, $city, $fest, $club,$id); 
+                    $tour->processTour($date, $city, $fest, $club, $image, $id); 
                  }
                  else{
-                    $tour->processTour($date, $city, $fest, $club); 
+                    $tour->processTour($date, $city, $fest, $club, $image); 
                  }
                  
                  $this->redirect('/admin/tours');
@@ -66,8 +88,8 @@ class Controller_Admin_Tours extends Controller_Admin_Base{
             {
                 $errors = $post -> errors('comments');
                 
-            }                  
-           
+            }  
+                                   
         }
         
         $view->errors = $errors;

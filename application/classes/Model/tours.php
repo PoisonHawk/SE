@@ -6,7 +6,7 @@ class Model_Tours extends Model
         
         $tours = array();
         
-        $sql = "SELECT * FROM tours";
+        $sql = "SELECT id, date, city, fest, club, image FROM tours";
         
         if($id){
             $sql .=' WHERE id=:id';
@@ -34,7 +34,7 @@ class Model_Tours extends Model
                 
     }
     
-    public function processTour($date,$city,$fest,$club,$id=NULL){
+    public function processTour($date,$city,$fest,$club,$image,$id=NULL){
         
         try {          
             
@@ -42,7 +42,7 @@ class Model_Tours extends Model
             
             if(isset($id)){
                
-                $sql = "UPDATE tours SET date=:date, city=:city, fest=:fest, club=:club WHERE id= :id";
+                $sql = "UPDATE tours SET date=:date, city=:city, fest=:fest, club=:club, image=:image WHERE id= :id";
                 
                 db::query(Database::UPDATE, $sql)
                          ->param(':date',mktime(0,0,0,$d[1],$d[0],$d[2]))
@@ -50,19 +50,21 @@ class Model_Tours extends Model
                         ->param(':fest',$fest)
                         ->param(':club',$club)
                         ->param(':id',$id)
+                        ->param(':image',$image)
                         ->execute();
                 
             }
             else
             {    
                  
-                $sql = "INSERT INTO tours (date, city, fest, club) VALUES (:date, :city, :fest, :club)";
+                $sql = "INSERT INTO tours (date, city, fest, club, image) VALUES (:date, :city, :fest, :club, :image)";
             
                 db::query(Database::INSERT, $sql)
                         ->param(':date',mktime(0,0,0,$d[1],$d[0],$d[2]))
                         ->param(':city',$city)
                         ->param(':fest',$fest)
                         ->param(':club',$club)
+                        ->param(':image', $image)
                         ->execute();
             } 
         } catch (Exception $e) {

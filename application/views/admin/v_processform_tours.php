@@ -11,7 +11,7 @@ $(document).ready(function(){
         <p><?php echo $e; ?></p>
     <?php endforeach; ?>
 <?php endif ;?>
-<form method="post" class="form-horizontal">
+<form method="post" class="form-horizontal" enctype="multipart/form-data">
 
     <div class='control-group'>
         <label class="control-label" for="date">Дата</label>
@@ -35,6 +35,19 @@ $(document).ready(function(){
         <label class="control-label" for="club">Клуб</label>
         <div class="controls">
             <input type="text" name="club" id="club" class="input-large" value="<?php echo isset($club)? $club: ''?>"/>
+        </div>    
+    </div>
+    
+    
+    <?php if (isset($image)):?>
+        <img src="/uploads/<?php echo $image; ?>" width="160">
+        <input type="hidden" value="<?php echo $image?>" name="image">
+    <?php endif;?>
+    
+    <div class='control-group'>
+        <label class="control-label" for="image">Прикрепить изображаение</label>
+        <div class="controls">
+            <input type="file" name="image" id="image" class="input-large" value="<?php echo isset($image)? $image: ''?>"/>
         </div>    
     </div>
    

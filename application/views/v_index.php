@@ -49,10 +49,13 @@
                                                 <div class="wrapper img-indent-bot2">
                                                     <time class="time time-stule-2" datetime="<?php echo date('Y-d-m',$tour['date'])?>"> <strong class="text-3"><?php echo date('d',$tour['date']);?></strong><strong class="text-4"><?php echo date('M',$tour['date']);?></strong></time>
                                                         <div class="extra-wrap">
-                                                                <h4 class="indent-top"><a href="#"><?php echo $tour['fest'];?></a></h4>
+                                                                <h4 class="indent-top" onclick="show(<?php echo $tour['id']?>)"><?php echo $tour['fest'];?></h4>
                                                                 <?php echo $tour['club']?> 
                                                                 <?php echo $tour['city']?>
                                                         </div>
+                                                        <?php if (!empty($tour['image'])):?>
+                                                            <img id="<?php echo $tour['id']?>" class='preview' src="/uploads/<?php echo $tour['image']?>" width="500">
+                                                        <?php endif;?>    
                                                 </div>
                                                 <?php endforeach;?>
                                         </div>
@@ -118,3 +121,24 @@
                 <div class="block"></div>
         </section>
 </div>
+<script>
+    
+    $(document).ready(function(){
+      
+      $('.preview').dialog({
+          modal:true,
+          autoOpen: false,
+          width:'530px',
+          resizible:false,          
+      })
+        
+    })
+    
+    
+    show = function(id){
+               
+        $('#'+id+'.preview').dialog('open');
+        
+        
+    }
+</script>    

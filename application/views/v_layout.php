@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="/css/grid.css" type="text/css" media="screen">
 		<link rel="stylesheet" href="/css/prettyPhoto.css" type="text/css" media="screen">  
                 <link rel="stylesheet" href="/css/simpleplayer.css" type="text/css" media="screen"> 
+                <link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css" type="text/css" media="screen"> 
                 <?php foreach($styles as $style): ?>
                     <?php echo html::style($style);?>
                 <?php endforeach; ?>
@@ -26,6 +27,7 @@
 		<script src="/js/hover-image.js" type="text/javascript"></script>
 		<script src="/js/jquery.prettyPhoto.js" type="text/javascript"></script>
 		<script src="/js/jquery.easing.1.3.js" type="text/javascript"></script>
+                <script src="/js/jquery-ui-1.10.4.custom.js" type="text/javascript"></script>
 		<script type="text/javascript" src="/js/tms-0.3.js"></script>
 		<script type="text/javascript" src="/js/tms_presets.js"></script>
                 <!--<script type="text/javascript" src="/js/simpleplayer/jquery.simpleplayer.min.js"></script>-->
