@@ -179,5 +179,38 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
         }
     }
     
+    //todo оптимизировать!!!
+    public function action_remove(){
+        
+        $this->auto_render = false;
+        
+        $ans = array();
+                
+        $path = arr::get($_POST,'path',null);
+        
+        if (is_null($path)) {
+            $ans['error'] = 'error';
+        }        
+        
+        if (!isset($ans['error'])) {
+            try{
+                //удаляем миниатюру
+                unlink(DOCROOT.$path);
+                //удаляем оригинал
+                unlink(DOCROOT.str_replace('thumbs', 'origin', $path));
+            }    
+            catch(Exception $e){
+                $ans['error'] = 'error';
+                $this->response->body(json_encode($ans));
+                return;
+            }    
+            
+        }
+        
+        $ans['success'] = 'success';
+        $this->response->body(json_encode($ans));
+        
+    }
+    
 }
 
