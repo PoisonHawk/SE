@@ -25,24 +25,16 @@
                                             <h4 class="margin-none indent-top1"><strong><?php echo $album['year']?>.</strong>  <?php echo $album['name']?></h4>
                                             <!--<p class="prev-indent-bot">Lorem ipsum dolor consctetur adipisicing elitdo eusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
                                             <div class="wrapper">
-                                                    <ul class="list-1 fleft">
+                                                    <ul class="list-1 fleft wrapper">
                                                          <?php $count = 1;?>
                                                         <?php foreach($album['tracks'] as $track):?>                                                          
-                                                        <li><a href="#"><?php echo $count<10? '0'.$count: $count?>. <?php echo $track['name']; ?></a></li>
-                                                        <?php $count += 1;?>
+                                                        <li>
+                                                            <a href="#"><?php echo $count<10? '0'.$count: $count?>. <?php echo $track['name']; ?></a>
+                                                            <a href="/audios/<?php echo $track['file']?>" title="Play &quot;<?php echo $track['name']; ?>&quot;" class="sm2_button fright"><?php echo $track['name']; ?></a>               
+                                                                <?php $count += 1;?>
+                                                        </li>    
                                                         <?php endforeach;?>  
                                                     </ul>
-                                                    <ul class="list-2 fright">
-
-                                                        <?php $count = 1;?>
-                                                        <?php foreach($album['tracks'] as $track):?>
-                                                        
-                                                            <li><audio class="" src='/audios/<?php echo $track['file']?>' controls></audio></li>
-                                                        <?php $count += 1;?>
-                                                        <?php endforeach;?> 
-                                                                                                               
-                                                    </ul>    
-
                                             </div>
                                     </div>
                             </article>
@@ -59,3 +51,4 @@
     
 </section>
 
+  

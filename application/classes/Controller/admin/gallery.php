@@ -73,7 +73,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
         if (empty($data)) {
             $this->message = __('Не создано ни одного альбома');
         }
-        
+      
         $view->errors = $this->errors;
         $view->message = $this->message;
         $view->data = $data;
@@ -120,7 +120,8 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
             //устанавливаем первое фото из альбома на обложку альбома
             $gallery = new Model_Gallery($id);
             
-            if (is_null($gallery->image)) {
+            
+            if (!empty($filelist) and (is_null($gallery->image) or !file_exists(DOCROOT.$gallery->image))) {
                 $gallery->image = $filelist[0];
                 $gallery->save();
             }

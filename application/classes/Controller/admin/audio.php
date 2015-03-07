@@ -51,7 +51,7 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             
             $title = trim(arr::get($_POST,'title_album'));
             $year = trim(arr::get($_POST,'year')); 
-            $album_image = arr::get($_FILES, 'image_album', false);
+            $album_image = arr::get($_FILES, 'image_album', $album->image);
             
 //            echo '<pre/>';
 //            print_r($album_image);
@@ -119,8 +119,6 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             
             
         }
-        
-        
         
         $this->template->content = $view;
         

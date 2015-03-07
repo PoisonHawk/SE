@@ -2,8 +2,7 @@
 audio = {    
     
     count : 0,
-    
-    
+       
     add_track:function(event){
         
         event.preventDefault();
@@ -79,7 +78,7 @@ audio = {
 <?php endif;?>
 <form method="POST" enctype="multipart/form-data" multiple>
     <div class="">
-        <img id='image_preview' src="<?php echo isset($filename)?"/uploads/".$filename: 'http://placehold.it/300x200'; ?>" width="300" class="img-rounded"/>
+        <img id='image_preview' src="<?php echo isset($filename)?"/uploads/".$filename: 'http://placehold.it/300x200'; ?>" width="150" class="img-rounded"/>
     </div>    
     <input id='image' type="file" name="image_album">
 

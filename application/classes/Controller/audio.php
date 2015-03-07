@@ -3,19 +3,14 @@
 class Controller_Audio extends Controller_Base{
     
     public $title = 'Аудио';
-    public $scripts = array('js/circle.player/jquery.transform2d.js',
-                            'js/circle.player/jquery.grab.js',
-                            'js/jQuery.jPlayer.2.7.0/jquery.jplayer.min.js',
-                            'js/circle.player/mod.csstransforms.min.js',
-                            'js/circle.player/circle.player.js',
-                            
-//                            'js/soundmanager/script/soundmanager2.js',
-                            
+    public $scripts = array(
+
+        'js/soundmanager/script/soundmanager2.js',
+        'js/soundmanager/demo/mp3-player-button/script/mp3-player-button.js'
         );
     
     public $styles = array(
-        'css/circle.skin/circle.player.css',
-        'css/blue.monday/jplayer.blue.monday.css',
+            'js/soundmanager/demo/mp3-player-button/css/mp3-player-button.css'
     );
     
     public function action_index(){

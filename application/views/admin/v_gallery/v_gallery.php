@@ -8,19 +8,41 @@
 <?php if(isset($message)):?>
     <p><?php echo $message;?></p>
 <?php endif; ?>
-
+<div clas="row">
+    
 <?php if(!empty($data)):?>
     <?php foreach($data as $d):?>
-    <div class="image">
-        <a href="/admin/gallery/item/<?php echo $d['id']?>">
-            <img src="/photos/<?php echo $d['id']?>/thumbs/<?php echo $d['image']?>">
-            <p><?php echo $d['title'];?></p>
-        </a>
-    </div>    
+    <div class="col-sm-6 col-md-2">
+        <div class="thumbnail">
+            <div class="image">
+                <a href="/admin/gallery/item/<?php echo $d['id']?>">
+                    <img src="/photos/<?php echo $d['id']?>/thumbs/<?php echo $d['image']?>">
+                    <div class="caption">
+                        <h3><?php echo $d['title'];?></h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
     <?php endforeach;?>
-<?php endif; ?>    
+<?php endif; ?>
     
-<button onclick="createAlbum()">Создать альбом</button>   
+    
+    <div class="col-sm-6 col-md-2">
+        <div class="thumbnail">
+            <img data-src="holder.js/300x200" alt="...">
+            <div class="caption">
+                <h3>Новый альбом</h3>
+                <p><a href="#" onclick="createAlbum()" class="btn btn-primary" role="button">Создать</a>
+            </div>
+        </div>
+    </div>
+        
+    
+    <!--<button onclick="createAlbum()">Создать альбом</button>-->
+    
+</div>    
+   
 
 
 <div id="form_dialog">
