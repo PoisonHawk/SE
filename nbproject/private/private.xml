@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Wservers/home/sympulse/application/bootstrap.php</file>
-            <file>file:/C:/Wservers/home/sympulse/application/config/email.php</file>
-            <file>file:/C:/Wservers/home/sympulse/modules/email/classes/email.php</file>
-            <file>file:/C:/Wservers/home/sympulse/application/classes/Controller/contacts.php</file>
-            <file>file:/C:/Wservers/home/sympulse/application/views/v_contacts.php</file>
+            <file>file:/C:/WebServers/home/SE/application/classes/Model/albums.php</file>
+            <file>file:/C:/WebServers/home/SE/application/classes/Controller/audio.php</file>
+            <file>file:/C:/WebServers/home/SE/application/classes/Controller/admin/audio.php</file>
+            <file>file:/C:/WebServers/home/SE/www/css/style.css</file>
+            <file>file:/C:/WebServers/home/SE/application/views/v_audio.php</file>
+            <file>file:/C:/WebServers/home/SE/application/views/admin/v_albums.php</file>
         </group>
     </open-files>
 </project-private>
