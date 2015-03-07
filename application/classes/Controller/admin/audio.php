@@ -16,107 +16,126 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
     }
     
     public function action_albums(){
-        
+                       
         $view = new View('admin/v_albums');
         
         $id = $this->request->param('id');
         
+        $id = $id ? $id : NULL;
+        
+        $album = new Model_Albums($id);                
+        
         if(isset($id)){
-            $album = new Model_Albums($id);
-            $view->filename = $album->image;
-            $view->title_album = $album->name;
-            $view->year = $album->year;
-            
+                       
             $query = DB::select('id', 'name', 'file')
                     ->from('audio')
-                    ->where('album_id','=',$id);
+                    ->where('album_id','=',$id)
+                    ->execute();
             
-            $audio  = $query->execute()->as_array(); 
-            $count  = $query->execute()->count();
-            $view->count = $count;
-            $view->audio = $audio;
-            $view->title_album = $album->name;
-            $view->year = $album->year;
+            $audio  = $query->as_array(); 
+            $count  = $query->count();
+            
+            $view->filename     = $album->image;
+            $view->count        = $count;
+            $view->audio        = $audio;
+            $view->title_album  = $album->name;
+            $view->year         = $album->year;
         }
-
+        
         
         if($this->request->method() === Request::POST and isset($_POST['save'])){
-             
-            if(isset($id)){
-                $album = new Model_Albums($id);                
+                     
+            $errors = array();
+            
+            $title              = trim(arr::get($_POST,'title_album'));
+            $year               = trim(arr::get($_POST,'year')); 
+            $album_image        = arr::get($_FILES, 'image_album', $album->image);
+            
+            //валидация формы
+            $validation = Validation::factory($this->request->post())
+                ->rule('title_album', 'not_empty')
+                ->rule('year', 'numeric')
+                ->rule('year', 'exact_length', array(':value',4));    
+            
+            if(!$validation->check()){
+                
+                $errors = $validation->errors('validation');
+                
             }
-            else{
-                $album = new Model_Albums();                
-            }            
             
-            $title = trim(arr::get($_POST,'title_album'));
-            $year = trim(arr::get($_POST,'year')); 
-            $album_image = arr::get($_FILES, 'image_album', $album->image);
-            
-//            echo '<pre/>';
-//            print_r($album_image);
-//            die();
-            
-            //Загрузка изображения альбома, если выбран
-            if (isset($_FILES['image_album']))
+            //Загрузка изображения альбома, если выбран                               
+            if (Upload::not_empty($_FILES['image_album']))
             {
                 $filename = $this->_save_image($_FILES['image_album']);
-               
-                $album->image   = $filename;
-                $view->filename = $filename;
-              
-                if (!$filename)
-                {
-                    $error_message = 'There was a problem while uploading the image.
+
+                if ($filename)
+                {   
+                    $album->image   = $filename;
+                    $view->filename = $filename;
+                    
+                } else {
+                    $errors[] = 'There was a problem while uploading the image.
                         Make sure it is uploaded and must be JPG/PNG/GIF file.';
-                    $view->errors = $error_message;
-                   
-                }                
+                }  
+
             }
             
-            //сохраняем информацию об альбоме
-            $album->name    = $title;
-            $album->year    = $year;
-             
-            $album->save();
-                               
-            $album_id=$album->pk();            
+            Database::instance()->begin();
             
-            
-            //добавление треков
-            $count_add = arr::get($_POST,'count');
-            
-            for($i=1;$i<=$count_add;$i++){
-                $name = trim(arr::get($_POST,'title_track_'.$i));
+                //сохраняем информацию об альбоме
+                $album->name    = $title;
+                $album->year    = $year;
+                $album->created = time(); 
+                $album->save();
+
+                $album_id=$album->pk();            
+
+                //добавление треков
+                $count_add = arr::get($_POST,'count');
+
+                for($i=1;$i<=$count_add;$i++){
+                    
+                    $name = trim(arr::get($_POST,'title_track_'.$i));
+
+                    $audio = new Model_Audio(array('num'=>$i, 'album_id' => $album_id));
+                    if(!$audio->loaded()){
+                       $audio = new Model_Audio(); 
+                    }
+                    
+                    //загрузка файлов аудио
+                    if(isset($_FILES["file_track_$i"])){
+                        //загрузка файлов
+                                                                        
+                        $file = $this->_save_audio($_FILES["file_track_$i"],$name);
+                        if(!$file){
+                            $errors[] = 'There was a problem while uploading the image.
+                        Make sure it is uploaded and must be mp3/ogg file.';
+                        }
+                        $audio->file = $file;
+                    }
+
+                    $audio->name    = $name ? $name : substr($audio->file, 0, strrpos($audio->file, '.'));
+                    $audio->num     = $i;
+                    $audio->album_id= $album_id;
+                    
+                    $audio->save();
+                }   
+
+                //удаление треков
+                if(isset($id)){
+                    for($i=$count_add+1;$i<=$count;$i++){
+                        $audio = new Model_Audio(array('num' => $i, 'album_id'=>$album_id));
+                        $audio->delete();
+                    }
+                }
                 
-                $audio = new Model_Audio(array('num'=>$i, 'album_id' => $album_id));
-                if(!$audio->loaded()){
-                   $audio = new Model_Audio(); 
+                if (empty($errors)){
+                    Database::instance()->commit();
+                    $this->redirect('/admin/audio/albums/'.$id);
+                } else {
+                    Database::instance()->rollback();
+                    $view->errors = $errors;
                 }
-                $audio->name    = $name;
-                $audio->num     = $i;
-                $audio->album_id= $album_id;
-                
-                //загрузка файлов аудио
-                if(isset($_FILES["file_track_$i"])){
-                    //загрузка файлов
-                    $file = $this->_save_audio($_FILES["file_track_$i"],$name);
-                    $audio->file = $file;
-                }
-                                
-                $audio->save();
-            }   
-            
-            //удаление треков
-            if(isset($id)){
-                for($i=$count_add+1;$i<=$count;$i++){
-                    $audio = new Model_Audio(array('num' => $i, 'album_id'=>$album_id));
-                    $audio->delete();
-                }
-            }
-            
-            $this->redirect('/admin/audio/albums/'.$id);
-            
             
         }
         
@@ -155,29 +174,29 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
     protected function _save_audio($audio, $name=NULL){
         if (
             ! Upload::valid($audio) OR
-            ! Upload::not_empty($audio))
-            //! Upload::type($audio, array('mp3')))
+            ! Upload::not_empty($audio) OR
+            ! Upload::type($audio, array('mp3', 'ogg')))
         {
             return FALSE;
         }
+                
+        //устанавливаем имя файла
+        if($name){
+            $pos = strrpos($audio['name'],'.');
+            $ext = substr($audio['name'],$pos+1);        
+            $name = $name.'.'.$ext;
+        } else {
+            $name = $audio['name'];
+        }
         
-        $directory = DOCROOT.'audios/';
-        
-        $pos = strpos($audio['name'],'.');
-        $ext = substr($audio['name'],$pos+1);
-        
-        $name = $name.'.'.$ext;
-        
-        if (Upload::save($audio, $name, $directory))
-        {
-            //$filename = strtolower(Text::random('alnum', 20)).'.jpg';
-            $filename = $name;
-            
-            
+        $name = str_replace(' ', '_', $name);
+       
+        if ($file = Upload::save($audio, $name, AUDIOPATH))
+        {            
             // Delete the temporary file
             //unlink($file);
  
-            return $filename;
+            return $name;
         }
         
         return False;

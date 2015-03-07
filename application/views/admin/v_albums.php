@@ -74,7 +74,9 @@ audio = {
     
 </script>
 <?php if(isset($errors)):?>
-    <p><?php echo $errors;?></p>
+    <?php foreach($errors as $e):?>
+        <p class="error"><?php echo $e;?></p>
+    <?php endforeach;?>
 <?php endif;?>
 <form method="POST" enctype="multipart/form-data" multiple>
     <div class="">
