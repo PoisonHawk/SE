@@ -32,7 +32,8 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
                 try {
                     
                     $gallery =  new Model_Gallery();
-                    $gallery->title = $title;                    
+                    $gallery->title = $title;  
+                    $gallery->created = time();
                     $gallery->save();       
                     $pk = $gallery->pk();
                                         
@@ -161,13 +162,26 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
             
             $image = Image::factory($file);
             
+            //чтение exif заголовков
+            //todo возможны ошибки
+            if(in_array($image->mime, array('image/jpeg', 'image/jpg'))){
+                $exif = read_exif_data($image->file);
+                    if(isset($exif['Orientation'])){
+                    if ($exif['Orientation']==3)$image->rotate(180);
+                    elseif ($exif['Orientation']==6)$image->rotate(270);
+                    elseif ($exif['Orientation']==8)$image->rotate(-90); 
+                }
+            }
+
             //to origin                     
             $image  ->resize('902','360')                    
                     ->save($path_origin.$filename);
             
             //to thumbs                        
-            $image  ->crop('350', '350')
+            $image  
+                    ->crop('250', '250')
                     ->resize('150','150')
+                    
                     ->save($path_thumbs.$filename);
             
              unlink($image);

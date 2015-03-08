@@ -24,7 +24,7 @@ class Controller_Gallery extends Controller_Base{
         
         
         //Список альбомов
-        $sql = "Select id, title, image from gallery";
+        $sql = "Select id, title, image from gallery order by created desc";
         
         $data =  db::query(1, $sql)->execute()->as_array();
                        
@@ -62,5 +62,6 @@ class Controller_Gallery extends Controller_Base{
         
     }
     
+      
     
 }

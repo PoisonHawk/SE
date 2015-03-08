@@ -108,6 +108,9 @@
                                             <a class="thumb" href="/photos/<?php echo $id?>/origin/<?php echo $value?>" title=""> 
                                                 <img src="/photos/<?php echo $id?>/thumbs/<?php echo $value?>" alt="" /> 
                                             </a>
+                                            <div class="caption">
+                                                <p>описание изображения</p>
+                                            </div>
                                         </li>
                                      <?php endforeach;?>       
 

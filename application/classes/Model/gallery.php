@@ -8,6 +8,7 @@ class Model_Gallery extends ORM
         'id'            => 'id',
         'title'          =>  'title',        
         'image'     =>  'image',
+        'created'   => 'created',
     );
 }    
    
