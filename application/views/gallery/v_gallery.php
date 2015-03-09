@@ -33,6 +33,7 @@
                                             <a class="thumb" href="/gallery/item/<?php echo $d['id']?>" title=""> 
                                                 <img src="/photos/<?php echo $d['id']?>/thumbs/<?php echo $d['image']?>" alt="" />
                                                 <h6><?php echo $d['title']?></h6>
+                                                
                                             </a>
                                         </li>
                                      <?php endforeach;?>       

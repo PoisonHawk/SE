@@ -67,7 +67,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
         }
                 
         //Список альбомов
-        $sql = "Select id, title, image from gallery";
+        $sql = "Select id, title, image, description from gallery order by created";
         
         $data =  db::query(1, $sql)->execute()->as_array();
                        
@@ -225,6 +225,55 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
         $ans['success'] = 'success';
         $this->response->body(json_encode($ans));
         
+    }
+    
+    public function action_removealbum(){
+        
+        $this->auto_render = false;
+        
+        $id = $this->request->param('id');
+        
+        $ans['error'] = true;
+        
+        if(!$id){
+            $ans['text'] = 'Не указан id альбома';
+            $this->response->body(json_encode($ans));
+            return;
+        }
+        
+        //удалаяем каталог с менем $id 
+        $dir = DOCROOT.'/photos/'.$id;
+        
+        $this->catalogremover($dir);
+                
+        //удаляем из базы запись 
+        ORM::factory('gallery', $id)->delete();
+        
+        $ans['error'] = false;
+        $ans['text'] = 'Альбом удален';
+        
+        $this->response->body(json_encode($ans));
+        return;
+        
+    }
+    
+    
+    private function catalogremover ($dir){
+        $list=glob($dir."/*");
+        for ($i=0; $i < count($list); $i++) {
+
+            if (is_dir($list[$i])) {
+                //echo "<br>Входим в директорию $list[$i] <br>";
+                $this->catalogremover($list[$i]);
+            }
+            else {
+                unlink($list[$i]);
+                //echo "Файл $list[$i] Удалён <br>";
+            };
+        };
+
+            rmdir($dir);
+            //echo "Директория $dir Удалена <br>";
     }
     
 }
