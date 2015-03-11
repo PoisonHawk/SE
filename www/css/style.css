@@ -98,8 +98,10 @@ header {
 
 h1 {
 /*	padding:39px 0 0 357px; */
-        padding:39px 0 0 160px; 
+        /*padding:39px 0 0 160px;*/ 
 	position:relative;
+        width:592px;
+        margin: 0 auto;
 }
 h1 a {
 	display:block; 
