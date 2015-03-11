@@ -126,7 +126,7 @@
 							<div class="grid_12">
 								<div class="footer-padding">
 									<div class="wrapper">
-										<span class="footer-link"><span>Superior.com &copy; 2011</span> <a rel="nofollow" target="_blank" class="link" href="">Website Template</a> by TemplateMonster.com</span>
+										<span class="footer-link"><span>Sympuls-e &copy; <?php echo date('Y', time())?></span> </span>
 										<ul class="list-services">
 											<li><a class="tooltips n-1 vk" title="VK" href="http://vk.com/club3429301"></a></li>
 											<li><a class="tooltips n-2 fb" title="Facebook" href="https://www.facebook.com/pages/Sympuls-e/193344310750093"></a></li>

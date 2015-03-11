@@ -46,10 +46,10 @@
                                         <div class="padding-grid-1">
                                                 <h3>Предстоящие <strong>Выступления</strong></h3>
                                                 <?php foreach($tours as $tour):?>
-                                                <div class="wrapper img-indent-bot2">
+                                                <div class="wrapper img-indent-bot2 tour">
                                                     <time class="time time-stule-2" datetime="<?php echo date('Y-d-m',$tour['date'])?>"> <strong class="text-3"><?php echo date('d',$tour['date']);?></strong><strong class="text-4"><?php echo date('M',$tour['date']);?></strong></time>
                                                         <div class="extra-wrap">
-                                                                <h4 class="indent-top" onclick="show(<?php echo $tour['id']?>)"><?php echo $tour['fest'];?></h4>
+                                                                <h4 class="indent-top"><?php echo $tour['fest'];?></h4>
                                                                 <?php echo $tour['club']?> 
                                                                 <?php echo $tour['city']?>
                                                         </div>
@@ -121,24 +121,62 @@
                 <div class="block"></div>
         </section>
 </div>
-<script>
+
+<div class="overlay" id="overlay" style="display:none;"></div>
+<style>
     
+
+        .overlay{
+            background:rgba(0,0,0,0.7) repeat top left;
+            position:fixed; /* фиксим и далее растягиваем на весь экран*/
+                top:0px;
+                bottom:0px;
+                left:0px;
+                right:0px;
+                z-index:10;   /* поднимем его выше основной разметки*/
+            }
+            
+        
+
+        .preview{
+             position:absolute;
+             top:-300px;
+             left:-127%;
+             right:25%;
+             background:#fff;
+             color:#4d4d4d;             
+             border:5px solid #e4e4e4;
+             border-radius: 15px;
+             z-index:101 !important;   /* а его выше фонового блока*/
+        }
+
+    
+
+
+</style>    
+
+<script>
+   
     $(document).ready(function(){
-      
-      $('.preview').dialog({
-          modal:true,
-          autoOpen: false,
-          width:'530px',
-          resizible:false,          
-      })
+
+        $('.preview').hide();
+        
+        $('.tour').click(function(){
+            var preview = $(this).find('.preview'); 
+            
+            $('#overlay').fadeIn('fast', function(){
+                preview.show().animate({'top':'160px'},500);
+            })
+            
+        })
+        
+        
+        $('#overlay').click(function(){ // кликаем по элементу который всё это будет закрывать, также здесь можно добавить сам оверлэй, чтобы по клику вне блока, всё сворачивалось.
+        $('.preview').animate({'top':'-300px'},500,function(){ // убираем наш блок
+            $('#overlay').fadeOut('fast'); // и теперь убираем оверлэй
+        }).hide();
+    });
         
     })
     
-    
-    show = function(id){
-               
-        $('#'+id+'.preview').dialog('open');
-        
-        
-    }
 </script>    
