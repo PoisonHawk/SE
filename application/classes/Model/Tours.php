@@ -13,7 +13,7 @@ class Model_Tours extends Model
         }
         
         
-        $res = db::query(Database::SELECT,$sql);
+        $res = DB::query(Database::SELECT,$sql);
         
         if($id){
             
@@ -44,7 +44,7 @@ class Model_Tours extends Model
                
                 $sql = "UPDATE tours SET date=:date, city=:city, fest=:fest, club=:club, image=:image WHERE id= :id";
                 
-                db::query(Database::UPDATE, $sql)
+                DB::query(Database::UPDATE, $sql)
                          ->param(':date',mktime(0,0,0,$d[1],$d[0],$d[2]))
                         ->param(':city',$city)
                         ->param(':fest',$fest)
@@ -59,7 +59,7 @@ class Model_Tours extends Model
                  
                 $sql = "INSERT INTO tours (date, city, fest, club, image) VALUES (:date, :city, :fest, :club, :image)";
             
-                db::query(Database::INSERT, $sql)
+                DB::query(Database::INSERT, $sql)
                         ->param(':date',mktime(0,0,0,$d[1],$d[0],$d[2]))
                         ->param(':city',$city)
                         ->param(':fest',$fest)
@@ -79,7 +79,7 @@ class Model_Tours extends Model
         try{
             $sql = "DELETE FROM tours WHERE id=:id";
 
-            db::query(Database::DELETE,$sql)
+            DB::query(Database::DELETE,$sql)
                     ->param(':id',$id)
                     ->execute();
         }

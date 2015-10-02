@@ -26,7 +26,7 @@ class Controller_Gallery extends Controller_Base{
         //Список альбомов
         $sql = "Select id, title, image from gallery order by created desc";
         
-        $data =  db::query(1, $sql)->execute()->as_array();
+        $data =  DB::query(1, $sql)->execute()->as_array();
                        
         if (empty($data)) {
             $this->message = __('В данном разделе нет загруженных изображений');

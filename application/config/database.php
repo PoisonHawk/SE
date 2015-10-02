@@ -27,7 +27,7 @@ return array
 			 */
 			'hostname'   => 'localhost',
 			'username'   => 'postgres',
-			'password'   => '87',
+			'password'   => '',
 			'persistent' => FALSE,
 			'database'   => 'se',
 		),

@@ -28,7 +28,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
             
             if (empty($this->errors)){
                 
-                database::instance()->begin();
+                Database::instance()->begin();
                 try {
                     
                     $gallery =  new Model_Gallery();
@@ -46,7 +46,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
                     Session::instance()->set('token',$token);
                     
                 } catch (Exception $e) {
-                    database::instance()->rollback();
+                    Database::instance()->rollback();
                     throw new Exception($e->getMessage());
                 }
                 
@@ -69,7 +69,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
         //Список альбомов
         $sql = "Select id, title, image, description from gallery order by created";
         
-        $data =  db::query(1, $sql)->execute()->as_array();
+        $data =  DB::query(1, $sql)->execute()->as_array();
                        
         if (empty($data)) {
             $this->message = __('Не создано ни одного альбома');
@@ -247,7 +247,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
         $this->catalogremover($dir);
                 
         //удаляем из базы запись 
-        ORM::factory('gallery', $id)->delete();
+        ORM::factory('Gallery', $id)->delete();
         
         $ans['error'] = false;
         $ans['text'] = 'Альбом удален';

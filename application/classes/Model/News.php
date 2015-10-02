@@ -15,7 +15,7 @@ class Model_News extends ORM
         else{
             $sql .= " ORDER BY date DESC";
         }
-        $res = db::query(Database::SELECT, $sql);
+        $res = DB::query(Database::SELECT, $sql);
         
         if(isset($id))
         {
@@ -42,7 +42,7 @@ class Model_News extends ORM
         try{
             $sql = "DELETE FROM news WHERE id=:id";
 
-            db::query(Database::DELETE,$sql)
+            DB::query(Database::DELETE,$sql)
                     ->param(':id',$id)
                     ->execute();
         }
@@ -60,7 +60,7 @@ class Model_News extends ORM
             
             $sql = "UPDATE news SET title = :title, description = :desc WHERE id=:id";
             
-            db::query(Database::UPDATE, $sql)                   
+            DB::query(Database::UPDATE, $sql)                   
                     ->param(':title',$title)
                     ->param(':desc',$desc)
                     ->param(':id',$id)
@@ -70,7 +70,7 @@ class Model_News extends ORM
         {        
             $sql = "INSERT INTO news (date,title,description) VALUES(:date,:title,:description)";       
 
-            $res = db::query(Database::INSERT, $sql)
+            $res = DB::query(Database::INSERT, $sql)
                     ->param(':date',time())
                     ->param(':title',$title)
                     ->param(':description',$desc)       

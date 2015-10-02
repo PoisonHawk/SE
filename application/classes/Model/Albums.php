@@ -20,7 +20,7 @@ class Model_Albums extends ORM{
         $sql = "SELECT id, name, year, image FROM albums order by created desc";
         
         try{
-            $res = db::query(DATABASE::SELECT,$sql)
+            $res = DB::query(DATABASE::SELECT,$sql)
                     ->execute()
                     ->as_array();                  
             
@@ -40,7 +40,7 @@ class Model_Albums extends ORM{
 //        
 //        try{
 //            
-//            return $res = db::query(Database::INSERT,$sql)
+//            return $res = DB::query(Database::INSERT,$sql)
 //                        ->param(':name', $name)
 //                        ->param(':year', $year)
 //                        ->param(':image', $image)

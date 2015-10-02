@@ -23,7 +23,7 @@ class Controller_Admin_News extends Controller_Admin_Base{
         $page = $page = max(1, $this->request->param('page'));
         
         $offset = $per_page*($page-1);        
-        $count = ORM::factory('news')->count_all();
+        $count = ORM::factory('News')->count_all();
         $page_data = array(
             'total_items'       => $count,
             'items_per_page'    => $per_page,
@@ -34,8 +34,7 @@ class Controller_Admin_News extends Controller_Admin_Base{
             'auto_hide'         => true,
             'view'              => 'pagination/basic',
         );
-        
-         
+                
         
         $res = ORM::factory('news')
                 ->order_by('date','DESC')

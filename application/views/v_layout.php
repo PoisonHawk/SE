@@ -12,7 +12,7 @@
                 <link rel="stylesheet" href="/css/simpleplayer.css" type="text/css" media="screen"> 
                 <link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css" type="text/css" media="screen"> 
                 <?php foreach($styles as $style): ?>
-                    <?php echo html::style($style);?>
+                    <?php echo HTML::style($style);?>
                 <?php endforeach; ?>
                 
 		<script src="/js/jquery-1.6.3.min.js" type="text/javascript"></script>
@@ -32,7 +32,7 @@
 		<script type="text/javascript" src="/js/tms_presets.js"></script>
                 <!--<script type="text/javascript" src="/js/simpleplayer/jquery.simpleplayer.min.js"></script>-->
                 <?php foreach($scripts as $script): ?>
-                    <?php echo html::script($script);?>
+                    <?php echo HTML::script($script);?>
                 <?php endforeach; ?> 
 		<script type="text/javascript">
                   
@@ -70,7 +70,7 @@
 	<body id="page1">
             <?php if(Auth::instance()->logged_in('admin')):?>
             <div id="admin_panel">
-                <span><a href="/admin/<?php echo utf8::strtolower($current);?>">Админка</a></span>
+                <span><a href="/admin/<?php echo UTF8::strtolower($current);?>">Админка</a></span>
                 <div style="float:right">
                     <span><?php echo Auth::instance()->get_user();?></span>
                     <span><a href="/login/logout">Выйти</a></span>

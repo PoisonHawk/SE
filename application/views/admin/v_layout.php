@@ -9,10 +9,10 @@
         <!--<script src="/js/jquery-1.10.2.js"></script>-->       
        
         <?php foreach($styles as $style):?>
-            <?php echo html::style($style);?>
+            <?php echo HTML::style($style);?>
         <?php endforeach;?>
         <?php foreach($scripts as $script):?>
-            <?php echo html::script($script);?>
+            <?php echo HTML::script($script);?>
         <?php endforeach;?>
     </head>
     <body>
