@@ -139,6 +139,8 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             
         }
         
+        
+        $view->list_albums = ORM::factory('Albums')->order_by('created', 'desc')->find_all();
         $this->template->content = $view;
         
     }

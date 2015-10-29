@@ -6,6 +6,7 @@ return array(
            'index'     =>'Главная',
            'audio'     =>'Аудио',
            'gallery'   => 'Галерея',
+           'band'      => 'Группа',
            'contacts'  => 'Контакты'
         ),
     ),

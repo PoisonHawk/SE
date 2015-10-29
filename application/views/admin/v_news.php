@@ -1,6 +1,4 @@
-<script>
-    
-</script>    
+
 <div id="news" class="container">
     <table class="table table-striped">
         <thead>
