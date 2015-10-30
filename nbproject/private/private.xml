@@ -5,12 +5,13 @@
         <group>
             <file>file:/home/yevgen/projects/se/SE/application/views/v_page.php</file>
             <file>file:/home/yevgen/projects/se/SE/application/views/admin/v_band/v_member.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/views/v_band.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/classes/uploadimage.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/v_layout.php</file>
             <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/Admin/Band.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/views/admin/v_band/v_members.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/classes/Model/Page.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/views/admin/v_band/v_index.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/admin/v_albums.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/Admin/Audio.php</file>
             <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/Band.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/admin/v_layout.php</file>
         </group>
     </open-files>
 </project-private>

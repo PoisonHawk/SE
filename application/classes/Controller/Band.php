@@ -11,7 +11,7 @@ class Controller_Band extends Controller_Base{
                 ->as_array();
         
         
-        $sql = 'SELECT alias, title FROM pages WHERE uri = \'member\' AND active= 1';
+        $sql = 'SELECT alias, title, image FROM pages WHERE uri = \'member\' AND active= 1 ORDER BY weight DESC, title ASC ';
         $links = db::query(1, $sql)
                 ->execute()
                 ->as_array('alias');
@@ -28,6 +28,18 @@ class Controller_Band extends Controller_Base{
     }
     
     public function action_member(){
+        
+        $alias = $this->request->param('id');
+        
+        $member = new Model_Page(array('alias' => $alias));
+        
+        if (!$member->loaded()) {
+            throw new HTTP_Exception_404('Страница не найдена');
+        }
+        
+        $view = new View('v_member');
+        $view->member = $member;
+        $this->template->content = $view;
         
     }
 }    
