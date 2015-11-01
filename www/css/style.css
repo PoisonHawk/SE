@@ -124,7 +124,7 @@ h1 a {
 	float:left; 
 	position:relative;
 	background:url(../images/menu-li-line.png) no-repeat left top;
-	padding:5px 33px 0 34px;
+	padding:5px 16px 0 16px;
 }
 .menu li.item {background:none; padding-left:46px}
 .menu li.item-1 {padding-right:34px; padding-left:39px}

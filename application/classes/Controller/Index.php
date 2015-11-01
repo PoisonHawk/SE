@@ -16,8 +16,10 @@ class Controller_index extends Controller_Base
        $t = new Model_Tours();
        $tours = $t->getTours();
        
-       $content = View::factory('v_index', array('news'=>$last_news,'tours'=>$tours));
+       $last_video = ORM::factory('Video')->order_by('created', 'Desc')->limit(1)->find();
        
+       $content = View::factory('v_index', array('news'=>$last_news,'tours'=>$tours, 'last_video' => $last_video));
+              
        $this->template->title = $this->title;
        $this->template->content = $content;
     }

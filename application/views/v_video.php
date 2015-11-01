@@ -1,54 +1,35 @@
-    </div>
+</div>
 </header> 
 <div id="content">  
-<section id="content"><div class="ic"></div>
-    <div class="main">
-        <div class="content-padding-2">
-            <div class="container_12">
-                <div class="wrapper">
-                    <div class="grid_12">
-                        <div class="padding-grid-1">
-                                <h3 class="letter">Наша <strong>Дискография</strong></h3>
-                        </div>
-                        <?php if(isset($albums)):?>                      
-                        <?php foreach($albums as $album):?>                        
-                        <div class="wrapper p3">
-                            <article class="grid_4 alpha">
-                                    <div class="padding-grid-2">
-                                            <div class="wrapper">
-                                                <figure class="style-img-2 fleft"><a href="#"><img width="252" src="/uploads/<?php echo $album['image']?>"  alt=""></a></figure>
-                                            </div>
-                                    </div>
-                            </article>
-                            <article class="grid_8 alpha">
-                                    <div class="padding-grid-2">
-                                            <h4 class="margin-none indent-top1"><strong><?php echo $album['year']?>.</strong>  <?php echo $album['name']?></h4>
-                                            <!--<p class="prev-indent-bot">Lorem ipsum dolor consctetur adipisicing elitdo eusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
-                                            <div class="wrapper">
-                                                    <ul class="list-1 fleft wrapper">
-                                                         <?php $count = 1;?>
-                                                        <?php foreach($album['tracks'] as $track):?>                                                          
-                                                        <li>
-                                                            <a href="#"><?php echo $count<10? '0'.$count: $count?>. <?php echo $track['name']; ?></a>
-                                                            <a href="/audios/<?php echo $track['file']?>" title="Play &quot;<?php echo $track['name']; ?>&quot;" class="sm2_button fright"><?php echo $track['name']; ?></a>               
-                                                                <?php $count += 1;?>
-                                                        </li>    
-                                                        <?php endforeach;?>  
-                                                    </ul>
-                                            </div>
-                                    </div>
-                            </article>
-                        </div>
-                        <?php endforeach;?>
-                        <?php endif;?>
-                        
-                                    </div>
+    <section id="content"><div class="ic"></div>
+        <div class="main">
+            <div class="content-padding-2">
+                <div class="container_12">
+                    <div class="wrapper">
+                        <div class="grid_12">
+                            <div>
+                                <a href="/videos?type=music"><h3>Music Video</h3></a>
+                                <a href="/videos?type=playthrough"><h3 class="letter">Playthrough</h3></a>
+                                <a href="/videos?type=live"><h3 class="letter">Live</h3></a>
                             </div>
-                    </div>
-            </div>
-    </div>
-    <div class="block"></div>
-    
-</section>
 
-  
+                            <?php if (isset($videos)): ?>                      
+                                <?php foreach ($videos as $video): ?>
+
+                                    <div class="wrapper">
+                                                <!--<figure class="style-img-2 fleft"><a class="lightbox-image" href="video/video_AS3.swf?width=495&amp;height=275&amp;fileVideo=intro06.flv" data-gal="prettyVideo[prettyVideo]"><img src="images/page1-img2.jpg"  alt=""></a></figure>-->
+                                        <iframe type="text/html" width="640" height="360" src="http://www.youtube.com/embed/<?php echo $video->videocode ?>" frameborder="0"></iframe>
+                                    </div>
+                                    <br>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block"></div>
+
+    </section>
+

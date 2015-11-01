@@ -3,9 +3,12 @@
     <head>
         <title><?php echo $title; ?></title>
         <link href="/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/css/bootstrap.css" rel="stylesheet">
+        <!--
+        --><link href="/css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css">
-        <script src="/js/jquery-2.1.0.min.js"></script>        
+        <script src="/js/jquery-2.1.0.min.js"></script>     
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
         <!--<script src="/js/jquery-1.10.2.js"></script>-->       
 
         <?php foreach ($styles as $style): ?>
@@ -36,15 +39,28 @@
                         <ul class="nav navbar-nav">
                             <li><a href="/admin/news">Новости</a></li>
                             <li><a href="/admin/tours">Туры</a></li>
-                            <li><a href="/admin/audio">Аудио</a></li>
-                            <li><a href="/admin/gallery">Галлерея</a></li>    
-                            <li><a href="/admin/band">Группа</a></li>
-                            <li><a href='/admin/band/members'>Участники</a></li>
+                            <li class="dropdown">
+                                <a  class="dropdown-toggle" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Медиа <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/admin/audio">Аудио</a></li>
+                                    <li><a href="/admin/video">Видео</a></li> 
+                                    <li><a href="/admin/gallery">Галлерея</a></li>           
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="/admin/band" class="dropdown-toggle" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Группа <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/admin/band">Инфо</a></li>
+                                    <li><a href='/admin/band/members'>Участники</a></li>                      
+                                </ul>
+                            </li>
+
+
                         </ul> 
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#"><span class="glyphicon glyphicon-user"><?php echo $username; ?></span></a></li>
                             <li><a href="/login/logout" alt="Выйти"><span class="glyphicon glyphicon-log-out"></span></a></li>
-                            
+
                         </ul>
 
                     </div>    
@@ -59,8 +75,8 @@
                 </footer>
             </div>   
         </div>    
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
+        <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+        <!--<script src="/js/bootstrap.min.js"></script>-->
         <script src="/js/bootstrap.js"></script>
         <script src="/js/jquery-ui-1.10.4.custom.js"></script>
     </body>
