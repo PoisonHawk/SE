@@ -38,8 +38,8 @@
                             </div>-->
                             <dl class="list-4">
                                     <!--<dt>8901 Marmora Road,<br>Glasgow, D04 89GR.</dt>-->
-                                    <dd>Телефон: +7 915 620 95 68</dd>
-                                    <dd>E-mail: <a class="link" href="#">sympuls-e@gmail.com</a></dd>
+                                    <dd>Телефон: <?php echo $phone?></dd>
+                                    <dd>E-mail: <a class="link" href="#"><?php echo $mail?></a></dd>
                             </dl>
                         </div>
                     </article>	
