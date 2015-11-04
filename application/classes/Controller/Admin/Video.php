@@ -1,49 +1,51 @@
 <?php
 
-class Controller_Admin_Video extends Controller_Admin_Base{
-    
+class Controller_Admin_Video extends Controller_Admin_Base {
+
     public $categories = array(
-        'live'=> 'Live',
+        'live' => 'Live',
         'playthrough' => 'Playthrough',
-        'music'=> 'Music Video',
+        'music' => 'Music Video',
     );
-        
-    public function action_index(){
-               
-        $per_page = 10;
-        $page = $page = max(1, $this->request->param('page'));
-        
-        $offset = $per_page*($page-1);        
+
+    public function action_index() {
+
+        $per_page = 5;
+//        $page = $page = max(1, $this->request->param('page'));
+        $page = max(1, arr::get($_GET, 'page', 1));
+
+        $offset = $per_page * ($page - 1);
         $count = ORM::factory('Video')->count_all();
         $page_data = array(
-            'total_items'       => $count,
-            'items_per_page'    => $per_page,
-            'curent_page'       => array(
-                'source'        => 'route',
-                'key'           => 'page', 
+            'total_items' => $count,
+            'items_per_page' => $per_page,
+            'curent_page' => array(
+                'source' => 'query_string',
+                'key' => 'page',
             ),
-            'auto_hide'         => true,
-            'view'              => 'pagination/basic',
+            'auto_hide' => true,
+            'view' => 'pagination/basic',
         );
-                
-        
+
+
         $res = ORM::factory('Video')
-                ->order_by('created','DESC')
+                ->order_by('created', 'DESC')
                 ->limit($per_page)
-                ->offset($offset)                
+                ->offset($offset)
                 ->find_all();
-        
-        $pagination = Pagination::factory($page_data);
-        
+
+        $pagination = Pagination::factory($page_data)
+                ->route_params(array(
+            'controller' => Request::current()->controller(),
+            'action' => Request::current()->action()));
+
         $content = View::factory('admin/v_video/v_index');
         $content->videos = $res;
         $content->categories = $this->categories;
         $content->pagination = $pagination;
         $this->template->content = $content;
-        
     }
-    
-    
+
     public function action_item() {
 
         $id = $this->request->param('id');
@@ -55,19 +57,19 @@ class Controller_Admin_Video extends Controller_Admin_Base{
         }
 
         $errors = array();
-        
+
         $view = new View('admin/v_video/v_item');
 
         if ($this->request->method() === Request::POST) {
-            
+
             $video->title = $this->request->post('title');
-            
-            $link = explode('/',$this->request->post('link'));
-           
+
+            $link = explode('/', $this->request->post('link'));
+
             $video->videocode = end($link);
             $video->link = $this->request->post('link');
             $video->category = $this->request->post('category');
-            
+
             if ($id) {
                 $video->updated = date('Y-m-d H:i:s', time());
             } else {
@@ -87,9 +89,10 @@ class Controller_Admin_Video extends Controller_Admin_Base{
                 $this->redirect('/admin/video/');
             }
         }
-        
+
         $view->categories = $this->categories;
         $view->video = $video;
         $this->template->content = $view;
     }
+
 }

@@ -4,9 +4,9 @@
         <thead>
             <tr>
                 <th>#</th>                
-                <th>Title</th>
-                <!--<th>Date</th>-->
-                <th>Category</th>
+                <th>Заголовок</th>
+                <th>Добавлено</th>
+                <th>Категория</th>
             </tr>
         </thead>
         <tbody>
@@ -14,14 +14,14 @@
                 <?php foreach ($videos as $video): ?>
                     <tr>
                         <td> 
-                            <?php echo $video->id; ?> 
+                            <img src="http://img.youtube.com/vi/<?php echo $video->videocode ?>/1.jpg" width="100">
                         </td>
                         <td>
                             <a href=""><?php echo $video->title; ?></a>    
                         </td>
-<!--                        <td>
+                        <td>
                             <?php echo $video->created ?>   
-                        </td>-->
+                        </td>
                         <td>
                             <?php echo $video->category ?>   
                         </td>

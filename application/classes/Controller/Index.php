@@ -7,8 +7,6 @@ class Controller_index extends Controller_Base
     public function action_index()
     {
        
-     
-       
        $news = new Model_News();
        
        $last_news = $news->getNews();

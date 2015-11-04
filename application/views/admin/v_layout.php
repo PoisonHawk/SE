@@ -54,7 +54,7 @@
                                     <li><a href='/admin/band/members'>Участники</a></li>                      
                                 </ul>
                             </li>
-
+                            <li><a href="/admin/settings">Настройки</a></li>
 
                         </ul> 
                         <ul class="nav navbar-nav navbar-right">
