@@ -9,7 +9,9 @@ class Controller_Admin_Settings extends Controller_Admin_Base {
         $view = new View('admin/v_settings');
 
         $errors = array();
-
+        
+        $range = range(3,10);
+        
         if ($this->request->method() === Request::POST) {
 
             Database::instance()->begin();
@@ -34,6 +36,14 @@ class Controller_Admin_Settings extends Controller_Admin_Base {
                             ->param(':mail', $mail)
                             ->execute();
                 }
+                
+                $count_news = arr::get($_POST, 'count_news', 3);
+                
+                DB::query(1, 'update settings set value = :count_news where name = \'count_news\'')
+                        ->param(':count_news', $count_news)
+                        ->execute();
+
+                
             } catch (Exception $e) {
                 Database::instance()->rollback();
                 throw $e;
@@ -65,8 +75,18 @@ class Controller_Admin_Settings extends Controller_Admin_Base {
 
         $mail = isset($res[0]['value']) ? $res[0]['value'] : '';
 
+        
+        //count news
+        $sql = 'select value from settings where name = \'count_news\'';
+
+        $res = DB::query(1, $sql)->execute()->as_array();
+
+        $count_news = isset($res[0]['value']) ? $res[0]['value'] : '';
+        
         $view->phone = $phone;
         $view->mail = $mail;
+        $view->counts = array_combine(range(3,10),range(3,10));
+        $view->count_news = $count_news;
 
         $this->template->content = $view;
     }

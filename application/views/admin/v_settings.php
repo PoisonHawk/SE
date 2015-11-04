@@ -21,6 +21,14 @@
                     <?php echo Form::input('mail', $mail, array('id' => 'mail', 'class' => 'form-control')) ?>       
                 </div>
             </fieldset>
+            
+            <fieldset>
+                <legend>Главная страница</legend>
+                <div class='form-group'>
+                    <?php echo Form::label('count_news', 'Количество новостей:') ?>        
+                    <?php echo Form::select('count_news', $counts, $count_news, array('id' => 'count_news', 'class' => 'form-control')) ?>       
+                </div>
+            </fieldset>
 
             <div class="form-group">
                 <?php echo Form::submit('send', 'Сохранить', array('class' => 'btn btn-primary')) ?>

@@ -28,13 +28,13 @@
                                     <h3 class="letter">Последние <strong>Новости</strong></h3>
                                     <?php foreach ($news as $new): ?>
                                         <div class="wrapper img-indent-bot1">
-                                            <time class="time time-stule-1" datetime="<?php echo date('Y-d-m', $new['date']) ?>"> <strong class="text-1"><?php echo date('d', $new['date']); ?></strong><strong class="text-2"><?php echo date('M', $new['date']); ?></strong></time>
+                                            <time class="time time-stule-1" datetime="<?php echo date('Y-d-m', $new->date) ?>"> <strong class="text-1"><?php echo date('d', $new->date); ?></strong><strong class="text-2"><?php echo date('M', $new->date); ?></strong></time>
                                             <div class="extra-wrap">
                                                 <h6>
-                                                    <?php echo $new['title']; ?>
+                                                    <?php echo $new->title; ?>
                                                 </h6>
                                                 <div class="indent-top">
-                                                    <?php echo $new['description']; ?>
+                                                    <?php echo $new->description; ?>
                                                 </div>
                                             </div>
                                         </div>
