@@ -29,6 +29,26 @@
                     <?php echo Form::select('count_news', $counts, $count_news, array('id' => 'count_news', 'class' => 'form-control')) ?>       
                 </div>
             </fieldset>
+            
+            <fieldset>
+                <legend>Cоциальные сети</legend>
+                <div class='form-group'>
+                    <?php echo Form::label('social_vk', 'Вконтакте:') ?>        
+                    <?php echo Form::input('social_vk', $social_vk, array('id' => 'social_vk', 'class' => 'form-control')) ?>       
+                </div>
+                <div class='form-group'>
+                    <?php echo Form::label('social_fb', 'Facebook:') ?>        
+                    <?php echo Form::input('social_fb', $social_fb, array('id' => 'social_fb', 'class' => 'form-control')) ?>       
+                </div>
+                <div class='form-group'>
+                    <?php echo Form::label('social_tw', 'Twitter:') ?>        
+                    <?php echo Form::input('social_tw', $social_tw, array('id' => 'social_tw', 'class' => 'form-control')) ?>       
+                </div>
+                <div class='form-group'>
+                    <?php echo Form::label('social_yt', 'Youtube:') ?>        
+                    <?php echo Form::input('social_yt', $social_yt, array('id' => 'social_yt', 'class' => 'form-control')) ?>       
+                </div>
+            </fieldset>
 
             <div class="form-group">
                 <?php echo Form::submit('send', 'Сохранить', array('class' => 'btn btn-primary')) ?>

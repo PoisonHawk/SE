@@ -173,9 +173,19 @@
                                             <div class="wrapper">
                                                 <span class="footer-link"><span>Sympuls-e &copy; <?php echo date('Y', time()) ?></span> </span>
                                                 <ul class="list-services">
-                                                    <li><a class="tooltips n-1 vk" title="VK" href="http://vk.com/club3429301"></a></li>
-                                                    <li><a class="tooltips n-2 fb" title="Facebook" href="https://www.facebook.com/pages/Sympuls-e/193344310750093"></a></li>
-                                                    <li class="last"><a class="tooltips n-3 yt" title="Youtube" href="http://www.youtube.com/user/DmitrySympuls"></a></li>
+                                                    <?php if(isset($social_vk) and $social_vk !== ''):?>
+                                                        <li><a class="tooltips n-1 vk" title="VK" href="<?php echo $social_vk?>"></a></li>
+                                                    <?php endif;?>
+                                                    <?php if(isset($social_vk) and $social_fb !== ''):?>
+                                                        <li><a class="tooltips n-2 fb" title="Facebook" href="<?php echo $social_fb?>"></a></li>
+                                                    <?php endif;?>
+                                                    <?php if(isset($social_tw) and $social_tw !== ''):?>
+                                                        <li><a class="tooltips n-2 tw" title="Twitter" href="<?php echo $social_tw?>"></a></li>
+                                                    <?php endif;?>
+                                                        <?php if(isset($social_yt) and $social_yt !== ''):?>
+                                                        <li><a class="tooltips n-2 yt" title="Twitter" href="<?php echo $social_yt?>"></a></li>
+                                                    <?php endif;?>
+                                                    
                                                 </ul>
                                             </div>
                                             <div class="aligncenter">
