@@ -47,14 +47,14 @@
                                     <h3>Предстоящие <strong>Выступления</strong></h3>
                                     <?php foreach ($tours as $tour): ?>
                                         <div class="wrapper img-indent-bot2 tour">
-                                            <time class="time time-stule-2" datetime="<?php echo date('Y-d-m', $tour['date']) ?>"> <strong class="text-3"><?php echo date('d', $tour['date']); ?></strong><strong class="text-4"><?php echo date('M', $tour['date']); ?></strong></time>
+                                            <time class="time time-stule-2" datetime="<?php echo date('Y-d-m', $tour->date) ?>"> <strong class="text-3"><?php echo date('d', $tour->date); ?></strong><strong class="text-4"><?php echo date('M', $tour->date); ?></strong></time>
                                             <div class="extra-wrap">
-                                                <h4 class="indent-top"><?php echo $tour['fest']; ?></h4>
-                                                <?php echo $tour['club'] ?> 
-                                                <?php echo $tour['city'] ?>
+                                                <h4 class="indent-top"><?php echo $tour->city; ?></h4>
+                                                <?php echo $tour->club ?>,&nbsp; 
+                                                <?php echo $tour->fest ?>
                                             </div>
-                                            <?php if (!empty($tour['image'])): ?>
-                                                <img id="<?php echo $tour['id'] ?>" class='preview' src="/uploads/<?php echo $tour['image'] ?>" width="500">
+                                            <?php if (!empty($tour->image)): ?>
+                                                <img id="<?php echo $tour->id ?>" class='preview' src="/uploads/<?php echo $tour->image ?>" width="500">
                                             <?php endif; ?>    
                                         </div>
                                     <?php endforeach; ?>

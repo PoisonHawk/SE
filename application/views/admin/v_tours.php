@@ -22,16 +22,16 @@
                         <?php echo date("d.m.Y",$tour['date']);?>   
                     </td>
                     <td>
-                        <a href=""><?php echo $tour['city'];?></a>    
+                        <?php echo $tour['city'];?>    
                     </td>
                     <td>
-                        <a href=""><?php echo $tour['fest'];?></a>    
+                        <?php echo $tour['fest'];?>   
                     </td>
                     <td>
-                        <a href=""><?php echo $tour['club'];?></a>    
+                        <?php echo $tour['club'];?> 
                     </td>
                     <td>
-                        <a class="btn btn-warning" href="/admin/tours/processtour/<?php echo $tour['id'];?>"><i class="icon-edit"></i>Edit</a>
+                        <a class="" href="/admin/tours/processtour/<?php echo $tour['id'];?>"><i class="icon-edit"></i>Редактировать</a>
                     </td>
                     <td>
                         <a class="btn btn-danger" href="/admin/tours/delete/<?php echo $tour['id'];?>">Delete</a>
@@ -45,5 +45,5 @@
     </table>    
         <br/>
         <br/>
-    <a class="btn btn-success" href="/admin/tours/processtour">Добавить концерт</a>
+    <a class="btn btn-primary" href="/admin/tours/processtour">Добавить концерт</a>
 </div> 

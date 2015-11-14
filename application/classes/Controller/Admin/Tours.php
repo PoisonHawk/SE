@@ -35,6 +35,7 @@ class Controller_Admin_Tours extends Controller_Admin_Base{
             $view->fest = $t[0]['fest'];
             $view->club = $t[0]['club'];
             $view->image = $t[0]['image'];
+            $view->event_link = $t[0]['event_link'];
         }
         
         if(isset($_POST['send'])){         
@@ -43,7 +44,18 @@ class Controller_Admin_Tours extends Controller_Admin_Base{
             $city = arr::get($_POST,'city');
             $fest = arr::get($_POST,'fest');
             $club = arr::get($_POST,'club');
+            $event_link = arr::get($_POST, 'event_link', null);
             $file = arr::get($_FILES, 'image');
+            
+            if ($date !== '') {
+                $d = explode('-', $date);
+                $view->date = mktime(0,0,0,$d[1],$d[0],$d[2]);
+            }
+            $view->city = $city;
+            $view->fest = $fest;
+            $view->club = $club;
+//            $view->image = $file;
+            $view->event_link = $event_link;
             
             if (Upload::not_empty($file)) {
                 
@@ -70,16 +82,17 @@ class Controller_Admin_Tours extends Controller_Admin_Base{
             $post->rule('date','not_empty')
                  ->rule('city','not_empty')
                  ->rule('fest','not_empty')
-                 ->rule('club','not_empty');
+                 ->rule('club','not_empty')
+                 ->rule('event_link', 'url');
             
             if($post->check()){               
                 
                  
                  if(isset($id)){
-                    $tour->processTour($date, $city, $fest, $club, $image, $id); 
+                    $tour->processTour($date, $city, $fest, $club,$event_link, $image, $id); 
                  }
                  else{
-                    $tour->processTour($date, $city, $fest, $club, $image); 
+                    $tour->processTour($date, $city, $fest, $club, $event_link, $image); 
                  }
                  
                  $this->redirect('/admin/tours');

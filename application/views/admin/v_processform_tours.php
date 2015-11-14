@@ -39,7 +39,13 @@
                     <input type="text" name="club" id="club" class="form-control" value="<?php echo isset($club) ? $club : '' ?>"/>
                 </div>    
             </div>
-
+            
+            <div class='control-group'>
+                <label class="control-label" for="event_link">Ссылка на событие</label>
+                <div class="controls">
+                    <input type="text" name="event_link" id="event_link" class="form-control" value="<?php echo isset($event_link) ? $event_link : '' ?>"/>
+                </div>    
+            </div>
 
             <?php if (isset($image)): ?>
                 <img src="/uploads/<?php echo $image; ?>" width="160">

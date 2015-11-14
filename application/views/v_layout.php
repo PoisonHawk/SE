@@ -148,7 +148,7 @@
                                                     <li ><a class="<?php echo $current == 'Videos' ? 'active' : '' ?>" href="/videos">Videos</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a class="<?php echo $current == 'Shows' ? 'active' : '' ?>" href="/tours">Shows</a>
+                                            <li><a class="<?php echo $current == 'Shows' ? 'active' : '' ?>" href="/shows">Shows</a>
                                             <li><a class="<?php echo $current == 'Contacts' ? 'active' : '' ?>" href="/contacts">Contacts</a>
                                         </ul>                                        
                                         <div class="clear"></div>
