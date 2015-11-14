@@ -9,11 +9,15 @@ class Controller_Base extends Controller_Template
     
     public function before() {
         parent::before();
+          
+        if (!in_array($this->request->controller(), array('Videos', 'Band', 'Contacts'))) {
+//            die('Ты не имеешь права смотреть другие страницы!');
+        }
         
         $site_name = 'Sympuls-e'; 
         
         $menu = Kohana::$config->load('settings.site.menu');
-        $current =  $this->request->controller();
+        $current = $this->request->controller();
         
         $this->template->title=$this->title;
         
@@ -26,7 +30,7 @@ class Controller_Base extends Controller_Template
         $this->template->site_name = $site_name;
         
         $this->template->styles = $this->styles;
-        $this->template->scripts = $this->scripts;
+        $this->template->scripts = $this->scripts;        
     }
     
 }

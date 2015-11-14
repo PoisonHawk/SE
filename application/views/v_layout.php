@@ -4,8 +4,8 @@
         <title>Sympulse-e | <?php echo $title; ?></title>
 
         <meta charset="utf-8">
-        <link href="/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/css/bootstrap.css" rel="stylesheet">
+        <!--        <link href="/css/bootstrap.min.css" rel="stylesheet">
+                <link href="/css/bootstrap.css" rel="stylesheet">-->
         <link rel="icon" type="image/vnd.microsoft.icon" href="/se2.ico">
         <link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen">
         <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen">
@@ -13,16 +13,12 @@
         <link rel="stylesheet" href="/css/prettyPhoto.css" type="text/css" media="screen">  
         <link rel="stylesheet" href="/css/simpleplayer.css" type="text/css" media="screen"> 
         <link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css" type="text/css" media="screen"> 
-        
+
         <?php foreach ($styles as $style): ?>
             <?php echo HTML::style($style); ?>
         <?php endforeach; ?>
 
         <script src="/js/jquery-1.6.3.min.js" type="text/javascript"></script>
-        <!--<script src="/js/cufon-yui.js" type="text/javascript"></script>-->
-        <!--<script src="/js/cufon-replace.js" type="text/javascript"></script>-->
-        <!--<script src="/js/Vegur_700.font.js" type="text/javascript"></script>-->
-        <!--<script src="/js/Vegur_400.font.js" type="text/javascript"></script>--> 
         <script src="/js/FF-cash.js" type="text/javascript"></script> 
         <script src="/js/script.js" type="text/javascript"></script>
         <script type="text/javascript" src="/js/easyTooltip.js"></script>
@@ -83,6 +79,45 @@
         <div class="extra">
             <!--==============================header=================================-->
             <header>
+
+                <script>
+                    $(document).ready(function(){
+                        $('ul.menu li').hover(
+                            function(){
+
+                                $(this).children('ul')
+                                        .show();
+                            },
+                            function(){
+                            
+                                $(this).children('ul')
+                                        .hide();
+                            }
+                        )
+                      
+                    })
+                </script>
+                <style>
+                    /*    .menu>li{
+                            position:relative;
+                        }*/
+
+                    .menu .submenu{
+                        position:absolute;
+                        z-index: 999999;
+                        top:30px;
+                        left:0;
+                        display:none;
+                        background:rgba(0,0,0,0.4);
+                    }
+                    
+                    .submenu a {
+                        display:block;
+                        height:15px;
+                        padding: 8px 5px;
+                        color:#666;
+                    }  
+                </style>
                 <div class="main">
                     <div class="bg-1">
                         <h1><a href="/index"><?php echo $site_name; ?></a></h1>
@@ -91,24 +126,31 @@
                         <div class="menu-bg-tail">
                             <div class="menu-bg">
                                 <div class="container_12">
-                                    <div class="grid_12">
-                                        <?php if (isset($menu)): ?>
-                                            <ul class="menu">
-                                                <?php foreach ($menu as $link => $name): ?>
-                                                    <?php if ($link == $current): ?>
-                                                        <li class="item"><a class="active" href="/<?php echo $link ?>"><?php echo $name ?></a></li>
-                                                    <?php else: ?>
-                                                        <li><a href="/<?php echo $link ?>"><?php echo $name ?></a></li>
-                                                    <?php endif; ?>
-                                                <?php endforeach; ?>
-                                                <!--											<li class="item"><a class="active" href="/index">About</a></li>
-                                                                                                                                        <li><a href="audio.html">Audio</a></li>
-                                                                                                                                        <li><a href="video.html">Video</a></li>
-                                                                                                                                        <li><a href="gallery.html">Gallery</a></li>
-                                                                                                                                        <li class="item-1"><a href="tour-dates.html">Tour Dates</a></li>
-                                                                                                                                        <li class="last"><a href="contacts.html">Contacts</a></li>-->
-                                            </ul>
-                                        <?php endif; ?>
+                                    <div class="grid_12">                                        
+                                        <ul class="menu">
+                                            <li ><a class="<?php echo $current == 'Index' ? 'active' : '' ?>" href="/">News</a></li>
+                                            <li ><a class="<?php echo $current == 'Band' ? 'active' : '' ?>" href="/band">Band</a>
+                                                <ul class="submenu">
+                                                    <li ><a class="<?php echo $current == 'Band' ? 'active' : '' ?>" href="/band/">History</a></li>
+                                                    <li ><a class="<?php echo $current == 'Members' ? 'active' : '' ?>" href="/band/members">Members</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="<?php echo $current == 'Audio' ? 'active' : '' ?>" href="/audio">Discography</a></li>
+                                            <li><a class="<?php echo $current == 'Shop' ? 'active' : '' ?>" href="/shop">Shop</a></li>
+                                            <li><a class="<?php echo $current == 'Videos' ? 'active' : '' ?>" href="/videos">Media</a>
+                                                <ul class="submenu">
+                                                    <li><a class="<?php echo $current == 'Gallery' ? 'active' : '' ?>" href="/gallery">Photos</a>
+<!--                                                        <ul class="submenu">
+                                                            <li ><a class="<?php echo $current == 'Gallery' ? 'active' : '' ?>" href="/gallery/live">Live</a></li>
+                                                            <li ><a class="<?php echo $current == 'Gallery' ? 'active' : '' ?>" href="/gallery/promo">Promo</a></li>
+                                                        </ul>-->
+                                                    </li>
+                                                    <li ><a class="<?php echo $current == 'Videos' ? 'active' : '' ?>" href="/videos">Videos</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="<?php echo $current == 'Shows' ? 'active' : '' ?>" href="/tours">Shows</a>
+                                            <li><a class="<?php echo $current == 'Contacts' ? 'active' : '' ?>" href="/contacts">Contacts</a>
+                                        </ul>                                        
                                         <div class="clear"></div>
                                     </div>
                                     <div class="clear"></div>
@@ -146,7 +188,6 @@
                         </div>
                     </div>
                 </footer>
-                <!--<script type="text/javascript"> Cufon.now(); </script>-->
                 </body>
                 </html>
 

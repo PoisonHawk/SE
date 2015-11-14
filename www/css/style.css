@@ -118,7 +118,7 @@ h1 a {
 	padding:10px 0 10px 0; 
 	width:100%;
 	height:40px;
-	overflow:hidden;
+	/*overflow:hidden;*/
 }
 .menu li {
 	float:left; 
@@ -651,8 +651,8 @@ footer {
 	}
 		.list-services li a {
 			display:inline-block;
-			width:51px;
-			height:51px;
+			width:36px;
+			height:41px;
 /*			background:url(../images/list-services.png) no-repeat left top;*/
 		}
 /*		.list-services li a.n-1 {background-position:0 0px}
@@ -662,6 +662,7 @@ footer {
                 .list-services li a.vk {background:url(/images/B.png) no-repeat left top;}
 		.list-services li a.fb {background:url(/images/f.png) no-repeat left top;}
 		.list-services li a.yt {background:url(/images/You.png) no-repeat left top;}
+                .list-services li a.tw {background:url(/images/t.png) no-repeat left top;}
 		.list-services li.last {padding-right:0px}
 .block {height:104px}
 .extra {

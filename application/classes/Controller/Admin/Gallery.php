@@ -184,7 +184,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
                     
                     ->save($path_thumbs.$filename);
             
-             unlink($image);
+             unlink($file);
  
             return $filename;
             

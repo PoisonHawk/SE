@@ -1361,7 +1361,7 @@ class Kohana_ORM extends Model implements serializable {
 		{
 			$this->check($validation);
 		}
-
+               
 		if (empty($this->_changed))
 		{
 			// Nothing to update

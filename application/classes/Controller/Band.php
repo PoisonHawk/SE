@@ -12,7 +12,7 @@ class Controller_Band extends Controller_Base{
         
         
         $sql = 'SELECT alias, title, image FROM pages WHERE uri = \'member\' AND active= 1 ORDER BY weight DESC, title ASC ';
-        $links = db::query(1, $sql)
+        $links = DB::query(1, $sql)
                 ->execute()
                 ->as_array('alias');
                
@@ -27,6 +27,21 @@ class Controller_Band extends Controller_Base{
         
     }
     
+    public function action_members(){
+        
+        $members = ORM::factory('Page')
+                ->where('uri','=','member')
+                ->and_where('active', '=', '1')
+                ->order_by('weight', 'desc')
+                ->order_by('title', 'asc')
+                ->find_all();
+            
+        $view = new View('v_band/v_members');
+        $view->members = $members;
+        $this->template->content =  $view;
+        
+    }
+    
     public function action_member(){
         
         $alias = $this->request->param('id');
@@ -37,7 +52,7 @@ class Controller_Band extends Controller_Base{
             throw new HTTP_Exception_404('Страница не найдена');
         }
         
-        $view = new View('v_member');
+        $view = new View('v_band/v_member');
         $view->member = $member;
         $this->template->content = $view;
         

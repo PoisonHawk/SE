@@ -1,7 +1,7 @@
 <div class="slider-wrapper">
     <div class="slider">
         <ul class="items">
-            <li><img src="/images/sympuls-e_1.jpg" style="width:960px;height:368px"></li>
+            <li><img src="/images/sympuls-e_1.jpg" width="960" height="368"></li>
             <li><img src="/images/sympuls-e_2.jpg" style="width:960px;height:368px"></li>
                 <!--<li><img src="images/slider-img1.jpg" alt="" /></li>-->
             <!--								<li>
@@ -30,10 +30,10 @@
                                         <div class="wrapper img-indent-bot1">
                                             <time class="time time-stule-1" datetime="<?php echo date('Y-d-m', $new->date) ?>"> <strong class="text-1"><?php echo date('d', $new->date); ?></strong><strong class="text-2"><?php echo date('M', $new->date); ?></strong></time>
                                             <div class="extra-wrap">
-                                                <h6>
+                                                <h6 class="new-title">
                                                     <?php echo $new->title; ?>
                                                 </h6>
-                                                <div class="indent-top">
+                                                <div class="indent-top new-text">
                                                     <?php echo $new->description; ?>
                                                 </div>
                                             </div>
@@ -107,14 +107,14 @@
                                 <a href="/videos">все видео</a>
                             </div>
                         </article>
-                        <article class="grid_4 alpha">
+<!--                        <article class="grid_4 alpha">
                             <div class="padding-grid-2">
                                 <h3 class="letter prev-indent-bot1">Кратко <strong>О Нас</strong></h3>
                                 <h6>Sed ut perspiciatis unde omnis</h6>
                                 Sympuls-e рязанская melodic death metal группа. Фирменным стилем являются скоростные техничные и в то же время мелодичные риффы вкупе с женским экстримальным вокалом.
                                 Ориентируясь на такие группы как Arch Enemy, Children Of Bodom, Wintersun, Norther, Soilwork, Inflames группа не зацикливается на одном жанре, превнося в свое творчество новые веяния.
                             </div>
-                        </article>
+                        </article>-->
                     </div>
                 </div>
             </div>
@@ -151,7 +151,17 @@
         z-index:101 !important;   /* а его выше фонового блока*/
     }
 
-
+    .new-title{
+        font-size: 1.6em;
+        
+    }
+    
+    .new-text,
+    .new-text p{
+        font-size: 1.3em;
+        line-height: 1.3;
+        margin: 14px 0;
+    }
 
 
 </style>    

@@ -4,11 +4,13 @@ return array(
     'site' => array(
         'menu' => array(
             'index' => 'News',            
-            'band' => 'Band',
+            'band' => array(
+                'band'=>'Band',
+                'members' => 'Members'),
             'audio' => 'Discography',
-            'shop' => 'Shop',
+//            'shop' => 'Shop',
             'media' => 'Media',
-            'shows' => 'Shows',
+//            'shows' => 'Shows',
 //           'gallery'   => 'Галерея',
             'contacts' => 'Contacts'
         ),

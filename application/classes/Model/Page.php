@@ -2,6 +2,9 @@
 
 class Model_Page extends ORM{
     
+    protected $_serialize_columns = array('social');
+
+    
     public function rules(){
         return array(
             'title' => array(

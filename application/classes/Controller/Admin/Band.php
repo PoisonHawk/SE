@@ -3,11 +3,12 @@
 class Controller_Admin_Band extends Controller_Admin_Base {
 
     public $errors = array();
+    public $social = array('vk'=>null, 'fb'=>null);
 
     public function before() {
 //        echo phpinfo();
         parent::before();
-
+               
         $scripts = array(
             '/js/tinymce/tinymce.min.js',
         );
@@ -33,10 +34,12 @@ class Controller_Admin_Band extends Controller_Admin_Base {
             $band->content = arr::get($_POST, 'content');
             $band->active = arr::get($_POST, 'active', 0);
             $band->uri = 'band';
-
+            $band->alias = 'se';
+            $band->title = 'se';
             try {
                 $band->save();
-            } catch (Exception $e) {
+            } catch (Exception $e) { 
+                throw new Exception($e->getMessage());
                 $this->errors[] = 'Невозможно сохранить изменения';
             }
 
@@ -47,8 +50,14 @@ class Controller_Admin_Band extends Controller_Admin_Base {
                 $this->redirect('/admin/band');
             }
         }
-
+        
+        $members = ORM::factory('Page')
+                ->where('uri', '=', 'member')
+                ->order_by('title', 'asc')
+                ->find_all();
+        
         $view->band = $band;
+        $view->members = $members;
         $this->template->content = $view;
     }
 
@@ -81,13 +90,14 @@ class Controller_Admin_Band extends Controller_Admin_Base {
         $view = new View('admin/v_band/v_member');
 
         if ($this->request->method() === Request::POST) {
-
+            
             $member->title = $this->request->post('title');
             $member->alias = $this->request->post('alias');
             $member->active = $this->request->post('active');
             $member->content = $this->request->post('content');
             $member->uri = 'member';
-            $member->weight = $this->request->post('weight');
+            $member->weight = $this->request->post('weight'); 
+            $member->social = $this->request->post('social');
 
             if (uploadimage::notEmpty($_FILES['image'])) {
 

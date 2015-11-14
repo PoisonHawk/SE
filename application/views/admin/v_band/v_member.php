@@ -75,6 +75,21 @@
             </div>
 
             <div class='form-group'>
+                <?php echo Form::label('vk', 'Вконтакте: ') ?>
+                <?php echo Form::input('social[vk]', isset($member->social['vk'])?$member->social['vk']:null, array('id' => 'vk', 'class' => 'form-control')) ?>
+                <br>
+                <?php echo Form::label('fb', 'Facebook: ') ?>
+                <?php echo Form::input('social[fb]', isset($member->social['fb'])?$member->social['fb']:null, array('id' => 'fb', 'class' => 'form-control')) ?>
+                <br>
+                <?php echo Form::label('tw', 'Twitter: ') ?>
+                <?php echo Form::input('social[tw]', isset($member->social['tw'])?$member->social['tw']:null, array('id' => 'tw', 'class' => 'form-control')) ?>
+                <br>
+                <?php echo Form::label('yt', 'YouTube: ') ?>
+                <?php echo Form::input('social[yt]', isset($member->social['yt'])?$member->social['yt']:null, array('id' => 'yt', 'class' => 'form-control')) ?>
+                <br>
+            </div>
+            
+            <div class='form-group'>
 
                 <?php echo Form::checkbox('active', 1, $member->active == 1, array('id' => 'active')) ?>
                 <?php echo Form::label('active', 'Отобразить на сайте') ?>
