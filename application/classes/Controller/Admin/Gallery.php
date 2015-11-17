@@ -67,7 +67,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
         }
                 
         //Список альбомов
-        $sql = "Select id, title, image, description from gallery order by created";
+        $sql = "Select id, title, image, description, category from gallery order by created";
         
         $data =  DB::query(1, $sql)->execute()->as_array();
                        
@@ -88,8 +88,30 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
         
         $id = $this->request->param('id');
                 
-        if($this->request->method() === Request::POST){
-           
+        $gallery = new Model_Gallery($id);
+        
+        if ($this->request->method() === Request::POST and isset($_POST['edit'])) {
+
+            $gallery->title = $this->request->post('title');
+            $gallery->category = $this->request->post('category');
+            $gallery->description = $this->request->post('description');
+
+            try{
+                $gallery->save();
+            } catch(ORM_Validation_Exception $e){
+                $errors = $e->errors('gallery');
+            } 
+
+            if (!empty($errors)) {
+                $view->errors = $errors;
+            } else {
+                Session::instance()->set('success_message', 'Изменения успешно сохранены');
+                $this->redirect('/admin/gallery/item/'.$id);
+            }
+        }
+                
+        if($this->request->method() === Request::POST and isset($_POST['upload'])){
+                       
             if(isset($_FILES['image'])){                
                        
                 $filename = $this->_save_file($_FILES['image'],$id);
@@ -101,7 +123,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
                     Make sure it is uploaded and must be JPG/PNG/GIF file.';
                 $view->message = $error_message;
             }
-            
+            $this->redirect('/admin/gallery/item/'.$id);
         }
        
         $filelist =  array();
@@ -120,8 +142,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
             
             //устанавливаем первое фото из альбома на обложку альбома
             $gallery = new Model_Gallery($id);
-            
-            
+                        
             if (!empty($filelist) and (is_null($gallery->image) or !file_exists(DOCROOT.$gallery->image))) {
                 $gallery->image = $filelist[0];
                 $gallery->save();
@@ -136,6 +157,16 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
         $view->id = $id;
         $view->path_thumbs = $path_thumbs;
         $view->origin_thumbs = $path_origin;
+        $view->title = $gallery->title;
+        $view->categories = array('live'=> 'Live', 'promo' => 'Promo');
+        $view->category = $gallery->category;
+        $view->description = $gallery->description;
+        
+        $albums = Orm::factory('Gallery')
+                ->order_by('created')
+                ->find_all();
+        
+        $view->albums = $albums;
        
         $this->template->content = $view;
     }
@@ -180,8 +211,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
             //to thumbs                        
             $image  
                     ->crop('250', '250')
-                    ->resize('150','150')
-                    
+//                    ->resize('150','150')                    
                     ->save($path_thumbs.$filename);
             
              unlink($file);

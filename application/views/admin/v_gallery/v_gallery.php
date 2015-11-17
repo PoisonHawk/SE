@@ -8,42 +8,28 @@
 <?php if(isset($message)):?>
     <p><?php echo $message;?></p>
 <?php endif; ?>
-<div clas="row">
-    
+<div clas="row">    
 <?php if(!empty($data)):?>
     <?php foreach($data as $d):?>
-    <div class="col-sm-6 col-md-2" id="album_<?php echo $d['id']?>">
-        <div class="thumbnail">
-            <div class="image">
-                <a href="/admin/gallery/item/<?php echo $d['id']?>">
-                    <img src="/photos/<?php echo $d['id']?>/thumbs/<?php echo $d['image']?>">
-                </a>    
-                    <div class="caption">
-                        <h3><?php echo $d['title'];?></h3>
-                        <p><?php echo $d['description']?></p>
-                        <p><button onclick="deleteAlbum(<?php echo $d['id']?>)" type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-trash"></span> Удалить</button>
-</p>
-                    </div>
-                
+    <div class="col-sm-6 col-md-3" id="album_<?php echo $d['id']?>">
+        <div class="thumbnail">           
+            <a href="/admin/gallery/item/<?php echo $d['id']?>">
+                <img src="/photos/<?php echo $d['id']?>/thumbs/<?php echo $d['image']?>" width="245" height="245">
+            </a>    
+            <div class="caption">
+                <h4><?php echo $d['title'];?></h4>
+                <p><?php echo $d['category']?></p>
+                <p><?php echo $d['description']?></p>
+                <p><button onclick="deleteAlbum(<?php echo $d['id']?>)" type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-trash"></span> Удалить</button></p>
             </div>
         </div>
     </div>
     <?php endforeach;?>
 <?php endif; ?>
-    
-    
-    <div class="col-sm-6 col-md-2">
-        <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="...">
-            <div class="caption">
-                <h3>Новый альбом</h3>
-                <p><a href="#" onclick="createAlbum()" class="btn btn-primary" data-toggle="modal" role="button">Создать</a>
-            </div>
-        </div>
-    </div>
-        
-    
-    <!--<button onclick="createAlbum()">Создать альбом</button>-->
+ 
+<div class="clearfix"></div>
+<p><a href="#" onclick="createAlbum()" class="" data-toggle="modal" role="button">Новый альбом</a>   
+
     
 </div>    
    

@@ -137,7 +137,7 @@
                                             </li>
                                             <li><a class="<?php echo $current == 'Audio' ? 'active' : '' ?>" href="/audio">Discography</a></li>
                                             <li><a class="<?php echo $current == 'Shop' ? 'active' : '' ?>" href="/shop">Shop</a></li>
-                                            <li><a class="<?php echo $current == 'Videos' ? 'active' : '' ?>" href="/videos">Media</a>
+                                            <li><a class="<?php echo $current == 'Videos' ? 'active' : '' ?>" href="/gallery">Media</a>
                                                 <ul class="submenu">
                                                     <li><a class="<?php echo $current == 'Gallery' ? 'active' : '' ?>" href="/gallery">Photos</a>
 <!--                                                        <ul class="submenu">

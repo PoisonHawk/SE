@@ -33,7 +33,6 @@
     }
 </style>
 
-<div id="content">
     <div class="main">
         <div class="content-padding-2">
             <div class="container_8">
@@ -75,4 +74,6 @@
             </div>
         </div>
     </div>
+    <div class="block"></div>
+</div>
 

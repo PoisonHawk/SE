@@ -20,13 +20,21 @@ class Controller_Gallery extends Controller_Base{
             $this->template->styles = $this->styles;
         }
         
+        $cat = arr::get($_GET, 'cat',  'all');
+        
         $view = new View('gallery/v_gallery');
         
         
         //Список альбомов
-        $sql = "Select id, title, image from gallery order by created desc";
+        $sql = "Select id, title, image from gallery";
         
-        $data =  DB::query(1, $sql)->execute()->as_array();
+        if ($cat !== 'all') {
+            $sql .= ' where category =:category ';
+        }
+        
+        $sql .=" order by created desc";
+        
+        $data =  DB::query(1, $sql)->param(':category', $cat)->execute()->as_array();
                        
         if (empty($data)) {
             $this->message = __('В данном разделе нет загруженных изображений');

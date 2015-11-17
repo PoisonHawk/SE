@@ -11,11 +11,11 @@ class Model_Page extends ORM{
                 array('max_length', array(':value', 255)),
                 array('not_empty'),
             ),
-            'alias' => array(
-                array('regex', array(':value', '/[a-zA-Z-_]*/')),
-                array('not_empty'),
-                
-            )
+//            'alias' => array(
+//                array('regex', array(':value', '/[a-zA-Z-_]*/')),
+//                array('not_empty'),
+//                
+//            )
         );
     }
     

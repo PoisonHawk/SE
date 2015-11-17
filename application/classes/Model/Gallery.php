@@ -4,12 +4,33 @@ class Model_Gallery extends ORM
 {
     protected $_table_name = 'gallery';
     
-    protected  $_table_columns = array(
-        'id'            => 'id',
-        'title'          =>  'title',        
-        'image'     =>  'image',
-        'created'   => 'created',
-    );
+    public function rules(){
+        return array(
+            'title' => array(
+                array('not_empty'),
+            ),
+            'category' => array(
+                array('not_empty'),
+            )
+        );
+    }
+    
+    public function filters() {
+        return array(
+            'title' => array(
+                array('trim'),
+                
+            ), 
+            'description' => array(
+                array('trim'),
+                array('strip_tags'),
+                array('htmlspecialchars'),
+                
+            )
+        );
+    }
+    
+
 }    
    
     
