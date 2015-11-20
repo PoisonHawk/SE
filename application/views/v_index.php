@@ -33,6 +33,11 @@
                                                 <h6 class="new-title">
                                                     <?php echo $new->title; ?>
                                                 </h6>
+                                                <?php if($new->image):?>
+                                                <div class='ava'>
+                                                    <img src='/uploads/<?php echo $new->image?>' width='500'>
+                                                </div>
+                                                <?php endif; ?>
                                                 <div class="indent-top new-text">
                                                     <?php echo $new->description; ?>
                                                 </div>

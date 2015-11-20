@@ -67,11 +67,32 @@ class Controller_Admin_News extends Controller_Admin_Base{
             
             $content->title = $n[0]['title'];
             $content->desc = $n[0]['description'];
+            $content->img = $n[0]['image'];
                     
         }
         
         if(isset($_POST['send'])){
            
+            $image = null;
+            
+            if (uploadimage::notEmpty($_FILES['image'])) {
+
+                $uploadimage = new uploadimage($_FILES['image']);
+
+                if ($uploadimage->check()) {
+                    $filename = $uploadimage
+                            ->setFolder(DOCROOT . 'uploads/')
+                            ->setDimension(400, NULL)
+                            ->setQuality(70)
+                            ->save();
+                    $image = $filename;
+                    $content->filename = $filename;
+                } else {
+                    $errors[] = $uploadimage->error();
+                }
+            }
+            
+            
             //$date   = arr::get($_POST,'date','');
             $title  = arr::get($_POST,'title','');
             $desc   = arr::get($_POST,'desc','');
@@ -86,10 +107,10 @@ class Controller_Admin_News extends Controller_Admin_Base{
                 $new = new Model_News();
                 if(isset($id))
                 {
-                   $new->processNew($title,$desc,$id); 
+                   $new->processNew($title,$desc, $image, $id); 
                 }
                 else{
-                    $new->processNew($title,$desc);
+                    $new->processNew($title,$desc, $image);
                 }    
                 
                 $this->redirect('/admin/news');

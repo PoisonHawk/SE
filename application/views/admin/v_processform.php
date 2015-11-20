@@ -1,4 +1,6 @@
 <script>
+    $(document).ready(function () {
+    
     tinyMCE.init({
         mode: 'textareas',
         theme: 'modern',
@@ -12,24 +14,44 @@
         insertdatetime_formats: ["%d.%m.%Y", "%H:%M"],
 
     })
+       
+        $('#image').change(function () {            
+            var input = $(this)[0];
+            if (input.files && input.files[0]) {
+                if (input.files[0].type.match('image.*')) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#image_preview').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                } else
+                    console.log('is not image mime type');
+            } else
+                console.log('not isset files data or files API not supordet');
+        });
+        $('form').bind('reset', function () {
+            $('#image_preview').attr('src', 'https://lh6.googleusercontent.com/-L17_eJqIsDI/UzbeiYk96RI/AAAAAAAASP4/SbOqhSuEyU4/s100-no/image-is-not-uploaded.jpg');
+        });
+
+    })
+    
 </script>    
 <?php if (isset($errors)): ?>
     <?php foreach ($errors as $e): ?>
         <p><?php echo $e; ?></p>
     <?php endforeach; ?>
 <?php endif; ?>
-<form method="post" class="col-lg-12 form-horizontal" role="form">
-    <!--    <div class='control-group'>
-            <label class="control-label" for="date">Дата</label> 
-            <div class="controls">
-                <input type="text" name="date" id="date" class="span4 input-large"/>  
-            </div>    
-        </div>-->
+        <form method="post" class="col-lg-12 form-horizontal" role="form" enctype="multipart/form-data">
     <div class='form-group'>
         <label class="control-label" for="header">Заголовок</label>
-        <div class="">
-            <input type="text" name="title" id="header" class="form-control" value="<?php echo isset($title) ? $title : '' ?>"/>
-        </div>    
+        <input type="text" name="title" id="header" class="form-control" value="<?php echo isset($title) ? $title : '' ?>"/>
+          
+    </div>
+    <div class='form-group'>
+         <label class="" for="image">Прикрепить изображение</label><br>
+         <img id='image_preview' src="<?php echo isset($img) ? '/uploads/'.$img : ''?>" width='400'>
+       
+        <input  type="file" id="image" name='image'>
     </div>
     <div class='form-group'>
         <label class="" for="header">Текст</label>

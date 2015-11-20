@@ -2,11 +2,13 @@
 
 class Model_News extends ORM
 {
+    protected $_table_name = 'news';
+    
     public function getNews($id=NULL)
     {
         $news = array();
         
-        $sql = "SELECT id, date, title, description FROM news";
+        $sql = "SELECT id, date, title, description, image FROM news";
         
         if(isset($id))
         {
@@ -55,14 +57,20 @@ class Model_News extends ORM
     
     
     //удаление или редактирование новости
-    public function processNew($title,$desc,$id=NULL){        
+    public function processNew($title,$desc, $image=NULL, $id=NULL){        
         if(isset($id)){
             
-            $sql = "UPDATE news SET title = :title, description = :desc WHERE id=:id";
+            $sql = "UPDATE news SET title = :title, description = :desc";
+            if($image) {
+                $sql .= ", image=:image";
+            }
+            
+            $sql .= "WHERE id=:id";
             
             DB::query(Database::UPDATE, $sql)                   
                     ->param(':title',$title)
                     ->param(':desc',$desc)
+                    ->param(':image', $image)
                     ->param(':id',$id)
                     ->execute();
         }
