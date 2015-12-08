@@ -5,6 +5,12 @@ defined('SYSPATH') or die('No direct script access.');
 class Controller_index extends Controller_Base {
 
     public $title = 'Новости';
+    
+    public function before(){
+         $this->scripts = array('/js/slider.js');
+        parent::before();
+                
+    }
 
     public function action_index() {
         
@@ -24,10 +30,28 @@ class Controller_index extends Controller_Base {
                 ->order_by('date')
                 ->limit(10)
                 ->find_all();
-
+                
+        //последнее добавленное видео
         $last_video = ORM::factory('Video')->order_by('created', 'Desc')->limit(1)->find();
 
-        $content = View::factory('v_index', array('news' => $last_news, 'tours' => $tours, 'last_video' => $last_video));
+        //последний добавленный альбом фотографий
+        $last_image_album = ORM::factory('Gallery')->order_by('created', 'desc')->limit(1)->find();
+        
+        $photos =  array();
+                
+        $path = DOCROOT.'/photos/'.$last_image_album->id.'/thumbs';
+        
+        $iterator = new FilesystemIterator($path);
+        foreach($iterator as $item){
+            $photos[] = $item->getFilename();            
+        }
+        
+        $content = View::factory('v_index', array(
+            'news' => $last_news, 
+            'tours' => $tours, 
+            'last_video' => $last_video,
+            'last_image_album' => $last_image_album->id,
+            'photos' => $photos));
 
         $this->template->title = $this->title;
         $this->template->content = $content;

@@ -5,7 +5,7 @@ class Controller_Gallery extends Controller_Base{
     public $title = 'Галерея';
     
     public $scripts =  array('js/jquery.galleriffic.js','js/jquery.opacityrollover.js');
-    public $styles = array('css/black.css');
+//    public $styles = array('css/black.css');
     public $message = null;
     
     

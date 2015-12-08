@@ -1,0 +1,370 @@
+@charset "UTF-8";
+@font-face {
+  font-family: Molot;
+  /* Гарнитура шрифта */
+  src: url(/fonts/molot.otf);
+  /* Путь к файлу со шрифтом */ }
+
+@font-face {
+  font-family: Fira;
+  /* Гарнитура шрифта */
+  src: url(/fonts/fira.ttf);
+  /* Путь к файлу со шрифтом */ }
+
+body {
+  background: black;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  font-family: Fira;
+  line-height: 1.4;
+  margin-bottom: 20px; }
+
+.nav {
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px 0; }
+
+.nav ul li {
+  display: inline-block;
+  position: relative; }
+  .nav ul li .submenu {
+    background: black;
+    position: absolute;
+    padding: 5px 0;
+    display: none; }
+    .nav ul li .submenu li {
+      display: block;
+      padding: 5px 0; }
+
+.nav ul li a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 5px 10px; }
+
+.nav ul li a.selected {
+  background: #0088cc;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 5px 10px; }
+
+.nav ul li a:hover {
+  background: none;
+  color: #0088cc;
+  text-decoration: none;
+  padding: 5px 10px; }
+
+.nav ul li a.selected:hover {
+  background: #0088cc;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 5px 10px; }
+
+.social {
+  text-align: right; }
+
+.social a {
+  display: inline-block;
+  width: 32px;
+  height: 32px; }
+
+.social a.vk {
+  background: url("/images/icons/vk2.png") center; }
+
+.social a.vk:hover {
+  background: url("/images/icons/vk1.png") center; }
+
+.social a.fb {
+  background: url("/images/icons/fb2.png") center; }
+
+.social a.fb:hover {
+  background: url("/images/icons/fb1.png") center; }
+
+.social a.tw {
+  background: url("/images/icons/tw2.png") center; }
+
+.social a.tw:hover {
+  background: url("/images/icons/tw1.png") center; }
+
+.social a.yt {
+  background: url("/images/icons/yt2.png") center; }
+
+.social a.yt:hover {
+  background: url("/images/icons/yt1.png") center; }
+
+.logo {
+  text-align: center; }
+
+.content {
+  margin: 25px 0; }
+
+section h2 {
+  color: #0088cc;
+  font-family: molot;
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-transform: uppercase; }
+
+.article {
+  margin: 30px 0;
+  max-height: 300px;
+  overflow: hidden; }
+
+.article .image {
+  float: left;
+  margin: 0 20px 20px 0; }
+
+.article h3 {
+  color: white;
+  margin: 0 0 10px 0;
+  text-transform: uppercase; }
+
+.text p {
+  max-height: 110px;
+  overflow: hidden;
+  text-align: justify; }
+
+.text a {
+  float: right; }
+
+.tours .tour {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
+
+.tours .tour .date {
+  color: white;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-right: 10px; }
+
+.tours .tour .place {
+  margin-right: 10px; }
+
+.tours .tour .fest {
+  color: #0088cc;
+  text-transform: uppercase;
+  font-size: 18px; }
+
+.tours .tour .fest:hover {
+  cursor: pointer;
+  color: #0088cc;
+  text-transform: uppercase;
+  font-size: 18px; }
+
+.separator {
+  border: 1px solid #0088cc;
+  margin: 30px 0; }
+
+section.album {
+  text-align: center; }
+
+.disc h3 {
+  color: white;
+  margin: 20px 0;
+  text-transform: uppercase; }
+
+.disc img {
+  margin: 20px; }
+
+.disc img:hover {
+  margin: 20px;
+  box-shadow: 0 0 6px 2px #0088cc; }
+
+.disc p {
+  text-align: justify; }
+
+.disc a {
+  display: inline-block;
+  margin: 10px; }
+
+footer {
+  text-align: center;
+  position: relative; }
+
+.copyright {
+  color: rgba(255, 255, 255, 0.8); }
+
+footer .social {
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+
+/******BAND****/
+.band-image {
+  text-align: center;
+  margin: 20px 0 30px 0; }
+
+.band-content {
+  text-align: justify; }
+  .band-content p {
+    text-indent: 1.5em;
+    line-height: 1.4; }
+
+/*******Discography******/
+.album {
+  margin: 10px 0 30px 0; }
+
+.album-image {
+  text-align: center; }
+  .album-image .buy-album {
+    margin: 10px 0; }
+    .album-image .buy-album a {
+      margin: 10px; }
+
+.album-tracks
+h3 {
+  color: #fff;
+  margin: 0 0 20px 0;
+  text-transform: uppercase; }
+
+ol {
+  padding-left: 25px;
+  font-size: 20px;
+  text-transform: capitalize; }
+
+.album-description {
+  text-indent: 1.5em; }
+
+/*********Media*******/
+.media .item {
+  text-align: center;
+  margin: 20px 0; }
+  .media .item a {
+    display: block; }
+  .media .item .photo-image {
+    width: 500px;
+    position: relative;
+    margin: 0 auto; }
+  .media .item .play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: scale(5); }
+
+.media .photos-album-title {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  bottom: 0;
+  left: 0;
+  padding: 20px 10px;
+  color: #fff;
+  width: 500px;
+  display: none; }
+  .media .photos-album-title h4 {
+    font-size: 36px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8); }
+
+.shadow {
+  box-shadow: 0 0 6px 2px #0088cc; }
+
+.video {
+  text-align: center; }
+  .video .item {
+    padding: 20px 0; }
+  .video a {
+    display: block; }
+  .video .photo-image {
+    width: 325px;
+    position: relative;
+    margin: 0 auto; }
+  .video img {
+    position: relative; }
+  .video .photos-album-title {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    bottom: 0px;
+    left: 0px;
+    padding: 20px 10px;
+    color: #fff;
+    width: 100%;
+    display: none; }
+    .video .photos-album-title h4 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8); }
+
+.categories {
+  float: right;
+  margin-top: -50px; }
+  .categories a {
+    padding: 6px;
+    font-size: 20px; }
+  .categories a:hover {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none; }
+
+.pagination {
+  margin: 0 auto;
+  display: block;
+  width: 350px;
+  padding: 5px; }
+  .pagination ul li {
+    display: inline-block; }
+    .pagination ul li a {
+      padding: 5px 10px; }
+    .pagination ul li a:hover {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.8); }
+    .pagination ul li a.selected {
+      color: rgba(255, 255, 255, 0.8);
+      background: #0088cc; }
+
+.new-date {
+  color: rgba(255, 255, 255, 0.8); }
+
+.news .text p {
+  max-height: 200px; }
+
+.image-new {
+  margin: 10px 0 30px 0; }
+
+.member {
+  margin: 30px 0;
+  /*max-height: 300px;*/
+  overflow: hidden; }
+  .member .image {
+    float: left;
+    /*margin: 0 20px 20px 0;*/ }
+  .member h3 {
+    color: white;
+    margin: 0 0 10px 0;
+    text-transform: uppercase; }
+  .member .member-text p {
+    /*max-height: 110px;*/
+    overflow: hidden;
+    text-align: justify;
+    margin: 30px 0; }
+  .member .social {
+    text-align: left; }
+
+.shows .tour {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
+  .shows .tour .date {
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-right: 10px;
+    float: left;
+    text-align: left; }
+    .shows .tour .date .year {
+      font-size: 16px; }
+  .shows .tour .place {
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: bold; }
+    .shows .tour .place .club {
+      font-weight: normal; }
+  .shows .tour .fest {
+    color: #0088cc;
+    text-transform: uppercase;
+    font-size: 30px;
+    float: right;
+    text-align: center; }
+  .shows .tour .fest:hover {
+    cursor: pointer; }

@@ -1,11 +1,17 @@
 
 (function () {
 
-    $.fn.slider = function () {
+    $.fn.slider = function (options) {
         
-        var countSlides = 3;
+        
+        var settings = $.extend({
+            'sliderWidth' : '280',
+            'countSlides' : 3,
+        }, options)
+        
+        var countSlides = settings.countSlides;
         var currentPosition = 0;
-        var slideWidth = 280;
+        var slideWidth = settings.sliderWidth;
         var margin = 10;
         var $this = $(this);
         var slides = $this.find('.slide');
@@ -23,6 +29,8 @@
         $this.find('.slideInner').css('width', (slideWidth + 2*margin) * numberOfSlides);
        
         $this.find('.slideshow')
+//                .prepend('<span class="control leftControl glyphicon glyphicon-chevron-left"></span>')
+//                .append('<span class="control rightControl glyphicon glyphicon-chevron-right" ></span>');
                 .prepend('<span class="control leftControl glyphicon glyphicon-chevron-left"></span>')
                 .append('<span class="control rightControl glyphicon glyphicon-chevron-right" ></span>');
         // Прячем правую стрелку при загрузке скрипта

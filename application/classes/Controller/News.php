@@ -3,7 +3,7 @@
 class Controller_News extends Controller_Base{
     
     public $title = 'Новости';
-    public $count = 1;
+    public $count = 5;
     
     public function action_index(){
         
@@ -29,6 +29,23 @@ class Controller_News extends Controller_Base{
         $view->count_news = $count_news;
         $view->current_page = $page;
         $view->count_pages = ceil($count_news/$this->count);        
+        $this->template->content = $view;
+        
+    }
+    
+    
+    public function action_new(){
+        
+        $id = $this->request->param('id');
+        
+        $new = new Model_News($id);
+        
+        if (!$new->loaded()){
+            throw new HTTP_Exception_404('Страница не найдена');
+        }
+            
+        $view = new View('v_new');
+        $view->new = $new;   
         $this->template->content = $view;
         
     }

@@ -7,32 +7,22 @@ class Controller_Videos extends Controller_Base{
         parent::before();
                 
     }
-    
-    
+        
     public function action_index(){
         
-        $type = arr::get($_GET, 'type', 'playthrough');
+        $type = arr::get($_GET, 'cat', 'all');
         
+        $videos = ORM::factory('Video');
         
-        $v_playthrough = ORM::factory('Video')
-                ->where('category', '=', 'playthrough')
-                ->order_by('created', 'DESC')
+        if ($type !== 'all') {
+                $videos = $videos->where('category', '=', $type);
+        }
+         
+        $videos = $videos->order_by('created', 'DESC')
                 ->find_all();
         
-        $v_live = ORM::factory('Video')
-                ->where('category', '=', 'live')
-                ->order_by('created', 'DESC')
-                ->find_all();
-        
-        $v_music = ORM::factory('Video')
-                ->where('category', '=', 'music')
-                ->order_by('created', 'DESC')
-                ->find_all();
-        
-        $view = new View('v_video');
-        $view->v_playthrough = $v_playthrough;
-        $view->v_live = $v_live;
-        $view->v_music = $v_music;
+        $view = new View('v_video');       
+        $view->videos = $videos;
         $this->template->content = $view;
         
     }

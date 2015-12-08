@@ -1,129 +1,96 @@
-</div>
-</header>
-<script>
-    $(document).ready(function () {
-        $('#playthrough').slider();
-        $('#music').slider();
-        $('#live').slider();
-    })
-</script>
-<div id="content">  
-    <section id="content"><div class="ic"></div>
-        <div class="main">
-            <div class="content-padding-2">
-                <div class="container_12">
-                    <div class="wrapper">
-                        <div class="grid_12">
-                            <div>
-                                <?php if (count($v_music) > 0): ?>
-                                    <section class="video-box" id="music">
-                                        <h3>Ofiicial Music Video</h3>
-                                        <div class="slideshow">
-                                            <div class="slidesContainer">
-                                                <?php foreach ($v_music as $vm): ?>
-                                                    <div class="slide">
-                                                        <a href="<?php echo $vm->link?>" target="_blank">
-                                                            <img src="http://img.youtube.com/vi/<?php echo $vm->videocode ?>/mqdefault.jpg" width="280" height="180">
-                                                        </a>
-                                                    </div>                                            
-                                                <?php endforeach; ?>
-                                            </div>
-                                        </div>
-                                    </section>
-                                <?php endif; ?>
-                                <div class="clearfix"></div>
-                                <?php if (count($v_playthrough) > 0): ?>
-                                    <section class="video-box" id="playthrough">
-                                        <h3 class="letter">Playthrough</h3>
-                                        <div class="slideshow">
-                                            <div class="slidesContainer">
-                                                <?php foreach ($v_playthrough as $vp): ?>
-                                                    <div class="slide">
-                                                        <a href="<?php echo $vp->link?>" target="_blank">
-                                                            <img src="http://img.youtube.com/vi/<?php echo $vp->videocode ?>/mqdefault.jpg" width="280" >
-                                                        </a>
-                                                    </div>
-                                                <?php endforeach; ?>
-                                            </div>
-                                        </div>
-                                    </section>
-                                <?php endif; ?>
-                                <div class="clearfix"></div>
-                                <?php if (count($v_live) > 0): ?>  
-                                    <section class="video-box" id="live">
-                                        <h3 class="letter">Live</h3>
-                                        <div class="slideshow">
-                                            <div class="slidesContainer">
-                                                <?php foreach ($v_live as $vl): ?>
-                                                    <div class="slide">
-                                                        <a href="<?php echo $vl->link?>" target="_blank">
-                                                            <img src="http://img.youtube.com/vi/<?php echo $vl->videocode ?>/mqdefault.jpg" width="280" height="180">
-                                                        </a>
-                                                    </div>                                            
-                                                <?php endforeach; ?>
-                                            </div>
-                                        </div>
-                                    </section>
-                                <?php endif; ?>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
+<section>
+    <h2>Videos</h2>
+    <div class="categories">
+        <a href="/videos?cat=all">All</a>
+        <a href="/videos?cat=live">Live</a>
+        <a href="/videos?cat=music">Official Videos</a>
+        <a href="/videos?cat=playthrough">Playthrough</a>
+    </div>
+    <div class="separator"></div>					
+    <div class="media">
+        <div class="row">
+            <?php foreach ($videos as $vm): ?>
+                <div class="item live col-md-6">
+                    <input type="hidden" name="link" value="<?php echo $vm->videocode?>">
+                    <!--<a href="photos.html">-->
+                        <div class="photo-image">
+                            <img src="http://img.youtube.com/vi/<?php echo $vm->videocode ?>/mqdefault.jpg" width="500" >
+                            <div class="glyphicon glyphicon-play-circle play"></div>
+                             <div class="photos-album-title">
+                        <h4><?php echo $vm->title ?></h4>
                     </div>
-                </div>
-            </div>
+                        </div>
+                    <!--</a>-->
+                </div>                                            
+            <?php endforeach; ?>
+            
+
         </div>
-        <div class="block"></div>
+    </div>
+    <div class="overlay" id="overlay" style="display:none;"></div>
+    <div id="video_player" style="display:none"></div> 
+</section>
+<style>
 
-    </section>
-</div>
-    <style>
-        .video-box{
-            margin: 10px 0;
-        }
+    .overlay{
+        background:rgba(0,0,0,0.7) repeat top left;
+        position:fixed; /* фиксим и далее растягиваем на весь экран*/
+        top:0px;
+        bottom:0px;
+        left:0px;
+        right:0px;
+        z-index:10;   /* поднимем его выше основной разметки*/
+    }
 
-        .slideshow{
-            position:relative;
-        }
+    #video_player{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        right:0;
+        width:853px;
+        height:480px;
+        margin:auto;
+        /*background:#fff;*/                    
+        /*border:5px solid #e4e4e4;*/
+        
+        z-index:101 !important;   /* а его выше фонового блока*/
+    }
 
-        .slideshow .slidesContainer {
-            margin:0 auto;
+</style>   
 
-            width:900px;
-            height:180px;
-            overflow:auto; /* разрешаем прокрутку */
-            position:relative;
-        }
+<script>
 
-        .slideshow .slidesContainer .slide {
-            /*margin:0 auto;*/
-            margin:18px 10px;
-            width:280px; 
-            height:180px;
-        }
+    $(document).ready(function () {
 
-        /**
- * Slideshow controls style rules.
- */
-        .control {
-            display:block;
-            /*width:39px;*/
-            /*height:196px;*/
-            /*text-indent:-10000px;*/
-            position:absolute;
-            cursor: pointer;
-            z-index:100;
-        }
-        .leftControl {
-            top:82px;
-            left:0;
-            /*background:rgba(255,255,255,0.5);*/
-        }
-        .rightControl {
-            top:82px;
-            right:0;
-            /*background:rgba(255,255,255,0.5);*/
-        }
+        $('.preview').hide();
+         $('#video_player').hide();
+
+        $('.item').click(function () {
+            var preview = $('#video_player');
+            preview.empty();
+            
+            var videocode = $(this).find("[name=link]").val();
+
+            console.log($(this));
+            console.log(videocode);
+
+            var iframe = '<iframe type="text/html" width="853" height="480" src="http://www.youtube.com/embed/'+videocode+'" frameborder="0"></iframe>';
+            
+            $('#overlay').fadeIn('fast', function () {
+                preview.append(iframe).show().animate({'top': '160px'}, 500);
+            })
+
+        })
 
 
+        $('#overlay').click(function () { // кликаем по элементу который всё это будет закрывать, также здесь можно добавить сам оверлэй, чтобы по клику вне блока, всё сворачивалось.
+                $('#video_player').empty().animate({'top': '20%'}, 500, function () { // убираем наш блок
+                $('#overlay').fadeOut('fast'); // и теперь убираем оверлэй
+            }).hide();
+        });
 
-    </style>
+
+    })
+
+</script>    

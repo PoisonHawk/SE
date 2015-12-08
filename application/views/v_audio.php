@@ -1,54 +1,35 @@
-    </div>
-</header> 
-<div id="content">  
-<section id="content"><div class="ic"></div>
-    <div class="main">
-        <div class="content-padding-2">
-            <div class="container_12">
-                <div class="wrapper">
-                    <div class="grid_12">
-                        <div class="padding-grid-1">
-                                <h3 class="letter">Наша <strong>Дискография</strong></h3>
-                        </div>
-                        <?php if(isset($albums)):?>                      
-                        <?php foreach($albums as $album):?>                        
-                        <div class="wrapper p3">
-                            <article class="grid_4 alpha">
-                                    <div class="padding-grid-2">
-                                            <div class="wrapper">
-                                                <figure class="style-img-2 fleft"><a href="#"><img width="252" src="/uploads/<?php echo $album['image']?>"  alt=""></a></figure>
-                                            </div>
-                                    </div>
-                            </article>
-                            <article class="grid_8 alpha">
-                                    <div class="padding-grid-2">
-                                            <h4 class="margin-none indent-top1"><strong><?php echo $album['year']?>.</strong>  <?php echo $album['name']?></h4>
-                                            <!--<p class="prev-indent-bot">Lorem ipsum dolor consctetur adipisicing elitdo eusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
-                                            <div class="wrapper">
-                                                    <ul class="list-1 fleft wrapper">
-                                                         <?php $count = 1;?>
-                                                        <?php foreach($album['tracks'] as $track):?>                                                          
-                                                        <li>
-                                                            <a href="#"><?php echo $count<10? '0'.$count: $count?>. <?php echo $track['name']; ?></a>
-                                                            <a href="/audios/<?php echo $track['file']?>" title="Play &quot;<?php echo $track['name']; ?>&quot;" class="sm2_button fright"><?php echo $track['name']; ?></a>               
-                                                                <?php $count += 1;?>
-                                                        </li>    
-                                                        <?php endforeach;?>  
-                                                    </ul>
-                                            </div>
-                                    </div>
-                            </article>
-                        </div>
-                        <?php endforeach;?>
-                        <?php endif;?>
-                        
-                                    </div>
-                            </div>
-                    </div>
-            </div>
-    </div>
-    <div class="block"></div>
-    
-</section>
+<section>
+    <h2>Discography</h2>
+    <div class="separator"></div>
+    <div class="row">
+        <?php if (isset($albums)): ?>                      
+            <?php foreach ($albums as $album): ?>  
+                <div class="album">
+                    <div class="album-image col-md-4">
+                        <img src="/uploads/<?php echo $album['image'] ?>" width="300">
 
-  
+                        <div class="buy-album">
+                            <a href="#">Buy album</a>
+                            <a href="#">band camp</a>
+                            <a href="#">iTunes</a>
+
+                        </div>		
+                    </div>
+                    <div class="album-tracks col-md-4">
+                        <h3>Solarstorm</h3>
+                        <ol>                            
+                            <?php foreach ($album['tracks'] as $track): ?>                                                          
+                                <li><?php echo $track['name']; ?></li>    
+                            <?php endforeach; ?>                             
+                        </ol>
+                    </div>
+                    <div class="album-description col-md-4">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque iaculis nulla consectetur consequat sodales. Cras nisi enim, sagittis a facilisis at, posuere non ligula. Nulla pretium lorem in tortor volutpat, nec tincidunt neque mollis. Nam molestie nibh massa. In nec odio ac sem laoreet hendrerit. Sed interdum eu lectus vel aliquam. Cras posuere pulvinar augue nec aliquam. Vivamus eget ante sed nisi lacinia fringilla. Vestibulum tristique odio est, at sodales nibh interdum dapibus. Nam faucibus leo ut ex tincidunt laoreet. Sed in ultrices ante. Nam ullamcorper ex id nunc vestibulum molestie. Quisque in eros volutpat, tempus metus a, facilisis nulla. Sed rutrum turpis in massa rhoncus, in pretium purus aliquet. Donec malesuada eget nulla quis convallis.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif?>
+        
+    </div>
+</section>

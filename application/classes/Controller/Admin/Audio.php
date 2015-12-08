@@ -103,7 +103,7 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
                     }
                     
                     //загрузка файлов аудио
-                    if(isset($_FILES["file_track_$i"])){
+                    if(Upload::not_empty($_FILES["file_track_$i"])){
                         //загрузка файлов
                                                                         
                         $file = $this->_save_audio($_FILES["file_track_$i"],$name);
