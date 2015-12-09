@@ -55,6 +55,9 @@
                                 </ul>
                             </li>
                             <li><a href="/admin/settings">Настройки</a></li>
+                            <?php if (Auth::instance()->logged_in('sa')):?>
+                                <li><a href="/admin/users">Пользователи</a></li>
+                            <?php endif;?>
 
                         </ul> 
                         <ul class="nav navbar-nav navbar-right">

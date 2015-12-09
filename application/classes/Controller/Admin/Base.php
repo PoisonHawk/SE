@@ -8,16 +8,13 @@ class Controller_Admin_Base extends Controller_Template
       public function before() {
         parent::before();
         
-        
-//        echo Auth::instance()->hash('4rfv5tgb');
-        
-        
         if(!Auth::instance()->logged_in('admin')){
             $this->redirect('/login');
         }
         
-        $username = Auth::instance()->get_user();
-        $this->template->username = $username;
+        $user = Auth::instance()->get_user();
+                  
+        $this->template->username = $user->username;
         
          $this->template->title = $this->title;
          
