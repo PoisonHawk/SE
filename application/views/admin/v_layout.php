@@ -10,7 +10,10 @@
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/bootstrap.js"></script>
         <!--<script src="/js/jquery-1.10.2.js"></script>-->       
-
+        
+        
+        <script type="text/javascript" src="http://vk.com/js/api/share.js?93" charset="windows-1251"></script>
+        
         <?php foreach ($styles as $style): ?>
             <?php echo HTML::style($style); ?>
         <?php endforeach; ?>

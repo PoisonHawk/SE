@@ -14,6 +14,7 @@
         <?php foreach ($scripts as $script): ?>
             <?php echo HTML::script($script); ?>
         <?php endforeach; ?> 
+
     </head>
     <body>
         <div class="container ">

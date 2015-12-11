@@ -1,6 +1,7 @@
 <div class='row'>
     <section class="articles col-md-7">
         <h2>Latest News</h2>
+        
         <?php foreach ($news as $new): ?>
             <article class="article">
                 <?php if ($new->image): ?>
@@ -9,13 +10,23 @@
                     </div>
                 <?php endif; ?>                
                 <div class='text '>
-                    <h3><?php echo $new->title?></h3>
-                    <p><?php echo $new->description?></p>
-                    <a href='/new/<?php echo $new->id?>'>More...</a>
+                    <h3><a href="/news/new/<?php echo $new->id?>"><?php echo $new->title?></a></h3>
+                    <span class="date"><?php echo date('d.m.Y',$new->date)?></span>
+                    <p><?php echo Text::limit_words($new->description, 70); ?></p>
+                    <?php 
+                        $text = explode(' ', $new->description);
+                        if (count($text) > 70) {
+                    ?>
+                        <a href='/news/new/<?php echo $new->id?>'>More...</a>
+                    <?php
+                        }
+                    ?>
+                    
                 </div>
 
             </article>
-        <?php endforeach; ?>        
+        <?php endforeach; ?>          
+        <a href="/news/">All News</a>        
     </section>
 
     <section class="tours col-md-5">

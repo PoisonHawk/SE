@@ -24,7 +24,7 @@ class Controller_index extends Controller_Base {
         
         //загружаем новости
         $last_news = ORM::factory('News')->order_by('date', 'desc')->limit($count_news)->find_all();
-        
+       
         $tours = ORM::factory('Tours')
                 ->where('date', '>', time())
                 ->order_by('date')

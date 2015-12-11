@@ -10,10 +10,19 @@
                 </div>
             <?php endif; ?>            
             <div class='text '>
-                <h3><?php echo $new->title?></h3>
+                <h3><a href="/news/new/<?php echo $new->id?>"><?php echo $new->title?></a></h3>
+                <span class="new-date" style="display:block; margin-bottom:10px;"><?php echo date('d M Y', $new->date)?></span>
+                
                 <?php echo $new->description; ?>
-                <span class="new-date">12 dec 2015</span>
-                <a href='news/new/<?php echo $new->id?>'>More...</a>
+                <?php 
+                        $text = explode(' ', $new->description);
+                        if (count($text) > 150) {
+                    ?>
+                        <a href='/news/new/<?php echo $new->id?>'>More...</a>
+                    <?php
+                        }
+                    ?>
+                
             </div>
 
         </article>
@@ -22,17 +31,12 @@
     <div class="pagination">
         <ul>
             <?php if ($count_pages > 1): ?>
-                <?php for ($i = 1; $i <= $count_pages; $i++): ?>
-                    <li><a href="/news?page=<?php echo $i ?>"><?php echo $i ?></a></li>
+            
+                <?php $start = max(($current_page-3),1)?>
+                <?php for ($i = $start; $i <= min(($start+4), $count_pages); $i++): ?>
+                    <li><a class="<?php echo ($i==$current_page)? 'selected' : ''?>" href="/news?page=<?php echo $i ?>"><?php echo $i ?></a></li>
                 <?php endfor; ?>
             <?php endif; ?>
-<!--            <li><a href="#">Prev</a></li>
-            <li><a href="#">1</a></li>
-            <li><a class="selected" href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">Next</a></li>-->
         </ul>
     </div>
 </section>

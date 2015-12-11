@@ -8,15 +8,15 @@
         <div class='row'>
             <div class="col-md-8 center col-md-offset-2">
             
-            <?php if($new->image):?>
-            <div class="image-new">
-                <img src='/uploads/<?php echo $new->image ?>' width='750'>
-                
-            </div>
-            <?php endif;?>
-            <div class='text '>
-                <?php echo $new->description?>
-            </div>
+                <?php if($new->image):?>
+                <div class="image-new">
+                    <img src='/uploads/<?php echo $new->image ?>' width='750'>
+
+                </div>
+                <?php endif;?>
+                <div class='text '>
+                    <?php echo $new->description?>
+                </div>
             </div>
         </div>
 

@@ -3,7 +3,7 @@
 class Controller_News extends Controller_Base{
     
     public $title = 'Новости';
-    public $count = 5;
+    public $count = 10;
     
     public function action_index(){
         

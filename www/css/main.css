@@ -11,6 +11,18 @@
   src: url(/fonts/fira.ttf);
   /* Путь к файлу со шрифтом */ }
 
+
+a {
+    color: #0088cc;
+    transition:all 0.3s ease;
+}
+
+a:hover {
+    color: #00b3ee;
+    transition:all 0.3s ease;
+    text-decoration:none;
+}
+
 body {
   background: black;
   color: rgba(255, 255, 255, 0.4);
@@ -42,13 +54,15 @@ body {
 .nav ul li a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  padding: 5px 10px; }
+  padding: 5px 10px; transition:all 0.3s ease;}
 
 .nav ul li a.selected {
   background: #0088cc;
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  padding: 5px 10px; }
+  padding: 5px 10px; 
+    }
+
 
 .nav ul li a:hover {
   background: none;
@@ -68,7 +82,7 @@ body {
 .social a {
   display: inline-block;
   width: 32px;
-  height: 32px; }
+  height: 32px; transition:all 0.3s ease;}
 
 .social a.vk {
   background: url("/images/icons/vk2.png") center; }
@@ -128,6 +142,18 @@ section h2 {
 
 .text a {
   float: right; }
+
+.text h3 a {
+  float: none; 
+  color: rgba(255,255,255,0.7);
+  transition:all 0.3s ease;
+}
+
+.text h3 a:hover {
+  float: none; 
+  color: #fff;
+  text-decoration: none;
+}
 
 .tours .tour {
   text-align: center;
@@ -317,7 +343,7 @@ ol {
   color: rgba(255, 255, 255, 0.8); }
 
 .news .text p {
-  max-height: 200px; }
+  max-height: 175px; }
 
 .image-new {
   margin: 10px 0 30px 0; }

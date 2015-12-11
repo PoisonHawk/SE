@@ -121,8 +121,10 @@ class Controller_Admin_News extends Controller_Admin_Base{
             
         }
         
+        $news = ORM::factory('News')->order_by('date', 'desc')->limit(20)->find_all();
         
         $content->errors = $errors;
+        $content->news = $news;
         
         $this->template->content = $content;
     }
@@ -131,6 +133,7 @@ class Controller_Admin_News extends Controller_Admin_Base{
     //todo переделать
     public function action_delete(){
         
+        $this->auto_render= false;        
         
         $id = $this->request->param('id');  
         
