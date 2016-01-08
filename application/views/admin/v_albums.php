@@ -9,15 +9,15 @@
             var str = '';
 
             str = '<span class="track track_' + this.count + '"><label>' + this.count + '. ';
-            str += '<input type="text" name="title_track_' + this.count + '"/>';
+            str += '<input  class="form-control" type="text" name="title_track_' + this.count + '"/>';
             str += '</label>';
-            str += '<input id="" type="file" name="file_track_' + this.count + '"/></span></br>';
+//            str += '<input id="" type="file" name="file_track_' + this.count + '"/></span></br>';
 
 
             $('.tracks').append(str);
             $('input[name=count]').val(this.count);
 
-    },
+        },
         del_track: function (event) {
 
             event.preventDefault();
@@ -42,6 +42,7 @@
                 }
             })
         },
+                
     }
 
     $(document).ready(function () {
@@ -72,23 +73,26 @@
 </script>
 <?php if (isset($errors)): ?>
     <?php foreach ($errors as $e): ?>
-        <p class="error"><?php echo $e; ?></p>
+        <div class="alert alert-danger"><?php echo $e; ?></div>
     <?php endforeach; ?>
 <?php endif; ?>
 <div class="row">
     <div class="col-md-8">
-        <form method="POST" enctype="multipart/form-data" multiple>
+        <form method="POST" enctype="multipart/form-data" multiple class="col-md-6">
             <div class="">
                 <img id='image_preview' src="<?php echo isset($filename) ? "/uploads/" . $filename : 'http://placehold.it/300x200'; ?>" width="150" class="img-rounded"/>
             </div>    
-            <input id='image' type="file" name="image_album">
+            <input id='image' type="file" name="image_album" >
 
-            <label>Название альбома</br>
-                <input type="text" name="title_album" value="<?php echo isset($title_album) ? $title_album : '' ?>">
-            </label>
-            <label>Год</br>
-                <input type="text" name="year" value="<?php echo isset($year) ? $year : '' ?>">
-            </label></br>
+            <div class="form-group">
+                <label>Название альбома</label>
+                <input class="form-control" type="text" name="title_album" value="<?php echo isset($title_album) ? $title_album : '' ?>">
+            </div>
+
+            <div class="form-group">
+                <label>Год</label>
+                <input class="form-control" type="text" name="year" value="<?php echo isset($year) ? $year : '' ?>">
+            </div>
             </br>
             <label>Треки</label>
             </br>
@@ -98,12 +102,12 @@
                     <?php foreach ($audio as $a): ?>
                         <span class="track track_<?php echo $i; ?>">
                             <label>
-                                <?php echo $i ?>. <input type="text" name="title_track_<?php echo $i; ?>" value="<?php echo $a['name'] ?>"/>
+                                <?php echo $i ?>. <input class="form-control"  type="text" name="title_track_<?php echo $i; ?>" value="<?php echo $a['name'] ?>"/>
                             </label>
                             <?php if (!empty($a['file'])): ?>
                                 <span><?php echo $a['file']; ?><span onclick="audio.file_remove(<?php echo $a['id']; ?>, <?php echo $i; ?>)"> x</span></span>
                             <?php else: ?>    
-                                <input type='file' name='file_track_<?php echo $i; ?>'/>
+                                <!--<input type='file' name='file_track_<?php echo $i; ?>'/>-->
                             <?php endif; ?>    
                             </br>
                         </span>
@@ -112,10 +116,24 @@
                 <?php endif; ?>
             </div>
             <input type="hidden" value="<?php echo isset($count) ? $count : '0'; ?>" name="count">
-            <button onclick="audio.add_track(event);">Добавить трек</button>
-            <button onclick="audio.del_track(event);">Удалить трек</button></br>
+            <button class="btn btn-success" onclick="audio.add_track(event);">Добавить трек</button>
+            <button class="btn btn-danger" onclick="audio.del_track(event);">Удалить трек</button></br>
             </br>
             </br>
+            <div class="form-group">
+                <?php echo Form::label('description', 'Описание')?>
+                <?php echo Form::textarea('description', isset($description) ? $description : '', array('class'=> 'form-control'))?>
+            </div>
+            
+            <fieldset>
+                <legend>Shop's links</legend>                
+                    <div class="form-group">
+                        <?php echo Form::label('store_albums[bandcamp]', 'Bandcamp')?>
+                        <?php echo Form::input('store_albums[bandcamp]', isset($store_albums['bandcamp']['url']) ? $store_albums['bandcamp']['url'] : null, array('class'=> 'form-control'))?>
+                    </div>
+                    
+                
+            </fieldset>
             <input type="submit" value="Сохранить" name="save">
         </form>
     </div>
@@ -126,7 +144,7 @@
             <div class='panel-body'>
                 <ol class="nav">
                     <?php foreach ($list_albums as $album): ?>
-                        <li><a href="/admin/audio/albums/<?php echo $album->id ?>"><?php echo $album->name ?></li>
+                        <li><a href="/admin/audio/albums/<?php echo $album->id ?>"><?php echo $album->name ?></a></li>
                     <?php endforeach ?>
                 </ol>
             </div>

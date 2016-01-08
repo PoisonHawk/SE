@@ -26,6 +26,7 @@ class Controller_Audio extends Controller_Base{
             $album_list[$disk['id']]['name']     = $disk['name'];
             $album_list[$disk['id']]['year']     = $disk['year'];
             $album_list[$disk['id']]['image']    = $disk['image'];
+            $album_list[$disk['id']]['description'] = $disk['description'];
             $album_list[$disk['id']]['tracks']  = array();
              
             $audio = new Model_Audio();

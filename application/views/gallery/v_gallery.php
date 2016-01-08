@@ -10,7 +10,7 @@
     <div class="video row">		
         <?php foreach($data as $d):?>
         <div class="item live col-md-4">
-            <a href="videos.html">
+            <a href="/gallery/item/<?php echo $d['id']?>">
                 <div class="photo-image">
                     <img src="/photos/<?php echo $d['id'] ?>/thumbs/<?php echo $d['image'] ?>" width="325">
 

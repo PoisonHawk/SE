@@ -4,7 +4,7 @@
         <article class="member">
             <h2><?php echo $member->title; ?></h2>
             <div class="separator"></div>
-            <div class="image col-md-4">
+            <div class="image col-sm-12 col-md-4">
                 <?php if (isset($member->image)): ?> 
                     <div>                                
                         <img  src='/uploads/<?php echo $member->image ?>' width='350' >
@@ -12,7 +12,7 @@
                 <?php endif; ?>  
                 
             </div>
-            <div class='member-text col-md-8'>
+            <div class='member-text col-sm-12  col-md-8'>
                 <h3>Guitar, Vocal</h3>
                 <p><?php echo $member->content?></p>
                 <?php if (isset($member->social)): ?>

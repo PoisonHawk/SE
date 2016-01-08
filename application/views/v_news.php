@@ -9,19 +9,17 @@
                     <img src='/uploads/<?php echo $new->image ?>' width='400'>
                 </div>
             <?php endif; ?>            
-            <div class='text '>
+            <div class='text'>
                 <h3><a href="/news/new/<?php echo $new->id?>"><?php echo $new->title?></a></h3>
                 <span class="new-date" style="display:block; margin-bottom:10px;"><?php echo date('d M Y', $new->date)?></span>
                 
                 <?php echo $new->description; ?>
                 <?php 
                         $text = explode(' ', $new->description);
-                        if (count($text) > 150) {
-                    ?>
-                        <a href='/news/new/<?php echo $new->id?>'>More...</a>
-                    <?php
-                        }
-                    ?>
+                        
+                        if (count($text) > 150): ?>
+                        <a href='/news/new/<?php echo $new->id; ?>'>More...</a>
+                <?php  endif; ?>
                 
             </div>
 

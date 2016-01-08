@@ -35,11 +35,20 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             $audio  = $query->as_array(); 
             $count  = $query->count();
             
+            
+            $storealbums= db::query(1, 'select title, url from store_albums where album_id=:aid')
+                    ->param(':aid', $id)
+                    ->execute()
+                    ->as_array('title');
+
+            
             $view->filename     = $album->image;
             $view->count        = $count;
             $view->audio        = $audio;
             $view->title_album  = $album->name;
             $view->year         = $album->year;
+            $view->description  = $album->description;
+            $view->store_albums = $storealbums;
         }
         
         
@@ -50,17 +59,32 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             $title              = trim(arr::get($_POST,'title_album'));
             $year               = trim(arr::get($_POST,'year')); 
             $album_image        = arr::get($_FILES, 'image_album', $album->image);
-            
+            $description        = arr::get($_POST, 'description');
+            $descriiption       = strip_tags($description, '<br></br>');
+            $store_albums       = arr::get($_POST, 'store_albums');
+                       
             //валидация формы
             $validation = Validation::factory($this->request->post())
                 ->rule('title_album', 'not_empty')
                 ->rule('year', 'numeric')
-                ->rule('year', 'exact_length', array(':value',4));    
+                ->rule('year', 'exact_length', array(':value',4));  
+                
             
             if(!$validation->check()){
                 
                 $errors = $validation->errors('validation');
                 
+            }
+            
+            if (!empty($store_albums)) {
+                foreach($store_albums as $sa_title => $sa_url) {
+                                
+                    if($sa_url !== '' and !Valid::url($sa_url)){
+
+                        $errors[] = 'Url '.$sa_title.' не валиден ';
+
+                    }
+                }
             }
             
             //Загрузка изображения альбома, если выбран                               
@@ -81,15 +105,34 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             }
             
             Database::instance()->begin();
-            
+            try{
                 //сохраняем информацию об альбоме
                 $album->name    = $title;
                 $album->year    = $year;
                 $album->created = time(); 
+                $album->description = $description;
                 $album->save();
 
                 $album_id=$album->pk();            
 
+                //добавление ссылок на покупку альбома
+                if (!empty($store_albums)) {
+                    foreach($store_albums as $sa_title => $sa_url) {
+                        
+                        if ($id) {
+                            $store = new Model_Storealbums(array('album_id'=>$id));
+                        } else {
+                            $store = new Model_Storealbums();
+                        }
+                        
+                        $store->title = $sa_title;
+                        $store->url = $sa_url;
+                        $store->album_id = $id;
+                        $store->save();
+                        
+                    }
+                }
+                
                 //добавление треков
                 $count_add = arr::get($_POST,'count');
 
@@ -103,23 +146,24 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
                     }
                     
                     //загрузка файлов аудио
-                    if(Upload::not_empty($_FILES["file_track_$i"])){
-                        //загрузка файлов
-                                                                        
-                        $file = $this->_save_audio($_FILES["file_track_$i"],$name);
-                        if(!$file){
-                            $errors[] = 'There was a problem while uploading the image.
-                        Make sure it is uploaded and must be mp3/ogg file.';
-                        }
-                        $audio->file = $file;
-                    }
+//                    if(Upload::not_empty($_FILES["file_track_$i"])){
+//                        //загрузка файлов
+//                                                                        
+//                        $file = $this->_save_audio($_FILES["file_track_$i"],$name);
+//                        if(!$file){
+//                            $errors[] = 'There was a problem while uploading the image.
+//                        Make sure it is uploaded and must be mp3/ogg file.';
+//                        }
+//                        $audio->file = $file;
+//                    }
 
                     $audio->name    = $name ? $name : substr($audio->file, 0, strrpos($audio->file, '.'));
                     $audio->num     = $i;
                     $audio->album_id= $album_id;
                     
                     $audio->save();
-                }   
+                }
+            
 
                 //удаление треков
                 if(isset($id)){
@@ -128,6 +172,12 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
                         $audio->delete();
                     }
                 }
+             
+            }catch(Exception $e) {
+                Database::instance()->rollback();
+                $view->errors = 'Произошла ошибка';
+                
+            }    
                 
                 if (empty($errors)){
                     Database::instance()->commit();

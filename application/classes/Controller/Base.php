@@ -9,7 +9,7 @@ class Controller_Base extends Controller_Template
     
     public function before() {
         parent::before();
-          
+        
         if (!in_array($this->request->controller(), array('Videos', 'Band', 'Contacts'))) {
 //            die('Ты не имеешь права смотреть другие страницы!');
         }

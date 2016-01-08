@@ -345,6 +345,9 @@ ol {
 .news .text p {
   max-height: 175px; }
 
+.text p a{
+  float:none; }
+
 .image-new {
   margin: 10px 0 30px 0; }
 

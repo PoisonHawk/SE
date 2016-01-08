@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Sympulse-e | <?php echo $title; ?></title>
+        <title>Sympulse-e </title>
         <meta charset="utf-8">
-        <!-- <link rel="stylesheet" href="bower_components/normalize-css/normalize.css"> -->
         <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/main.css">
-        <?php foreach ($styles as $style): ?>
-            <?php echo HTML::style($style); ?>
-        <?php endforeach; ?>
-        <script src="/bower_components/jquery/dist/jquery.js"></script>
-<!--        <script src="/js/jquery.colorbox.js"></script>-->
-        <script src="/js/main.js"></script>
-        <?php foreach ($scripts as $script): ?>
-            <?php echo HTML::script($script); ?>
-        <?php endforeach; ?> 
-
+        <link rel="stylesheet" href="/css/main.css">           
     </head>
     <body>
         <div class="container ">
@@ -23,28 +12,23 @@
                 <header>
                     <div class="nav row">
                         <ul class="col-md-10">
-                            <li ><a class="<?php echo $current == 'Index' ? 'selected' : '' ?>" href="/">News</a></li>
-                            <li ><a class="<?php echo $current == 'Band' ? 'selected' : '' ?>" href="/band">Band</a>
+                            <li ><a href="/">News</a></li>
+                            <li ><a href="/band">Band</a>
                                 <ul class="submenu">
-                                    <li ><a class="<?php echo $current == 'Band' ? 'selected' : '' ?>" href="/band/">History</a></li>
-                                    <li ><a class="<?php echo $current == 'Members' ? 'selected' : '' ?>" href="/band/members">Members</a></li>
+                                    <li ><a href="/band/">History</a></li>
+                                    <li ><a href="/band/members">Members</a></li>
                                 </ul>
                             </li>
-                            <li><a class="<?php echo $current == 'Audio' ? 'selected' : '' ?>" href="/audio">Discography</a></li>
-                            <!--<li><a class="<?php echo $current == 'Shop' ? 'selected' : '' ?>" href="/shop">Shop</a></li>-->
-                            <li><a class="<?php echo $current == 'Videos' ? 'selected' : '' ?>" href="/gallery">Media</a>
+                            <li><a href="/audio">Discography</a></li>
+                            <!--<li><a  href="/shop">Shop</a></li>-->
+                            <li><a href="/gallery">Media</a>
                                 <ul class="submenu">
-                                    <li><a class="<?php echo $current == 'Gallery' ? 'selected' : '' ?>" href="/gallery">Photos</a>
-<!--                                                        <ul class="submenu">
-                                            <li ><a class="<?php echo $current == 'Gallery' ? 'selected' : '' ?>" href="/gallery/live">Live</a></li>
-                                            <li ><a class="<?php echo $current == 'Gallery' ? 'selected' : '' ?>" href="/gallery/promo">Promo</a></li>
-                                        </ul>-->
-                                    </li>
-                                    <li ><a class="<?php echo $current == 'Videos' ? 'selected' : '' ?>" href="/videos">Videos</a></li>
+                                    <li><a  href="/gallery">Photos</a></li>
+                                    <li ><a href="/videos">Videos</a></li>
                                 </ul>
                             </li>
-                            <li><a class="<?php echo $current == 'Shows' ? 'selected' : '' ?>" href="/shows">Shows</a>
-                            <li><a class="<?php echo $current == 'Contacts' ? 'selected' : '' ?>" href="/contacts">Contacts</a>
+                            <li><a href="/shows">Shows</a>
+                            <li><a href="/contacts">Contacts</a>
                                                         
                         </ul>
                         <div class="social col-md-2">
@@ -72,7 +56,16 @@
                     </div>
                 </header>
                 <div class="content">
-                <?php echo $content; ?>
+                <section>
+                    <h2 style="text-align:center; font-size:48px;">404 Page Not Found</h2>
+                            <div class="separator"></div>
+                    <div class='row'>
+                            <div class="col-md-10 center col-md-offset-1">
+                            <div class="band-image">
+                                    <img src="/images/slider-img3.jpg" width="945">
+                            </div>                            
+                    </div>
+                    </section>
                 </div>
                 <div class="separator"></div>
                 <footer>

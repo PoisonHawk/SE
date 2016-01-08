@@ -38,7 +38,7 @@ class Controller_News extends Controller_Base{
         
         $id = $this->request->param('id');
         
-        $new = new Model_News($id);
+        $new = new Model_News((int)$id);
         
         if (!$new->loaded()){
             throw new HTTP_Exception_404('Страница не найдена');

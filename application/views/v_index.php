@@ -12,10 +12,10 @@
                 <div class='text '>
                     <h3><a href="/news/new/<?php echo $new->id?>"><?php echo $new->title?></a></h3>
                     <span class="date"><?php echo date('d.m.Y',$new->date)?></span>
-                    <p><?php echo Text::limit_words($new->description, 70); ?></p>
+                    <p><?php echo $new->description; ?></p>
                     <?php 
                         $text = explode(' ', $new->description);
-                        if (count($text) > 70) {
+                        if (count($text) > 60) {
                     ?>
                         <a href='/news/new/<?php echo $new->id?>'>More...</a>
                     <?php
@@ -56,13 +56,14 @@
     <section class='album col-md-5'>
         <h2>Latest Release</h2>
         <div class="disc">
-
-            <img src="/images/albums/01.jpg" width="300">
-            <h3>Solarstorm</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-            <a href="#">iTunes</a>
-            <a href="#">iTunes</a>
-            <a href="#">iTunes</a>
+            <?php if ($last_album->loaded()):?>
+            <img src="/uploads/<?php echo $last_album->image; ?>" width="300">
+            <h3><?php echo $last_album->name; ?></h3>
+            <p><?php echo $last_album->description; ?></p>
+            <?php foreach($store_links as $link):?>
+            <a href="<?php echo $link->url?>"><?php echo $link->title?></a>
+            <?php endforeach;?>            
+            <?php endif;?>
         </div>
     </section>
 </div>

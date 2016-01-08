@@ -3,16 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/yevgen/projects/se/SE/application/views/admin/v_users/v_user.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/config/auth.php</file>
-            <file>file:/home/yevgen/projects/se/SE/modules/orm/classes/Kohana/Auth/ORM.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/views/admin/v_users/v_index.php</file>
-            <file>file:/home/yevgen/projects/se/SE/modules/orm/classes/Model/Auth/User.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/Login.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/Admin/Base.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/Admin/Users.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/classes/Model/Tours.php</file>
-            <file>file:/home/yevgen/projects/se/SE/application/views/admin/v_layout.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/v_band/v_members.php</file>
+            <file>file:/home/yevgen/projects/se/SE/www/js/main.js</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/v_new.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/v_news.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/gallery/v_gallery.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/gallery/v_item.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/Admin/Audio.php</file>
+            <file>file:/home/yevgen/projects/se/SE/www/css/main.css</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/admin/v_news.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/classes/Model/Storealbums.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/News.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/v_layout.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/v_index.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/admin/v_albums.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/views/v_audio.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/Audio.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/classes/Model/Albums.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/Gallery.php</file>
+            <file>file:/home/yevgen/projects/se/SE/application/classes/Controller/Index.php</file>
         </group>
     </open-files>
 </project-private>

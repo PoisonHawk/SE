@@ -24,7 +24,7 @@
                         </ol>
                     </div>
                     <div class="album-description col-md-4">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque iaculis nulla consectetur consequat sodales. Cras nisi enim, sagittis a facilisis at, posuere non ligula. Nulla pretium lorem in tortor volutpat, nec tincidunt neque mollis. Nam molestie nibh massa. In nec odio ac sem laoreet hendrerit. Sed interdum eu lectus vel aliquam. Cras posuere pulvinar augue nec aliquam. Vivamus eget ante sed nisi lacinia fringilla. Vestibulum tristique odio est, at sodales nibh interdum dapibus. Nam faucibus leo ut ex tincidunt laoreet. Sed in ultrices ante. Nam ullamcorper ex id nunc vestibulum molestie. Quisque in eros volutpat, tempus metus a, facilisis nulla. Sed rutrum turpis in massa rhoncus, in pretium purus aliquet. Donec malesuada eget nulla quis convallis.</p>
+                        <p><?php echo $album['description']?></p>    
                     </div>
                     <div class="clearfix"></div>
                 </div>

@@ -46,11 +46,24 @@ class Controller_index extends Controller_Base {
             $photos[] = $item->getFilename();            
         }
         
+        
+        $last_album = ORM::factory('Albums')
+                ->order_by('year', 'desc')
+                ->order_by('created', 'desc')
+                ->limit(1)->find();
+        
+        $storelinks = ORM::factory('Storealbums')
+                ->where('album_id', '=', $last_album->id)
+                ->find_all();
+                
+        
         $content = View::factory('v_index', array(
             'news' => $last_news, 
             'tours' => $tours, 
             'last_video' => $last_video,
             'last_image_album' => $last_image_album->id,
+            'last_album' => $last_album,
+            'store_links' => $storelinks,
             'photos' => $photos));
 
         $this->template->title = $this->title;

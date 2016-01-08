@@ -74,13 +74,14 @@
                 <div id="content" class='container'>
                     <?php echo $content; ?>
                 </div>
-                <footer id="footer" class="navbar-fixed-bottom">
-                    <div id="container" class="container">
-                        <span>&copy; sympuls-e</span>
+                
+            </div>   
+        </div>  
+        <footer id="footer" class="footer default" style='padding:20px'>
+                    <div  class="container">
+                        <p>&copy; sympuls-e</p>
                     </div>   
                 </footer>
-            </div>   
-        </div>    
         <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
         <!--<script src="/js/bootstrap.min.js"></script>-->
         <script src="/js/bootstrap.js"></script>

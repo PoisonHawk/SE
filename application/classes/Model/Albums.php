@@ -3,21 +3,13 @@
 class Model_Albums extends ORM{
     
     protected $_table_name = 'albums';
-    
-    protected  $_table_columns = array(
-        'id'        => 'id',
-        'name'      =>  'name',
-        'year'      =>  'year',
-        'image'     =>  'image',
-        'created'   =>  'created',
-    );
-    
+            
     /*
      * Получает список альбомов
      */
     public function getAlbums(){
         
-        $sql = "SELECT id, name, year, image FROM albums order by created desc";
+        $sql = "SELECT id, name, year, image, description FROM albums order by created desc";
         
         try{
             $res = DB::query(DATABASE::SELECT,$sql)
