@@ -1,6 +1,6 @@
 <?php
 
-$_SERVER['KOHANA_ENV'] = 'production';
+//$_SERVER['KOHANA_ENV'] = 'production';
 
 /**
  * The directory in which your application specific resources are located.
@@ -76,6 +76,7 @@ define('MODPATH', realpath($modules).DIRECTORY_SEPARATOR);
 define('SYSPATH', realpath($system).DIRECTORY_SEPARATOR);
 
 define('AUDIOPATH', 'audios'.DIRECTORY_SEPARATOR);
+define('UPLOADSPATH', 'uploads'.DIRECTORY_SEPARATOR);
 
 // Clean up the configuration vars
 unset($application, $modules, $system);

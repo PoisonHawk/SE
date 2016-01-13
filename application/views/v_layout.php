@@ -18,7 +18,7 @@
 
     </head>
     <body>
-        <div class="container ">
+        <div class="container-fluid">
             <div class='main  center'>
                 <header>
                     <div class="nav row">
@@ -77,13 +77,22 @@
                 <div class="separator"></div>
                 <footer>
                     <section class="endorsers">
-                        <img src="/images/esp.png" width="150">
-                        <img src="/images/esp.png" width="150">
-                        <img src="/images/esp.png" width="150">
-                        <img src="/images/esp.png" width="150">
-                        <img src="/images/esp.png" width="150">
-                        <img src="/images/esp.png" width="150">
-                        <img src="/images/esp.png" width="150">
+                        
+                        <?php if (count($endorsers) >0):?>
+                            <?php foreach($endorsers as $e):?>
+                               
+                                <?php if ($e->link):?>
+                        <a href="<?php echo $e->link?>" target="_blank">
+                                <?php endif;?>
+                                    <img src="/uploads/<?php echo $e->image?>" width="150" height="50" style="margin: 0 10px;">
+                                <?php if ($e->link):?>
+                                    </a>
+                                <?php endif;?>
+                               
+                            <?php endforeach;?>
+                        <?php endif;?>
+                     
+
                     </section>
                     <div class="copyright">
                         Sympulse&copy;2015

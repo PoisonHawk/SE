@@ -53,6 +53,6 @@
             <div class="form-group">
                 <?php echo Form::submit('send', 'Сохранить', array('class' => 'btn btn-primary')) ?>
             </div>
-        </form>
+        </form>        
     </div>
 

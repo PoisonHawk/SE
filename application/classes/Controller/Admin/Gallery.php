@@ -33,6 +33,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
                     
                     $gallery =  new Model_Gallery();
                     $gallery->title = $title;  
+                    $gallery->category = 'live';  
                     $gallery->created = time();
                     $gallery->save();       
                     $pk = $gallery->pk();
@@ -203,15 +204,25 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
                     elseif ($exif['Orientation']==8)$image->rotate(-90); 
                 }
             }
-
-            //to origin                     
-            $image  ->resize('902','360')                    
-                    ->save($path_origin.$filename);
             
+            $orientation = $image->width >= $image->height ? Image::HORIZONTAL: Image::VERTICAL; 
+            
+            if ($orientation === Image::HORIZONTAL) {
+                //to origin                     
+                $image  ->resize(600, null)                    
+                        ->save($path_origin.$filename);
+
+            } else {
+                            //to origin                     
+                $image  ->resize( null, 600)                    
+                        ->save($path_origin.$filename);
+
+            }
+
             //to thumbs                        
             $image  
-                    ->crop('250', '250')
-//                    ->resize('150','150')                    
+                    ->crop(300, 200)
+                    ->resize(300, null)                    
                     ->save($path_thumbs.$filename);
             
              unlink($file);

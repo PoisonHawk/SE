@@ -10,7 +10,7 @@
     <div class="media">
         <div class="row">
             <?php foreach ($videos as $vm): ?>
-                <div class="item live col-md-6">
+                <div class="item live col-sm-6 col-md-6">
                     <input type="hidden" name="link" value="<?php echo $vm->videocode?>">
                     <!--<a href="photos.html">-->
                         <div class="photo-image">

@@ -4,7 +4,7 @@
             $('a.thumb').colorbox({ 
             opacity:0.85 , 
             rel:'group1',
-//            width: '500px',
+//            width: '100%',
 //            maxWidth:'800px',
             current:'',
             });     
@@ -15,7 +15,7 @@
     <div class="row">
     
      <?php foreach($filelist as $key => $value):?>  
-        <div class="col-md-3" style="margin-bottom:30px"> 
+        <div class="col-sm-4 col-md-3" style="margin-bottom:30px"> 
             <a class="thumb" href="/photos/<?php echo $id?>/origin/<?php echo $value?>" title=""> 
                 <img src="/photos/<?php echo $id?>/thumbs/<?php echo $value?>" alt="" /> 
             </a>                                            

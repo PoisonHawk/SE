@@ -155,7 +155,7 @@ class uploadimage {
     
     public function thumb($width = NULL, $height = NULL){
         $this->thumb = true;
-        return this;
+        return $this;
     }
     
 

@@ -211,7 +211,7 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             $filename = strtolower(Text::random('alnum', 20)).'.jpg';
  
             Image::factory($file)
-                ->resize(200, 200, Image::AUTO)
+                ->resize(400, 400, Image::AUTO)
                 ->save($directory.$filename);
  
             // Delete the temporary file

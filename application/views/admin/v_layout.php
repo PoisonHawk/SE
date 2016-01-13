@@ -57,6 +57,7 @@
                                     <li><a href='/admin/band/members'>Участники</a></li>                      
                                 </ul>
                             </li>
+                            <li><a href="/admin/endorsers">Эндорсеры</a></li>
                             <li><a href="/admin/settings">Настройки</a></li>
                             <?php if (Auth::instance()->logged_in('sa')):?>
                                 <li><a href="/admin/users">Пользователи</a></li>

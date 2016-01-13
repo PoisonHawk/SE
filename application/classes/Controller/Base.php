@@ -64,6 +64,12 @@ class Controller_Base extends Controller_Template
 
         $social_yt = isset($res[0]['value']) ? $res[0]['value'] : '';
         $this->template->social_yt = $social_yt;
+        
+        $endorsers = ORM::factory('Endorser')->find_all();
+        $this->template->endorsers = $endorsers;
+        
+        
+        
     }
     
 }
