@@ -1,12 +1,12 @@
 <script>
-    tinyMCE.init({
-        mode: 'textareas',
-        theme: 'modern',
-        languages: 'ru',
-//        images_upload_base_path: "/images/",        
-        plugins: 'link,image,media,textcolor, colorpicker, contextmenu',
-        height: '300px',
-    })
+//    tinyMCE.init({
+//        mode: 'textareas',
+//        theme: 'modern',
+//        languages: 'ru',
+////        images_upload_base_path: "/images/",        
+//        plugins: 'link,image,media,textcolor, colorpicker, contextmenu',
+//        height: '300px',
+//    })
 </script>    
 <?php if (isset($errors)): ?>
     <?php foreach ($errors as $e): ?>
@@ -21,7 +21,7 @@
 
             <div class='form-group'>
                 <?php echo Form::label('content', 'Содержимое:') ?>
-                <?php echo Form::textarea('content', $band->content, array('id' => 'content', 'rows' => 5)) ?>
+                <?php echo Form::textarea('content', $band->content, array('id' => 'content', 'rows' => 20, 'class' =>'form-control')) ?>
 
             </div>
             <div class='form-group'>

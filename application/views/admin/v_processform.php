@@ -1,18 +1,18 @@
 <script>
     $(document).ready(function () {
 
-        tinyMCE.init({
-            mode: 'textareas',
-            theme: 'modern',
-            languages: 'ru',
-            plugins: 'link,media,preview, insertdatetime',
-            height: '300px',
-            toolbar: 'undo redo | styleselect | bold italic | link | alignleft aligncenter alignright | bullist numlist outdent indent | preview |  insertdatetime ',
-            menubar: 'edit insert view format tools',
-            content_css: "/css/tinymce.min.css",
-            allow_html_in_named_anchor: true,
-            insertdatetime_formats: ["%d.%m.%Y", "%H:%M"],
-        })
+//        tinyMCE.init({
+//            mode: 'textareas',
+//            theme: 'modern',
+//            languages: 'ru',
+//            plugins: 'link,media,preview, insertdatetime',
+//            height: '300px',
+//            toolbar: 'undo redo | styleselect | bold italic | link | alignleft aligncenter alignright | bullist numlist outdent indent | preview |  insertdatetime ',
+//            menubar: 'edit insert view format tools',
+//            content_css: "/css/tinymce.min.css",
+//            allow_html_in_named_anchor: true,
+//            insertdatetime_formats: ["%d.%m.%Y", "%H:%M"],
+//        })
 
         $('#image').change(function () {
             var input = $(this)[0];
@@ -56,7 +56,7 @@
             </div>
             <div class='form-group'>
                 <label class="" for="header">Текст</label>
-                <textarea  id="description" name="desc" rows="5"><?php echo isset($desc) ? $desc : '' ?></textarea>
+                <textarea  id="description" name="desc" class="form-control" rows="10"><?php echo isset($desc) ? $desc : '' ?></textarea>
             </div>
             <div class='form-group'>
                 <input type="submit" value="Добавить" class='btn btn-primary' name="send">

@@ -5,8 +5,8 @@
         <?php if (isset($albums)): ?>                      
             <?php foreach ($albums as $album): ?>  
                 <div class="album">
-                    <div class="album-image col-sm-12 col-md-4">
-                        <img src="/uploads/<?php echo $album['image'] ?>" >
+                    <div class="album-image col-md-4">
+                        <img src="/uploads/<?php echo $album['image'] ?>" class="img-responsive">
 
                         <div class="buy-album">
                             <a href="#">Buy album</a>

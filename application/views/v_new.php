@@ -10,12 +10,12 @@
             
                 <?php if($new->image):?>
                 <div class="image-new">
-                    <img src='/uploads/<?php echo $new->image ?>' width='750'>
+                    <img src='/uploads/<?php echo $new->image ?>' width='750' class="img-responsive">
 
                 </div>
                 <?php endif;?>
-                <div class='text '>
-                    <?php echo $new->description?>
+                <div class='text'>                    
+                    <?php echo Text::auto_p($new->description, true)?>                    
                 </div>
             </div>
         </div>

@@ -66,7 +66,8 @@ class Controller_Admin_News extends Controller_Admin_Base{
             $n = $new->getNews($id);
             
             $content->title = $n[0]['title'];
-            $content->desc = $n[0]['description'];
+            $content->desc = preg_replace('/\<br(\s*)?\/?\>/i', "\n", $n[0]['description']);
+//            $content->desc = $n[0]['description'];
             $content->img = $n[0]['image'];
                     
         }
@@ -81,9 +82,11 @@ class Controller_Admin_News extends Controller_Admin_Base{
 
                 if ($uploadimage->check()) {
                     $filename = $uploadimage
-                            ->setFolder(DOCROOT . 'uploads/')
-                            ->setDimension(400, NULL)
+                            ->setFolder(UPLOADSPATH)
+                            ->makeThumb()
+                            ->setDimension(600, 400)
                             ->setQuality(70)
+                            
                             ->save();
                     $image = $filename;
                     $content->filename = $filename;
@@ -96,6 +99,8 @@ class Controller_Admin_News extends Controller_Admin_Base{
             //$date   = arr::get($_POST,'date','');
             $title  = arr::get($_POST,'title','');
             $desc   = arr::get($_POST,'desc','');
+            
+            $desc = htmlspecialchars(addslashes(strip_tags(trim($desc))));
             
             $post = new Validation($_POST);
             

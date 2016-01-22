@@ -94,7 +94,7 @@ class Controller_Admin_Band extends Controller_Admin_Base {
             $member->title = $this->request->post('title');
             $member->alias = $this->request->post('alias');
             $member->active = $this->request->post('active');
-            $member->content = $this->request->post('content');
+            $member->content = htmlspecialchars(strip_tags(trim($this->request->post('content'))));
             $member->uri = 'member';
             $member->weight = $this->request->post('weight'); 
             $member->social = $this->request->post('social');

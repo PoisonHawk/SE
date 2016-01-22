@@ -31,7 +31,17 @@ body {
   line-height: 1.4;
   margin-bottom: 20px; }
 
+.top-menu{
+    background: rgba(0,0,0,0.9);
+    
+}
+
+.nav-wrap{
+    position:relative;
+}
+
 .nav {
+    
   font-size: 22px;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.1;
@@ -108,11 +118,32 @@ body {
 .social a.yt:hover {
   background: url("/images/icons/yt1.png") center; }
 
+.social-top{
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+.main{
+    margin-top:65px;    
+}
+
 .logo {
-  text-align: center; }
+  text-align: center;
+  margin: 20px 0;
+    }
+
+.logo img{
+    max-width:100%;
+}
+
 
 .content {
   margin: 25px 0; }
+
+section {
+    margin:40px 0;
+}
 
 section h2 {
   color: #0088cc;
@@ -123,22 +154,34 @@ section h2 {
 
 .article {
   margin: 30px 0;
-  max-height: 300px;
-  overflow: hidden; }
+  position:relative;
+}
+
+.article a.more{
+    margin: 10px 15px 0 0;
+    float: right;
+}
 
 .article .image {
-  float: left;
-  margin: 0 20px 20px 0; }
+  /*float: left;*/
+  margin-bottom: 20px; }
 
 .article h3 {
   color: white;
   margin: 0 0 10px 0;
   text-transform: uppercase; }
 
-.text p {
-  max-height: 110px;
+.article .text {
+  max-height: 224px;
   overflow: hidden;
-  text-align: justify; }
+  text-align: justify;
+  word-wrap: break-word;
+   }
+
+.text {
+  text-align: justify;
+  word-wrap: break-word;
+}
 
 .text a {
   float: right; }
@@ -184,23 +227,20 @@ section h2 {
   border: 1px solid #0088cc;
   margin: 30px 0; }
 
-section.album {
-  text-align: center; }
+/*section.album {
+  text-align: center; }*/
 
 .disc h3 {
   color: white;
   margin: 20px 0;
   text-transform: uppercase; }
 
-.disc img {
-  margin: 20px; }
-
 .disc img:hover {
-  margin: 20px;
   box-shadow: 0 0 6px 2px #0088cc; }
 
 .disc p {
-  text-align: justify; }
+  text-align: justify;
+    word-wrap: break-word;}
 
 .disc a {
   display: inline-block;
@@ -230,20 +270,27 @@ footer .social {
     line-height: 1.4; }
 
 /*******Discography******/
-.album {
-  margin: 10px 0 30px 0; }
+/*.album {
+  margin: 10px 0 30px 0; }*/
 
 .album-image {
+    margin: 0 0 30px 0;
   text-align: center; }
   .album-image .buy-album {
     margin: 10px 0; }
     .album-image .buy-album a {
       margin: 10px; }
 
+    .album-tracks{
+        margin: 0 0 30px 0;
+    }
+    
+    
 .album-tracks
 h3 {
   color: #fff;
   margin: 0 0 20px 0;
+  text-align:center;
   text-transform: uppercase; }
 
 ol {
@@ -252,18 +299,23 @@ ol {
   text-transform: capitalize; }
 
 .album-description {
-  text-indent: 1.5em; }
+    margin: 0 0 30px 0;
+  text-indent: 1.5em;
+    text-align: justify;
+    word-wrap:break-word}
 
 /*********Media*******/
 .media .item {
   text-align: center;
+ 
   margin: 20px 0; }
   .media .item a {
-    display: block; }
-  .media .item .photo-image {
-    width: 500px;
+    display: block; } 
+    .media .item, .photo-image{   
     position: relative;
-    margin: 0 auto; }
+     height:180px;
+    margin: 10px auto; }
+  
   .media .item .play {
     position: absolute;
     left: 50%;
@@ -277,10 +329,11 @@ ol {
   left: 0;
   padding: 20px 10px;
   color: #fff;
-  width: 500px;
-  display: none; }
+  width: 100%;
+  /*display: none;*/ 
+}
   .media .photos-album-title h4 {
-    font-size: 36px;
+    font-size: 24px;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.8); }
 
@@ -309,7 +362,7 @@ ol {
     width: 100%;
     display: none; }
     .video .photos-album-title h4 {
-      font-size: 24px;
+      font-size: 20px;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.8); }
 
@@ -342,8 +395,7 @@ ol {
 .new-date {
   color: rgba(255, 255, 255, 0.8); }
 
-.news .text p {
-  max-height: 175px; }
+
 
 .text p a{
   float:none; }
@@ -354,10 +406,12 @@ ol {
 .member {
   margin: 30px 0;
   /*max-height: 300px;*/
-  overflow: hidden; }
+  /*overflow: hidden;*/ 
+}
   .member .image {
-    float: left;
-    /*margin: 0 20px 20px 0;*/ }
+    /*float: left;*/
+    /*margin: 0 0 30px 0;*/ 
+  }
   .member h3 {
     color: white;
     margin: 0 0 10px 0;
@@ -394,6 +448,26 @@ ol {
     text-transform: uppercase;
     font-size: 30px;
     float: right;
-    text-align: center; }
+    text-align: center;    }
   .shows .tour .fest:hover {
     cursor: pointer; }
+
+  @media screen and (max-width: 480px){
+        .shows .tour .fest {
+            color: #0088cc;
+            text-transform: uppercase;
+            font-size: 30px;
+            float: right;
+            text-align: center;
+            margin-top:20px
+           }
+           
+           .categories{
+               float:none;
+               margin-top: 0;
+           }
+           
+           .categories a{
+               display: block;
+           }
+  }

@@ -20,7 +20,7 @@
                         </div>
                         <h3 class="letter"><?php echo $member->title ?></h3>
                         <div class='text'>
-                            <?php echo $member->content ?>
+                            <?php echo Text::auto_p($member->content) ?>
                         </div>
                     </article>
 

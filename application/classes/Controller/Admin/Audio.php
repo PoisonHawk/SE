@@ -60,8 +60,7 @@ class Controller_Admin_Audio extends Controller_Admin_Base{
             $year               = trim(arr::get($_POST,'year')); 
             $album_image        = arr::get($_FILES, 'image_album', $album->image);
             $description        = arr::get($_POST, 'description');
-            $descriiption       = strip_tags($description, '<br></br>');
-            $store_albums       = arr::get($_POST, 'store_albums');
+            $descriiption       = htmlspecialchars(addslashes(strip_tags(trim($description))));
                        
             //валидация формы
             $validation = Validation::factory($this->request->post())

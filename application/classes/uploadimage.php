@@ -13,8 +13,8 @@ class uploadimage {
     public $image = array();
     protected $errors = null;
     public $allow_exts = array('jpg', 'jpeg', 'png', 'gif');
-    protected $dimensionX = 350;
-    protected $dimensionY = 350;
+    protected $dimensionX = 600;
+    protected $dimensionY = 400;
     protected $quality = 100;
     protected $thumb = false;
     
@@ -28,27 +28,33 @@ class uploadimage {
     }
 
     public function save() {
-
+       
         if ($file = Upload::save($this->image, NULL, $this->default_path)) {
 
             $filename = strtolower(Text::random('alnum', 20) . '.jpg');
 
             $image = Image::factory($file);
 
-            //to origin                     
-//            $image->resize('900', '360')
-//                    ->save($path_origin . $filename);
-
             //to thumbs                  
             if ($this->thumb) {
                 $size = $image->width > $image->height ? $image->height : $image->width;
-                $image = $image->crop($size, $size);
-            }else{
-                $size = $image->width;
+                $image = $image->crop($size, $size)
+                        ->resize($this->dimensionX, $this->dimensionY)
+                        ->save($this->default_path . 'thumb_'.$filename);
             }
             
-            $image->crop($size, $size)
-                    ->resize($this->dimensionX, $this->dimensionY)
+            $image = Image::factory($file);
+            $size = $image->width;
+                        
+            $orientation = $image->width >= $image->height ? Image::HORIZONTAL: Image::VERTICAL; 
+            
+            if ($orientation === Image::VERTICAL) {
+                $image = $image
+                    ->crop($size, $size);
+            }
+            
+            $image = $image            
+                    ->resize($this->dimensionX, null)
 //                    ->render(NULL, $this->quality)
                     ->save($this->default_path . $filename);
 
@@ -155,6 +161,11 @@ class uploadimage {
     
     public function thumb($width = NULL, $height = NULL){
         $this->thumb = true;
+        return $this;
+    }
+    
+    public function makeThumb(){
+        $this->thumb =  true;
         return $this;
     }
     

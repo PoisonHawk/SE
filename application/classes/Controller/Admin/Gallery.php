@@ -95,7 +95,7 @@ class Controller_Admin_Gallery extends Controller_Admin_Base{
 
             $gallery->title = $this->request->post('title');
             $gallery->category = $this->request->post('category');
-            $gallery->description = $this->request->post('description');
+            $gallery->description = htmlspecialchars(addslashes(strip_tags(trim($this->request->post('description')))));
 
             try{
                 $gallery->save();
