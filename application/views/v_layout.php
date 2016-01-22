@@ -21,16 +21,12 @@
     <body>
         <div class="navbar navbar-fixed-top top-menu" role="navigation">
             <div class="container">
-                <div class="navbar-inner nav-wrap">
-                    <a class="btn btn-lg btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="glyphicon glyphicon-menu-hamburger"></span>
-                    </a>
-                    <div class="nav-collapse collapse">
-                        <!--                    <div class="nav" >-->
-                        <ul class="nav menu">
+                    <a id="touch-menu" class="mobile-menu" href="#"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
+                    <nav>   
+                        <ul class="menu">
                             <li ><a class="<?php echo $current == 'Index' ? 'selected' : '' ?>" href="/">News</a></li>
-                            <li >Band
-                                <ul class="submenu">
+                            <li><a href="#">Band</a>
+                                <ul class="sub-menu">
                                     <li ><a class="<?php echo $current == 'Band' ? 'selected' : '' ?>" href="/band/">History</a></li>
                                     <li ><a class="<?php echo $current == 'Members' ? 'selected' : '' ?>" href="/band/members">Members</a></li>
                                 </ul>
@@ -38,7 +34,7 @@
                             <li><a class="<?php echo $current == 'Audio' ? 'selected' : '' ?>" href="/audio">Discography</a></li>
                             <!--<li><a class="<?php echo $current == 'Shop' ? 'selected' : '' ?>" href="/shop">Shop</a></li>-->
                             <li><a class="<?php echo $current == 'Videos' ? 'selected' : '' ?>" href="/gallery">Media</a>
-                                <ul class="submenu">
+                                <ul class="sub-menu">
                                     <li><a class="<?php echo $current == 'Gallery' ? 'selected' : '' ?>" href="/gallery">Photos</a>
                                     <li ><a class="<?php echo $current == 'Videos' ? 'selected' : '' ?>" href="/videos">Videos</a></li>
                                 </ul>
@@ -47,8 +43,7 @@
                             <li><a class="<?php echo $current == 'Contacts' ? 'selected' : '' ?>" href="/contacts">Contacts</a>
 
                         </ul>
-                        <!--</div>-->
-                    </div>
+                    </nav>
                     <div class="social social-top">
                         <?php if (isset($social_vk) and $social_vk !== ''): ?>
                             <a class="vk" title="VK" href="<?php echo $social_vk ?>"></a>
@@ -63,8 +58,6 @@
                             <a class="tooltips n-2 yt" title="Twitter" href="<?php echo $social_yt ?>"></a>
                         <?php endif; ?>
                     </div>
-                </div>
-
             </div>
         </div>
 
@@ -119,6 +112,26 @@
             </div>
             <div class="clear"></div>
         </div>
+        <script>
+        
+        $(document).ready(function(){ 
+	var touch 	= $('#touch-menu');
+	var menu 	= $('.menu');
+ 
+	$(touch).on('click', function(e) {
+		e.preventDefault();
+		menu.slideToggle();
+	});
+	
+	$(window).resize(function(){
+		var w = $(window).width();
+		if(w > 767 && menu.is(':hidden')) {
+			menu.removeAttr('style');
+		}
+	});
+	
+});
+        </script>
     </body>
 </html>
 
