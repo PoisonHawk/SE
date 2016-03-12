@@ -36,34 +36,42 @@
 
 </script>   
 <div class="row">
-    <div class="col-md-8">
-        <?php if (isset($errors)): ?>
-            <?php foreach ($errors as $e): ?>
-                <p><?php echo $e; ?></p>
-            <?php endforeach; ?>
-        <?php endif; ?>
-        <form method="post" class="col-lg-12 form-horizontal" role="form" enctype="multipart/form-data">
-            <div class='form-group'>
-                <label class="control-label" for="header">Заголовок</label>
-                <input type="text" name="title" id="header" class="form-control" value="<?php echo isset($title) ? $title : '' ?>"/>
+    <div class="col-md-8 col-sm-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Новость
+            </div>
+            <div class="panel-body">
 
-            </div>
-            <div class='form-group'>
-                <label class="" for="image">Прикрепить изображение</label><br>
-                <img id='image_preview' src="<?php echo isset($img) ? '/uploads/' . $img : '' ?>" width='400'>
+                <?php if (isset($errors)): ?>
+                    <?php foreach ($errors as $e): ?>
+                        <p><?php echo $e; ?></p>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <form method="post" class="col-lg-12 form-horizontal" role="form" enctype="multipart/form-data">
+                    <div class='form-group'>
+                        <label class="control-label" for="header">Заголовок</label>
+                        <input type="text" name="title" id="header" class="form-control" value="<?php echo isset($title) ? $title : '' ?>"/>
 
-                <input  type="file" id="image" name='image'>
+                    </div>
+                    <div class='form-group'>
+                        <label class="" for="image">Прикрепить изображение</label><br>
+                        <img id='image_preview' src="<?php echo isset($img) ? '/uploads/' . $img : '' ?>" width='400'>
+
+                        <input  type="file" id="image" name='image'>
+                    </div>
+                    <div class='form-group'>
+                        <label class="" for="header">Текст</label>
+                        <textarea  id="description" name="desc" class="form-control" rows="10"><?php echo isset($desc) ? $desc : '' ?></textarea>
+                    </div>
+                    <div class='form-group'>
+                        <input type="submit" value="Добавить" class='btn btn-primary' name="send">
+                    </div>   
+                </form>
             </div>
-            <div class='form-group'>
-                <label class="" for="header">Текст</label>
-                <textarea  id="description" name="desc" class="form-control" rows="10"><?php echo isset($desc) ? $desc : '' ?></textarea>
-            </div>
-            <div class='form-group'>
-                <input type="submit" value="Добавить" class='btn btn-primary' name="send">
-            </div>   
-        </form>
+        </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-4">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Новости
@@ -71,13 +79,13 @@
             <div class="panel-body">
                 <p><a href="/admin/news"> Все</a></p>
                 <ul class="">
-                    
+
                     <?php if (isset($news)): ?>
                         <?php foreach ($news as $new): ?>
                             <li><a href="/admin/news/processnew/<?php echo $new->id ?>"><?php echo $new->title ?></li>
                         <?php endforeach; ?>
                     <?php endif ?>
-                    
+
                 </ul>
                 <p><a href="/admin/news/processnew">Добавить</a></p>
             </div>

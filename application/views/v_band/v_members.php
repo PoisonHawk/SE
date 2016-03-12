@@ -19,7 +19,7 @@
                     <div class="social">
                         <?php foreach ($member->social as $title => $link): ?>                                            
                             <?php if ($link): ?>
-                                <a class="<?php echo $title ?>" title="<?php echo $title ?>" href="<?php echo $link ?>"></a>
+                                <a class="<?php echo $title ?>" title="<?php echo $title ?>" href="<?php echo $link ?>"><i class="fa fa-<?php echo $title?>"></i></a>
                             <?php endif; ?>                                            
                         <?php endforeach; ?>
                     </div>

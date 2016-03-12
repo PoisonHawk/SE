@@ -7,6 +7,7 @@
         <!-- <link rel="stylesheet" href="bower_components/normalize-css/normalize.css"> -->
         <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <?php foreach ($styles as $style): ?>
             <?php echo HTML::style($style); ?>
         <?php endforeach; ?>
@@ -46,16 +47,16 @@
                     </nav>
                     <div class="social social-top">
                         <?php if (isset($social_vk) and $social_vk !== ''): ?>
-                            <a class="vk" title="VK" href="<?php echo $social_vk ?>"></a>
+                            <a class="vk" title="VK" href="<?php echo $social_vk ?>"><i class="fa fa-vk"></i></a>
                         <?php endif; ?>
                         <?php if (isset($social_vk) and $social_fb !== ''): ?>
-                            <a class="fb" title="Facebook" href="<?php echo $social_fb ?>"></a>
+                            <a class="fb" title="Facebook" href="<?php echo $social_fb ?>"><i class="fa fa-facebook"></i></a>
                         <?php endif; ?>
                         <?php if (isset($social_tw) and $social_tw !== ''): ?>
-                            <a class="tw" title="Twitter" href="<?php echo $social_tw ?>"></a>
+                            <a class="tw" title="Twitter" href="<?php echo $social_tw ?>"><i class="fa fa-twitter"></i></a>
                         <?php endif; ?>
                         <?php if (isset($social_yt) and $social_yt !== ''): ?>
-                            <a class="tooltips n-2 yt" title="Twitter" href="<?php echo $social_yt ?>"></a>
+                            <a class="tooltips n-2 yt" title="Youtube" href="<?php echo $social_yt ?>"><i class="fa fa-youtube"></i></a>
                         <?php endif; ?>
                     </div>
             </div>

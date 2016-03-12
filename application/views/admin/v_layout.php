@@ -3,17 +3,14 @@
     <head>
         <title><?php echo $title; ?></title>
         <link href="/css/bootstrap.min.css" rel="stylesheet">
-        <!--
-        --><link href="/css/bootstrap.css" rel="stylesheet">
+        <link href="/css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css">
         <script src="/js/jquery-2.1.0.min.js"></script>     
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/bootstrap.js"></script>
-        <!--<script src="/js/jquery-1.10.2.js"></script>-->       
-        
-        
+
         <script type="text/javascript" src="http://vk.com/js/api/share.js?93" charset="windows-1251"></script>
-        
+
         <?php foreach ($styles as $style): ?>
             <?php echo HTML::style($style); ?>
         <?php endforeach; ?>
@@ -59,32 +56,31 @@
                             </li>
                             <li><a href="/admin/endorsers">Эндорсеры</a></li>
                             <li><a href="/admin/settings">Настройки</a></li>
-                            <?php if (Auth::instance()->logged_in('sa')):?>
+                            <?php if (Auth::instance()->logged_in('sa')): ?>
                                 <li><a href="/admin/users">Пользователи</a></li>
-                            <?php endif;?>
+                            <?php endif; ?>
 
                         </ul> 
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#"><span class="glyphicon glyphicon-user"><?php echo $username; ?></span></a></li>
                             <li><a href="/login/logout" alt="Выйти"><span class="glyphicon glyphicon-log-out"></span></a></li>
-
                         </ul>
 
                     </div>    
                 </header>
                 <div id="content" class='container'>
                     <?php echo $content; ?>
-                </div>
-                
+                </div>    
+
             </div>   
         </div>  
         <footer id="footer" class="footer default" style='padding:20px'>
-                    <div  class="container">
-                        <p>&copy; sympuls-e</p>
-                    </div>   
-                </footer>
-        <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
-        <!--<script src="/js/bootstrap.min.js"></script>-->
+            <div  class="container">
+                <p>&copy; sympuls-e</p>
+            </div>   
+        </footer>
+<!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+<!--<script src="/js/bootstrap.min.js"></script>-->
         <script src="/js/bootstrap.js"></script>
         <script src="/js/jquery-ui-1.10.4.custom.js"></script>
     </body>
